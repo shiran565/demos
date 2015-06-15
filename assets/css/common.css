@@ -1,0 +1,78 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0
+}
+
+html {
+    color: #333;
+    background-color:#f4f4f4;
+    overflow-y: scroll;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none
+}
+
+body, button, input, select, textarea, pre {
+    font-size: 16px;
+    font-family: Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial, STHeiti
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%
+}
+
+h3, h4, h5, h6 {
+    font-weight: normal
+}
+
+ul, ol {
+    list-style: none
+}
+
+a {
+    text-decoration: none;
+    color: #1b66c7;
+    -webkit-touch-callout: none
+}
+
+a:hover {
+    cursor: pointer
+}
+
+fieldset, img {
+    border: 0
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+textarea {
+    resize: vertical
+}
+
+*:focus {
+    outline: 0
+}
+
+input[type="submit"], input[type="button"] {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-appearance: none;
+    -moz-appearance: none
+}
+
+input[type="text"],input[type="password"] {
+    border: none;
+    display: block;
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+    line-height: 20px;
+    font-size: 16px;
+    height: 20px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+
+}

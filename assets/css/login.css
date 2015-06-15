@@ -1,0 +1,145 @@
+.pass-header {
+    background: #fff;
+    border-bottom: 1px solid #d3d3d3;
+    height: 44px;
+    width: 100%;
+    padding: 0;
+    position: relative;
+    display: block;
+    text-align: center
+}
+
+.pass-header-title {
+    line-height: 44px;
+    color:#000;
+    font-size: 16px;
+    font-weight:500;
+    text-align: center;
+    width: 100%;
+    display: block
+}
+
+.pass-header-back {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAApCAMAAAAYjxnCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzE3RDZCOUYwQjY1MTFFNThDNTVBMDAzMzAyNDJGRjYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzE3RDZCQTAwQjY1MTFFNThDNTVBMDAzMzAyNDJGRjYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozMTdENkI5RDBCNjUxMUU1OEM1NUEwMDMzMDI0MkZGNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozMTdENkI5RTBCNjUxMUU1OEM1NUEwMDMzMDI0MkZGNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PrVjtFUAAADPUExURVm55Ve55vf7/Qit+37F5uv1+QGu/gSu/V265gWt/Dyy6Rit8s7n8sTi8PH4+/P5+zCw6+by+E6250i0597v9gqt+fn8/SCu8LXc7Wi95jKv64fJ547L6JvQ6RSt9UO06Nbr9DWw6uz1+ieu7pLN6CSu7/z9/szm8un0+azX7Byt8e/3+3PB5XrE5tns9Smv7A6t9+Hw9wut+Dqx6S6w6z+z6IDG5/z+/lS45qDS6l665Q+t9gKu/Rut8cHh723A5SWu7rre7vf8/QCu//////Rs9LEAAABFdFJOU///////////////////////////////////////////////////////////////////////////////////////////ALLusTgAAADkSURBVHjadNPXUgJBEIXhkbQgCIKoJAkSJSlRwQDY5/2fiSbv7hzmbv6vai6mqw3s8y9RwLAuKoZ2ubHh2C04dT+cuw8u3Quu7gF3d4Onu2DfL1dzpZ/B309g9SPY/QCk74H1HdCuwDvMlQ6z67dk8Cak4LwQQCgo8lMigOGvSGROAKNnfa5PAJ26Sp4AelP+V0CqppL5tAGBmUrlyQa0HlQmARuAL5VCkgCWKu+vBLBSaaYJYKDSzRJAMSISrxJAwxEptwlgERP5vmM7+KZjGG/YcuYeRe4Z4O9jHaaARBjYCjAA1lD1Xc1hclEAAAAASUVORK5CYII=') no-repeat 15px 13px;
+    -webkit-background-size: 12px 20px;
+    padding: 13px 0 13px 15px;
+    width: 30px;
+    height: 16px;
+    color:#00aeff;
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+.pass_header_logo {
+    display: inline-block;
+    line-height: 44px;
+    height: 44px
+}
+
+.content{
+    margin-top: 20px;
+    margin-bottom:200px;
+}
+
+/*form 相关*/
+.form-item {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    width: 100%;
+    background: #fff;
+}
+
+.form-item:nth-of-type(1) {
+    border-bottom: 1px solid #ededed
+}
+
+.form-input-wrapper {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    height: 50px;
+    padding: 0 14px;
+    background: #fff
+}
+
+.form-item-btn {
+    background: #f1f1f1;
+    border: none;
+    padding: 15px 14px;
+    width: auto
+}
+
+
+.text-label {
+    display:block;
+    color:#5c5c5c;
+    line-height:48px;
+    font-size:14px;
+    font-weight: 500;
+    -webkit-background-size: 18px 22px;
+    padding-right:14px;
+}
+
+
+.pass-button-full {
+    color: #fff;
+    font-size: 16px;
+    width: 100%;
+    background: #00aeff;
+    border: 1px solid #00aeff;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-tap-highlight-color: rgba(255,0,0,0);
+    border-radius: 3px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    height:34px;
+    line-height:34px;
+}
+
+.pass-button-full-disabled {
+    border: 1px solid #a4c7f3;
+    background: #a4c7f3
+}
+
+.pass-button-full-active {
+    border: 1px solid #2375de;
+    background: #2375de
+}
+
+footer{
+    text-align: center;
+    line-height: 50px;
+}
+
+footer a{
+    color:#00aeff;
+}
+
+footer span{
+    margin: 0 5px;
+    color:#c0c0c0;
+}

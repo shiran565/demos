@@ -1,0 +1,32 @@
+{
+  "name": "js",
+  "version": "0.0.0",
+  "description": "none",
+  "keywords": [],
+  "homepage": "",
+  "author": "释然 <shiran565@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": "MIT",
+  "spm": {
+    "main": "index.js",
+    "dependencies": {
+      "jquery.lazy": "~1.0.2"
+    },
+    "devDependencies": {
+      "expect.js": "0.3.1"
+    }
+  },
+  "devDependencies": {
+    "spm": "3"
+  },
+  "scripts": {
+    "test": "spm test",
+    "build": "spm build"
+  }
+}
