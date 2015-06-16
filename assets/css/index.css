@@ -1,0 +1,11 @@
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+}
+
+.header-toolbar{
+    width: 100%;
+    background-color: #00baff;
+}
