@@ -7,5 +7,36 @@
 
 .header-toolbar{
     width: 100%;
+    padding:10px 0;
     background-color: #00baff;
+}
+
+.header .search-box{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.input-box{
+    height:3em;
+    line-height:3em;
+    padding:0 10px;
+    position:relative;
+    background-color:#ffffff ;
+    border-radius: 5px;
+}
+
+.input-box input{
+    width:80%;
+    height:30px;
+    padding:9px 0;
+}
+
+.search-button{
+    width:60px;
+    height:40px;
+    position: absolute;
+    right: 5px;
+    top: 4px;
+    border: none;
+    background:url("../img/bg-spirit.png") -10px top no-repeat;
 }
