@@ -3,11 +3,12 @@
     top: 0;
     left: 0;
     width:100%;
+    background-color:#ffffff;
 }
 
 .header-toolbar{
     width: 100%;
-    padding:10px 0;
+    padding:5px 0;
     background-color: #00baff;
 }
 
@@ -17,8 +18,8 @@
 }
 
 .input-box{
-    height:3em;
-    line-height:3em;
+    height:35px;
+    line-height:35px;
     padding:0 10px;
     position:relative;
     background-color:#ffffff ;
@@ -27,16 +28,43 @@
 
 .input-box input{
     width:80%;
-    height:30px;
-    padding:9px 0;
+    height:25px;
+    padding:5px 0;
 }
 
 .search-button{
-    width:60px;
-    height:40px;
+    width:50px;
+    height:35px;
     position: absolute;
     right: 5px;
-    top: 4px;
+    top: 0;
     border: none;
-    background:url("../img/bg-spirit.png") -10px top no-repeat;
+    background:url("../img/bg-spirit.png") left top no-repeat;
+    -webkit-background-size: contain;
+    background-size: contain;
 }
+.categories{
+    overflow: hidden;
+}
+.categories ul{
+    margin: 0;
+    padding: 0;
+}
+
+.categories li{
+    float: left;
+    width: 33.333%;
+    height:30px;
+    color: #474747;
+    line-height: 30px;
+    list-style: none;
+    text-align: center;
+    border-bottom: solid 3px #ffffff;
+}
+
+.categories li.on{
+     border-bottom-color: #00baff;
+     color:#00baff;
+ }
+
+
