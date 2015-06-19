@@ -1,3 +1,7 @@
+body{
+    padding-top:78px;
+}
+
 .header{
     position: fixed;
     top: 0;
@@ -57,7 +61,6 @@
     height:30px;
     color: #474747;
     line-height: 30px;
-    list-style: none;
     text-align: center;
     border-bottom: solid 3px #ffffff;
 }
@@ -66,5 +69,34 @@
      border-bottom-color: #00baff;
      color:#00baff;
  }
+
+.slides{
+    width: 100%;
+    height:200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slides ul{
+    position:absolute;
+    width:200%;
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+.slides ul li{
+    width:50%;
+    float:left;
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+
+
+.slides img{
+    width:100%;
+    height: auto;
+}
+
 
 

@@ -10,6 +10,10 @@ body, button, input, select, textarea, pre {
     font-family: Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial, STHeiti
 }
 
+ul{
+    list-style: none;
+}
+
 *:focus {
     outline: 0
 }
