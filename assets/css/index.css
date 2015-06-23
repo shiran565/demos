@@ -47,6 +47,7 @@ body{
     -webkit-background-size: contain;
     background-size: contain;
 }
+
 .categories{
     overflow: hidden;
 }
@@ -54,7 +55,6 @@ body{
     margin: 0;
     padding: 0;
 }
-
 .categories li{
     float: left;
     width: 33.333%;
@@ -64,39 +64,42 @@ body{
     text-align: center;
     border-bottom: solid 3px #ffffff;
 }
-
 .categories li.on{
      border-bottom-color: #00baff;
      color:#00baff;
  }
 
-.slides{
-    width: 100%;
-    height:200px;
-    overflow: hidden;
-    position: relative;
-}
-
-.slides ul{
-    position:absolute;
-    width:200%;
-    list-style: none;
-    padding:0;
-    margin:0;
-}
-.slides ul li{
-    width:50%;
-    float:left;
-    list-style: none;
-    padding:0;
-    margin:0;
-}
-
-
-.slides img{
+.swipe img,.ads img{
     width:100%;
     height: auto;
 }
 
+.ads li{
+    width:24.5%;
+    height:45px;
+    margin-left: 0.5%;
+    line-height:45px;
+    font-size:18px;
+    color:#ffffff;
+    text-align: center;
+    font-family: "Microsoft Yahei";
+    float:left;
+    border-radius: 5px;
+}
+
+.cls-must{
+    background-color:#43CAC0 ;
+}
+
+.cls-new{
+    background-color:#FF8158;
+}
+
+.cls-topic{
+    background-color:#F7C903;
+}
+.cls-activity{
+    background-color: #7ACD54;
+}
 
 

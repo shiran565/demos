@@ -14,50 +14,52 @@
     <link rel="stylesheet" href="./assets/css/index.css" />
 </head>
 <body>
-    <div>
-        <header class="header">
-            <div class="header-toolbar">
-                <!--<div class="qr"></div>-->
-                <div class="search-box">
-                    <form action="">
-                        <div class="input-box">
-                            <input type="text" placeholder="大家都在搜：美团" name="" />
-                            <button  type="submit" class="search-button"></button>
-                        </div>
-                    </form>
-                </div>
+    <header class="header">
+        <div class="header-toolbar">
+            <!--<div class="qr"></div>-->
+            <div class="search-box">
+                <form action="">
+                    <div class="input-box">
+                        <input type="text" placeholder="大家都在搜：美团" name="" />
+                        <button  type="submit" class="search-button"></button>
+                    </div>
+                </form>
             </div>
-            <div id="J_Categories" class="categories">
-                <ul>
-                    <li class="on">精品</li>
-                    <li>应用</li>
-                    <li>游戏</li>
-                </ul>
-            </div>
-        </header>
+        </div>
+        <div id="J_Categories" class="categories">
+            <ul>
+                <li class="on">精品</li>
+                <li>应用</li>
+                <li>游戏</li>
+            </ul>
+        </div>
+    </header>
 
-        <section class="main-content">
-            <div class="">
-                <div class="slides">
-                    <ul>
-                        <li><img src="assets/img/banner-1.png"></li>
-                        <li><img src="assets/img/banner-2.png"></li>
-                    </ul>
+    <section id="J_main-content" class="main-content swipe">
+        <div class='swipe-wrap'>
+            <div class="tab-page">
+                <div id='J_slider' class='swipe'>
+                    <div class='swipe-wrap'>
+                        <div><img src="./assets/img/banner-1.png" /></div>
+                        <div><img src="./assets/img/banner-2.png" /></div>
+                    </div>
                 </div>
                 <div class="ads">
                     <ul>
-                        <li><a href="#"><img src="assets/img/ads.png"></a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
+                        <li class="cls-must">必备</li>
+                        <li class="cls-new">新品</li>
+                        <li class="cls-topic">专题</li>
+                        <li class="cls-activity">活动</li>
                     </ul>
                 </div>
             </div>
-            <div class="">2</div>
-            <div class="">3</div>
-        </section>
+            <div class="tab-page">2</div>
+            <div class="tab-page">3</div>
+        </div>
+    </section>
 
-    </div>
-
+    <script src="./assets/js/bower_components/zepto/zepto.min.js" ></script>
+    <script src="./assets/js/bower_components/swipe/swipe.js" ></script>
+    <script src="./assets/js/project/index.js" ></script>
 </body>
 </html>
