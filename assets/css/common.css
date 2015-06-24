@@ -1,13 +1,17 @@
 html {
     color: #333;
-    background-color:#f4f4f4;
     overflow-y: scroll;
-    -webkit-user-select: none
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
 }
 
 body, button, input, select, textarea, pre {
     font-size: 16px;
     font-family: Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial, STHeiti
+}
+
+body{
+    background-color:#f4f4f4;
 }
 
 ul{
@@ -39,6 +43,25 @@ input[type="text"],input[type="password"] {
     height: 20px;
     padding-top: 14px;
     padding-bottom: 14px;
+}
+
+.clearfix:after{
+    content: "020";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.ly-fl{
+    float:left;
+}
+.ly-fr{
+    float: right;
+}
+
+.blue{
+    color:#02BAFF;
 }
 
 .swipe {
