@@ -78,8 +78,9 @@ body{
 .ads li{
     width:24.5%;
     height:35px;
-    margin-left: 0.5%;
     line-height:35px;
+    overflow:hidden;
+    margin-left: 0.5%;
     font-size:18px;
     color:#ffffff;
     text-align: center;
@@ -88,21 +89,45 @@ body{
     border-radius: 5px;
 }
 
+.ads .icon{
+    vertical-align: middle;
+    margin-top:-3px;
+    display: inline-block;
+    width:20px;
+    height: 20px;
+}
+
 /* ·ÖÀà */
 .cls-must{
     background-color:#43CAC0 ;
 }
+    .cls-must .icon{
+        background: url("../img/icons/icon-must.jpg");
+        background-size: contain;
+    }
 
 .cls-new{
     background-color:#FF8158;
 }
+    .cls-new .icon{
+        background: url("../img/icons/icon-new.jpg");
+        background-size: contain;
+    }
 
 .cls-topic{
     background-color:#F7C903;
 }
+    .cls-topic .icon{
+        background: url("../img/icons/icon-topic.jpg") no-repeat;
+        background-size: contain;
+    }
 .cls-activity{
     background-color: #7ACD54;
 }
+    .cls-activity .icon{
+        background: url("../img/icons/icon-activity.jpg");
+        background-size: contain;
+    }
 
 .item-box{
     width: 100%;
@@ -110,11 +135,14 @@ body{
 
 .item-box .item{
     width: 97%;
-    padding:10px 0;
     margin:5px auto;
-    position: relative;
     background-color: #ffffff;
     border: solid 1px #ededed;
+}
+
+.item-content{
+    padding:10px 0;
+    position: relative;
 }
 
 .item-img{
@@ -169,5 +197,26 @@ body{
     color:#ffffff;
     background-color: #02BAFF;
     border: none;
+}
+
+.sub-tags{
+    clear: both;
+    margin-bottom: 5px;
+    border-top: solid 1px #ededed;
+}
+
+.sub-tags li{
+    float:left;
+    width: 33%;
+    height:30px;
+    line-height: 30px;
+    font-size:12px;
+    color: #6A6A6A;
+    text-align: center;
+}
+
+.sub-tags .other-comment{
+    border-left: solid 1px #ededed;
+    border-right: solid 1px #ededed;
 }
 
