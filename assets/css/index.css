@@ -44,7 +44,7 @@ body{
     right: 5px;
     top: 0;
     border: none;
-    background:url("../img/bg-spirit.png") left top no-repeat;
+    background:#ffffff url("../img/bg-spirit.png") left top no-repeat;
     -webkit-background-size: contain;
     background-size: contain;
 }
@@ -219,4 +219,19 @@ body{
     border-left: solid 1px #ededed;
     border-right: solid 1px #ededed;
 }
+
+footer{
+    width: 100%;
+    height:50px;
+    position:fixed;
+    bottom: 0;
+    background-color: #E9E9E9;
+}
+
+footer li{
+    float:left;
+    width: 20%;
+    text-align: center;
+}
+
 
