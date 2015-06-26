@@ -33,6 +33,9 @@ $(function(){
         contentSwipe.slide(index, 150);
     });
 
+    window.onorientationchange = function(){
+        alert(0)
+    }
 
 });
 
