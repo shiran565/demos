@@ -33,8 +33,9 @@ $(function(){
         contentSwipe.slide(index, 150);
     });
 
+    //横屏事件,触发窗口重置事件，组件会重新设置banner大小
     window.onorientationchange = function(){
-        alert(0)
+        $(window).trigger("resize");
     }
 
 });
