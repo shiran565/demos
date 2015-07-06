@@ -425,3 +425,8 @@ td,
 th {
   padding: 0;
 }
+
+dd{
+  -webkit-margin-start:0;
+}
+

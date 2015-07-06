@@ -45,6 +45,15 @@ input[type="text"],input[type="password"] {
     padding-bottom: 14px;
 }
 
+small{
+    font-size: smaller;
+    font-weight: normal;
+    color: gray;
+}
+
+/*---------------
+    一些常用的类库
+-----------------*/
 .clearfix:after{
     content: "020";
     display: block;
@@ -52,18 +61,27 @@ input[type="text"],input[type="password"] {
     clear: both;
     visibility: hidden;
 }
-
 .ly-fl{
     float:left;
 }
 .ly-fr{
     float: right;
 }
-
-.blue{
-    color:#02BAFF;
+.inline-block{
+    display:inline-block;
 }
 
+.blue{
+    color:#02BAFF;!important;
+}
+
+.green{
+    color:green;!important;
+}
+
+/*--------------------
+    swipe组件样式
+---------------------*/
 .swipe {
     overflow: hidden;
     visibility: hidden;
