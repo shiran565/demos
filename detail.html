@@ -17,7 +17,7 @@
 </head>
 <body>
     <header>
-        <div class="header-box">
+        <div class="header-box clearfix">
             <!--列表项-->
             <div class="item-content clearfix">
                 <div class="item-img ly-fl"><img src="./assets/img/items/item-1.jpg" /></div>
@@ -38,11 +38,13 @@
         </div>
     </header>
     <section class="main-content">
-        <div class="tab-box">
-            <ul>
-                <li class="on">详情</li>
-                <li>评论<small>6575条</small></li>
-            </ul>
+        <div class="fixed-box">
+            <div class="tab-box">
+                <ul>
+                    <li class="on">详情</li>
+                    <li>评论<small>6575条</small></li>
+                </ul>
+            </div>
         </div>
         <div class="tab-content">
             <div id="1">
@@ -54,49 +56,56 @@
                         <img src="assets/img/detail/detail-5.jpg" /></div>
                 </div>
                 <div class="wrap">
-                    <ul class="comment">
-                        <li><small>版本 1.2.4</small></li>
-                        <li><small>更新时间：2015-06-18</small></li>
+                    <ul class="comment clearfix">
+                        <li class="ly-fl"><small>版本 1.2.4</small></li>
+                        <li class="ly-fr"><small>更新时间：2015-06-18</small></li>
                     </ul>
 
                     <ul class="item-box">
                         <li class="item">
-                            <dl>
-                                <dt>应用介绍</dt>
-                                <dd>小编推荐：灵活补刀、游走杀人、热血激斗尽在掌中！</dd>
-                                <dd>【注；游戏中心升级到V1.6版本，即可领取专属礼包】</dd>
-                                <dd>网易游戏出品</dd>
+                            <dl class="introduce">
+                                <dt><span class="iconfont icon-paper"></span>应用介绍<span class="iconfont icon-unfold ly-fr"></span></dt>
+                                <dd class="editer-recmd blue">小编推荐：灵活补刀、游走杀人、热血激斗尽在掌中！</dd>
+                                <dd class="text-content gray">【注：游戏中心升级到V1.6版本，即可领取专属礼包】
+                                    <br />网易游戏出品
+                                </dd>
                             </dl>
                         </li>
                         <li class="item">
-                            <dl>评测</dl>
-                            <dd>
-                                《火柴人联盟》评测：做自己的英雄
-                            </dd>
-                            <dd>
-                                当英雄联盟变成《火柴人联盟》评测
-                            </dd>
+                            <dl class="test">
+                                <dt><span class="iconfont icon-editprice"></span>评测</dt>
+                                <dd>
+                                    《火柴人联盟》评测：做自己的英雄
+                                </dd>
+                                <dd>
+                                    当英雄联盟变成《火柴人联盟》评测
+                                </dd>
+                            </dl>
                         </li>
                         <li class="item">
-                            <dt>攻略</dt>
-                            <dd>火柴人联盟英雄搭配攻略 瑞文猴子搭配心得</dd>
-                            <dd>火柴人联盟2星防装攻略 2星血防撞详解</dd>
-                            <dd>火柴人联盟瑞文技能加点顺序推荐 英雄攻略</dd>
+                            <dl class="stretegy">
+                                <dt><span class="iconfont icon-choiceness"></span>攻略</dt>
+                                <dd>火柴人联盟英雄搭配攻略 瑞文猴子搭配心得</dd>
+                                <dd>火柴人联盟2星防装攻略 2星血防撞详解</dd>
+                                <dd>火柴人联盟瑞文技能加点顺序推荐 英雄攻略</dd>
+                            </dl>
                         </li>
                         <li class="item">
-                            <dt>相关推荐</dt>
-                            <dd>
-                                <ul>
-                                    <li><img src="./assets/img/recommend/rec-1.png"/></li>
-                                    <li><img src="./assets/img/recommend/rec-2.png"/></li>
-                                    <li><img src="./assets/img/recommend/rec-3.jpg"/></li>
-                                    <li><img src="./assets/img/recommend/rec-4.png"/></li>
-                                    <li><img src="./assets/img/recommend/rec-5.png"/></li>
-                                    <li><img src="./assets/img/recommend/rec-6.png"/></li>
-                                    <li><img src="./assets/img/recommend/rec-7.png"/></li>
-                                    <li><img src="./assets/img/recommend/rec-8.png"/></li>
-                                </ul>
-                            </dd>
+                            <dl class="recommend clearfix">
+                                <dt><span class="iconfont icon-favor"></span>相关推荐</dt>
+                                <dd>
+                                    <ul>
+                                        <li><img src="./assets/img/recommend/rec-1.png"/></li>
+                                        <li><img src="./assets/img/recommend/rec-2.png"/></li>
+                                        <li><img src="./assets/img/recommend/rec-3.jpg"/></li>
+                                        <li><img src="./assets/img/recommend/rec-4.png"/></li>
+                                        <li><img src="./assets/img/recommend/rec-5.png"/></li>
+                                        <li><img src="./assets/img/recommend/rec-6.png"/></li>
+                                        <li><img src="./assets/img/recommend/rec-7.png"/></li>
+                                        <li><img src="./assets/img/recommend/rec-8.png"/></li>
+                                    </ul>
+                                </dd>
+                            </dl>
                         </li>
                     </ul>
 

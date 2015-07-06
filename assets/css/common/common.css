@@ -72,11 +72,15 @@ small{
 }
 
 .blue{
-    color:#02BAFF;!important;
+    color:#02BAFF!important;
 }
 
 .green{
-    color:green;!important;
+    color:#6FC24A!important;
+}
+
+.gray{
+    color:#6A6A6A!important;
 }
 
 /*--------------------

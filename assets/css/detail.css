@@ -1,3 +1,7 @@
+header{
+    background-color: #ffffff;
+}
+
 .gallery{
     position:relative;
     overflow-x: hidden;
@@ -10,8 +14,8 @@
 }
 
 .gallery img{
-    width:19%;
-    height:auto;
+    width:auto;
+    height:200px;
     margin-right:0.5%;
 }
 
@@ -117,8 +121,16 @@
 
     .tab-box{
         width:100%;
+        background-color: #ffffff;
         overflow: hidden;
     }
+
+    .fixed-box{
+        width:100%;
+        border-top: solid 1px #e7e7e7;
+        height:35px;
+    }
+
     .tab-box ul{
         margin: 0;
         padding: 0;
@@ -138,14 +150,77 @@
         color:#00baff;
     }
 
+.comment{
+    width:98%;
+    margin: 0 auto;
+}
 
 .item-box{
     width: 100%;
 }
 
-.item-box .item{
-    width: 97%;
-    margin:5px auto;
-    background-color: #ffffff;
-    border: solid 1px #ededed;
-}
+    .item-box .item{
+        width: 92%;
+        padding:0 3%;
+        margin:5px auto;
+        background-color: #ffffff;
+        border: solid 1px #ededed;
+    }
+
+    .item-box .item dt{
+        height:25px;
+        padding-left:30px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #020202;
+        vertical-align: top;
+        position: relative;
+    }
+
+    .item-box .item .iconfont:first-child{
+        display: inline-block;
+        color:#ffffff;
+        font-size:16px;
+        border-radius: 50%;
+        padding:4px;
+        position: absolute;
+        left:2px;
+        top:-4px;
+    }
+
+    .introduce .iconfont:first-child{
+        background-color: #FFAE04;
+    }
+    .test .iconfont{
+        background-color: #6FC24A;
+    }
+    .stretegy .iconfont{
+        background-color: #FF7647;
+    }
+    .recommend .iconfont{
+        background-color: #03B9FF;
+    }
+
+    .item-box dd{
+        color:gray;
+        font-size: 14px;
+    }
+
+    .item-box .recommend li{
+        width:20%;
+        margin-right:5%;
+        margin-bottom: 10px;
+        float: left;
+    }
+
+    .item-box .recommend li img{
+        width: 100%;
+        height: auto;
+        border-radius: 15%;
+    }
+
+    .stretegy dd,.test dd{
+        height:30px;
+        line-height: 35px;
+        border-top:1px solid #f3f3f3;
+    }
