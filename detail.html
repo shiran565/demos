@@ -39,21 +39,24 @@
     </header>
     <section class="main-content">
         <div class="fixed-box">
-            <div class="tab-box">
+            <div id="J_tab-box" class="tab-box">
                 <ul>
                     <li class="on">详情</li>
                     <li>评论<small>6575条</small></li>
                 </ul>
             </div>
         </div>
-        <div class="tab-content">
-            <div id="1">
+        <div id="J_content-swipe" class="">
+        <div class="tab-content swipe-wrap">
+            <div class="tab-page">
                 <div id="J_gallery" class="gallery">
-                    <div class="img-box clearfix"><img src="assets/img/detail/detail-1.jpg" />
+                    <div class="img-box">
+                        <img src="assets/img/detail/detail-1.jpg" />
                         <img src="assets/img/detail/detail-2.jpg" />
                         <img src="assets/img/detail/detail-3.jpg" />
                         <img src="assets/img/detail/detail-4.jpg" />
-                        <img src="assets/img/detail/detail-5.jpg" /></div>
+                        <img src="assets/img/detail/detail-5.jpg" />
+                    </div>
                 </div>
                 <div class="wrap">
                     <ul class="comment clearfix">
@@ -61,7 +64,7 @@
                         <li class="ly-fr"><small>更新时间：2015-06-18</small></li>
                     </ul>
 
-                    <ul class="item-box">
+                    <ul class="item-box detail">
                         <li class="item">
                             <dl class="introduce">
                                 <dt><span class="iconfont icon-paper"></span>应用介绍<span class="iconfont icon-unfold ly-fr"></span></dt>
@@ -75,19 +78,19 @@
                             <dl class="test">
                                 <dt><span class="iconfont icon-editprice"></span>评测</dt>
                                 <dd>
-                                    《火柴人联盟》评测：做自己的英雄
+                                    <a href="#" >《火柴人联盟》评测：做自己的英雄</a>
                                 </dd>
                                 <dd>
-                                    当英雄联盟变成《火柴人联盟》评测
+                                    <a href="#" >当英雄联盟变成《火柴人联盟》评测</a>
                                 </dd>
                             </dl>
                         </li>
                         <li class="item">
                             <dl class="stretegy">
                                 <dt><span class="iconfont icon-choiceness"></span>攻略</dt>
-                                <dd>火柴人联盟英雄搭配攻略 瑞文猴子搭配心得</dd>
-                                <dd>火柴人联盟2星防装攻略 2星血防撞详解</dd>
-                                <dd>火柴人联盟瑞文技能加点顺序推荐 英雄攻略</dd>
+                                <dd><a href="#" >火柴人联盟英雄搭配攻略 瑞文猴子搭配心得</a></dd>
+                                <dd><a href="#" >火柴人联盟2星防装攻略 2星血防撞详解</a></dd>
+                                <dd><a href="#" >火柴人联盟瑞文技能加点顺序推荐 英雄攻略</a></dd>
                             </dl>
                         </li>
                         <li class="item">
@@ -111,12 +114,83 @@
 
                 </div>
             </div>
-            <div id="2"></div>
+            <div id="2" class="tab-page">
+                <div class="wrap">
+                    <ul class="item-box comment-list">
+                        <li class="summary item clearfix">
+                            <div class="summary-left ly-fl">
+                                <ul>
+                                    <li class="points">4.3<small>分</small></li>
+                                    <li class="stars">
+                                        <span class="iconfont icon-favorfill"></span>
+                                        <span class="iconfont icon-favorfill"></span>
+                                        <span class="iconfont icon-favorfill"></span>
+                                        <span class="iconfont icon-favorfill"></span>
+                                        <span class="iconfont icon-favor"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="summary-right ly-fr">
+                                <ul class="stars-percent">
+                                    <li><label>5星</label><span class="gradient-box"><span style="width:31.8%;"></span></span><i>68.2%</i></li>
+                                    <li><label>4星</label><span class="gradient-box"><span style="width:87.6%;"></span></span><i>12.4%</i></li>
+                                    <li><label>3星</label><span class="gradient-box"><span style="width:92.4%;"></span></span><i>7.6%</i></li>
+                                    <li><label>2星</label><span class="gradient-box"><span style="width:97.2%;"></span></span><i>2.8%</i></li>
+                                    <li><label>1星</label><span class="gradient-box"><span style="width:91%;"></span></span><i>9.0%</i></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="version-type item">
+                            <div class="default-comment">默认评论</div>
+                            <ul class="clearfix">
+                                <li class="on">当前版本</li>
+                                <li>历史版本</li>
+                            </ul>
+
+                        </li>
+                        <li class="comment-box item">
+                            <ul class="comment-item">
+                                <li class="user-info">匿名用户<span>2015-07-07 | vivo Y27</span></li>
+                                <li class="comment-content">......</li>
+                                <li class="stars">
+                                    <span class="iconfont icon-favorfill"></span>
+                                    <span class="iconfont icon-favorfill"></span>
+                                    <span class="iconfont icon-favorfill"></span>
+                                    <span class="iconfont icon-favorfill"></span>
+                                    <span class="iconfont icon-favorfill"></span>
+                                    <span class="version">版本：1.2.4</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="comment-box item">
+                            <ul class="comment-item">
+                                <li class="user-info">匿名用户<span>2015-07-07 | vivo Y27</span></li>
+                                <li class="comment-content">......</li>
+                                <li class="stars">
+                                    <span class="iconfont icon-favorfill"></span>
+                                    <span class="iconfont icon-favorfill"></span>
+                                    <span class="iconfont icon-favorfill"></span>
+                                    <span class="iconfont icon-favorfill"></span>
+                                    <span class="iconfont icon-favor"></span>
+                                    <span class="version">版本：1.2.4</span>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+
+                </div>
+
+            </div>
+        </div>
         </div>
     </section>
 
     <script src="./assets/js/bower_components/zepto/zepto.min.js" ></script>
     <script src="./assets/js/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js" ></script>
+    <script src="./assets/js/bower_components/swipe/swipe.js" ></script>
+    <script src="./assets/js/bower_components/touchjs/dist/touch-0.2.14.min.js"></script>
     <script src="./assets/js/project/detail.js?v=11" ></script>
 </body>
 </html>
