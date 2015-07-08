@@ -70,7 +70,9 @@ small{
 .inline-block{
     display:inline-block;
 }
-
+.fn-hide{
+    display:none;
+}
 .blue{
     color:#02BAFF!important;
 }
@@ -81,6 +83,10 @@ small{
 
 .gray{
     color:#6A6A6A!important;
+}
+
+.yello{
+    color:#fdcf38!important;
 }
 
 /*--------------------

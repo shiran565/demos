@@ -1,48 +1,38 @@
+body{
+    overflow: hidden;
+}
+
 header{
+    width:100%;
     background-color: #ffffff;
 }
 
+.logo{
+    width: 96%;
+    margin: 0 auto;
+    padding:12px 2%;
+    background-color:#f4f4f4;
+}
+
+.logo img{
+    width:35%;
+    max-width: 200px;
+    height:auto;
+}
+
+.header-box{
+    width:96%;
+    padding:10px 2%;
+}
 
 .item-content{
-    padding:10px 0;
+    width:100%;
     position: relative;
 }
 
-/*-----------------------
-    轮播图片
-------------------------*/
-.gallery{
-    position:relative;
-    overflow-x: hidden;
-    width: 98%;
-    height:250px;
-    margin: 0 auto;
-}
-.gallery .img-box{
-    position:absolute;
-}
-
-.gallery img{
-    width:auto;
-    height:250px;
-    margin-right:5px;
-}
-
-.item-img{
-    margin-left:5px;
-    width:72px;
-    height:72px;
-}
-.item-img img{
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    vertical-align: middle;
-}
-
 .item-introduce{
-    padding-left:15px;
-    width:50%;
+    padding-left:85px;
+    position:absolute;
 }
     .item-introduce dl{
         -webkit-margin-before:0;
@@ -53,85 +43,57 @@ header{
         -webkit-margin-start: 0;
     }
     .item-introduce-title{
-        height:18px;
-        padding-bottom:5px;
+        height:24px;
         font-size: 18px;
         color:#000000;
     }
     .item-introduce-download{
-        height:15px;
-        line-height:15px;
-        font-size:12px;
+        height:24px;
+        line-height:24px;
+        font-size:14px;
         color:#BBBBBB;
     }
-    .item-introduce-desc{
-        font-size: 12px;
+    .item-introduce-tags{
+        font-size: 16px;
         color:#717171;
     }
 
-    .item-operation{
-        width: 18%;
-        height:30px;
-        line-height: 30px;
-        position:absolute;
-        right:5px;
-        top:31px;
-        padding: 0;
+    .item-introduce-tags .tag{
+        display: inline-block;
+        width:64px;
+        height:24px;
+        margin-right: 10px;
+        line-height: 24px;
+        text-align: center;
         color:#ffffff;
-        background-color: #02BAFF;
+        background: url("../img/bg-tag.png") no-repeat;
+        background-size: contain;
+    }
+
+    .item-operation{
+        width: 100%;
+        height:35px;
+        clear: both;
+        margin-top:15px;
+        line-height: 35px;
+        padding: 0;
+        font-size:20px;
+        color:#ffffff;
+        background-color: #00baff;
+        border-radius: 5px;
         border: none;
-    }
-
-
-.security-info{
-    margin-left:5px;
-}
-
-    .security-info dd div{
-        display: inline-block;
-        font-size: 12px;
-        height:20px;
-        line-height:20px;
-    }
-
-    .security-info .name{
-        width:30%;
-        min-width:120px;
-    }
-
-    .security-info .name i{
-        display: inline-block;
-        width: 13px;
-        height:13px;
-        background-size: 13px 13px;
-        margin-right:3px;
-
-    }
-        .icon-360{
-            background:url("../img/icons/icon-360.png") top left no-repeat;
-        }
-
-        .icon-baidu{
-            background:url("../img/icons/icon-baidu.png") top left no-repeat;
-        }
-
-    .security-info .result-txt{
-        width:20%;
-    }
-
-    .security-info .result{
-        width:15%;
     }
 
     .tab-box{
         width:100%;
         background-color: #ffffff;
+        border-bottom: solid 1px #d7d7d7;
         overflow: hidden;
     }
 
     .fixed-box{
         width:100%;
-        border-top: solid 1px #f0f0f0;
+        border-top: solid 1px #f5f5f5;
         height:35px;
     }
 
@@ -159,13 +121,16 @@ header{
     }
 
 
+
+
 /*------------------------
     详情选项卡
 ------------------------*/
 
 .comment{
     width:98%;
-    margin: 0 auto;
+    padding:5px 1%;
+    color:#959595;
 }
 
 .item-box{
@@ -190,16 +155,53 @@ header{
         position: relative;
     }
 
-    .detail .item .iconfont:first-child{
-        display: inline-block;
-        color:#ffffff;
-        font-size:16px;
-        border-radius: 50%;
-        padding:4px;
-        position: absolute;
-        left:2px;
-        top:-4px;
+/*-----------------------
+    轮播图片
+------------------------*/
+.gallery{
+    position:relative;
+    overflow-x: hidden;
+    width: 98%;
+    height:250px;
+    margin: 0 auto;
+}
+    .gallery .img-box{
+        position:absolute;
+        height:250px;
     }
+
+    .gallery img{
+        width:auto;
+        height:250px;
+        margin-right:5px;
+    }
+
+    .item-img{
+        width:72px;
+        height:72px;
+    }
+    .item-img img{
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        vertical-align: middle;
+    }
+
+
+
+/*-----------------------
+    详情页列表
+------------------------*/
+.detail .item .iconfont:first-child{
+    display: inline-block;
+    color:#ffffff;
+    font-size:18px;
+    border-radius: 50%;
+    padding:3px;
+    position: absolute;
+    left:2px;
+    top:-4px;
+}
 
     .introduce .icon-paper{
         background-color: #FFAE04;
@@ -217,6 +219,10 @@ header{
     }
     .recommend .iconfont{
         background-color: #03B9FF;
+    }
+
+    .item-box .iconfont{
+        font-weight:200!important;
     }
 
     .item-box dd,.item-box dd a{

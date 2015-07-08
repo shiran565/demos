@@ -15,28 +15,14 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-appreciate:before { content: "\e600"; }
-.icon-check:before { content: "\e601"; }
-.icon-close:before { content: "\e602"; }
-.icon-edit:before { content: "\e603"; }
-.icon-favorfill:before { content: "\e604"; }
-.icon-favor:before { content: "\e605"; }
-.icon-roundclosefill:before { content: "\e606"; }
-.icon-roundclose:before { content: "\e607"; }
-.icon-search:before { content: "\e608"; }
-.icon-unfold:before { content: "\e609"; }
-.icon-comment:before { content: "\e60a"; }
-.icon-back:before { content: "\e60b"; }
-.icon-settings:before { content: "\e60c"; }
-.icon-right:before { content: "\e60d"; }
-.icon-refresh:before { content: "\e60e"; }
-.icon-deletefill:before { content: "\e60f"; }
-.icon-cart:before { content: "\e610"; }
-.icon-delete:before { content: "\e611"; }
-.icon-message:before { content: "\e612"; }
-.icon-paper:before { content: "\e613"; }
-.icon-fold:before { content: "\e614"; }
-.icon-game:before { content: "\e615"; }
-.icon-editprice:before { content: "\e616"; }
-.icon-choiceness:before { content: "\e617"; }
-.icon-category:before { content: "\e618"; }
+.icon-edit:before { content: "\e600"; }
+.icon-check-fill:before { content: "\e601"; }
+.icon-unfold:before { content: "\e602"; }
+.icon-circle:before { content: "\e603"; }
+.icon-star:before { content: "\e604"; }
+.icon-star-fill:before { content: "\e605"; }
+.icon-forward:before { content: "\e606"; }
+.icon-paper:before { content: "\e607"; }
+.icon-back:before { content: "\e608"; }
+.icon-zuanshiline:before { content: "\e609"; }
+.icon-fold:before { content: "\e60a"; }

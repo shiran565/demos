@@ -242,7 +242,6 @@ function Swipe(container, options) {
 
     },
     move: function(event) {
-
       // ensure swiping with one touch and not pinching
       if ( event.touches.length > 1 || event.scale && event.scale !== 1) return
 
@@ -359,42 +358,49 @@ function Swipe(container, options) {
 
   }
 
-  // trigger setup
-  setup();
+  function init(){
 
-  // start auto slideshow if applicable
-  if (delay) begin();
+    // start auto slideshow if applicable
+    if (delay) begin();
 
 
-  // add event listeners
-  if (browser.addEventListener) {
-    
-    // set touchstart event on element    
-    if (browser.touch) element.addEventListener('touchstart', events, false);
+    // add event listeners
+    if (browser.addEventListener) {
 
-    if (browser.transitions) {
-      element.addEventListener('webkitTransitionEnd', events, false);
-      element.addEventListener('msTransitionEnd', events, false);
-      element.addEventListener('oTransitionEnd', events, false);
-      element.addEventListener('otransitionend', events, false);
-      element.addEventListener('transitionend', events, false);
+      // set touchstart event on element
+      if (browser.touch) element.addEventListener('touchstart', events, false);
+
+      if (browser.transitions) {
+        element.addEventListener('webkitTransitionEnd', events, false);
+        element.addEventListener('msTransitionEnd', events, false);
+        element.addEventListener('oTransitionEnd', events, false);
+        element.addEventListener('otransitionend', events, false);
+        element.addEventListener('transitionend', events, false);
+      }
+
+      // set resize event on window
+      window.addEventListener('resize', events, false);
+
+    } else {
+
+      window.onresize = function () { setup() }; // to play nice with old IE
+
     }
-
-    // set resize event on window
-    window.addEventListener('resize', events, false);
-
-  } else {
-
-    window.onresize = function () { setup() }; // to play nice with old IE
-
   }
 
+  // trigger setup
+  setup();
+  init()
   // expose the Swipe API
   return {
     setup: function() {
 
       setup();
 
+    },
+    init: function(){
+      setup();
+      init()
     },
     slide: function(to, speed) {
 
