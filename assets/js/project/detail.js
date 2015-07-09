@@ -3,33 +3,47 @@
  */
 $(function(){
 
+
+    //列表轮播
+    var contentSwipe = new Swipe($('#J_content-swipe')[0], {
+        startSlide: 0,
+        speed: 400,
+        auto: false,
+        continuous: false,
+        disableScroll: false,
+        stopPropagation: false,
+        callback: function(index, elem) {},
+        transitionEnd: function(index, elem) {
+            $("#J_tab-box li").eq(index).addClass("on").siblings().removeClass("on");
+        }
+    });
+
     (function(){
 
+        //图片墙滑动效果相关
         var maxDistance;
+        var target = $("#J_gallery .img-box").get(0);
+        var dx;
 
         $(window).on("load",function () {
             var width = ($("#J_gallery img").eq(0).width()+10)*5;
             $("#J_gallery .img-box").width(width);
             $("#J_gallery").css("overflow","hidden");
-
             maxDistance = $("#J_gallery .img-box").width()-$("#J_gallery").width()-10;
         });
 
-        //图片墙滑动效果实现
-        var target = $("#J_gallery .img-box").get(0);
-        //target.style.webkitTransition = 'all ease 0.2s';
+        touch.on(target, 'touchmove', function(ev){
+            console.dir(ev.touches[0]);
+        })
+        touch.on(target, 'touchend', function(ev){
 
-        var left = 0;
-
+        })
+        return;
         $('#J_gallery').on('touchstart', function(ev){
             ev.preventDefault();
             //防止在滚动图片时，触发页面选项卡切换
             contentSwipe.kill();
         });
-
-
-        var dx;
-
 
         touch.on(target, 'drag', function(ev){
             dx = dx || 0;
@@ -64,49 +78,25 @@ $(function(){
             }else{
                 dx += ev.x;
             }
-
+            //重新激活外层选项卡切换事件监听
             contentSwipe.init();
         });
 
-        //向左滑动
-        touch.on(target,'swiperight', function(ev){
-            var offset = ev.x*(1/ev.factor);
-            if(left > -offset){
-                left = 0;
-            }else{
-                left+=offset;
-            }
-            //target.style.webkitTransform = "translate3d(" + left + "px,0,0)";
-
-        });
-
-        //向右滑动
-        touch.on(target, 'swipeleft', function(ev){
-            var max = $(target).width()-$('#J_gallery').width()-10;
-            var offset = ev.x*(1/ev.factor);
-            if(left+offset>-max){
-                left+=offset;
-            }else{
-                left=-max;
-            }
-            //target.style.webkitTransform = "translate3d(" + left + "px,0,0)";/
-        });
+        //横屏事件,重新初始化一些参数
+        window.onorientationchange = function(){
+            maxDistance = $("#J_gallery .img-box").width()-$("#J_gallery").width()-10;
+            contentSwipe.setup();
+        }
 
     }());
 
-    //列表轮播
-    var contentSwipe = new Swipe($('#J_content-swipe')[0], {
-        startSlide: 0,
-        speed: 400,
-        auto: false,
-        continuous: false,
-        disableScroll: false,
-        stopPropagation: false,
-        callback: function(index, elem) {},
-        transitionEnd: function(index, elem) {
-            $("#J_tab-box li").eq(index).addClass("on").siblings().removeClass("on");
-        }
+    //点击展开或折叠应用介绍部分内容
+    $("#J_fold").on("touchstart",function(){
+        $(this).toggleClass("icon-fold");
+        $(this).toggleClass("icon-unfold");
+        $(this).closest(".introduce").toggleClass("fold");
     });
+
 
     //点击分类按钮切换页面
     $("#J_tab-box li").on("touchstart",function(){
@@ -115,6 +105,66 @@ $(function(){
         $(this).addClass("on");
         contentSwipe.slide(index, 400);
     });
+
+    (function(){
+
+        //固定工具条的触发标记位
+        var flexBoxOffset = $("#J_tab-box").offset().top-$("#J_tab-box").height();
+
+        touch.on(document,"dragend",function(ev){
+            var nowScroll = $(window).scrollTop();
+
+            //排除误触发情况
+            if(Math.abs(ev.y)<3){
+                return false;
+            }
+
+            if(nowScroll < flexBoxOffset && ev.y < 0){
+
+                $("#J_tab-box").css({
+                    "position":"fixed",
+                    "top":"-1px",
+                    "z-index":"99"
+                });
+
+                $("body").stop(true,true).animate({
+                    "scrollTop":flexBoxOffset
+                },100);
+            }
+
+            if(nowScroll <= flexBoxOffset && ev.y > 0){
+                $("body").stop(true,true).animate({
+                    "scrollTop":0
+                },100,function(){
+                    $("#J_tab-box").css({
+                        "position":"static"
+                    });
+
+                });
+            }
+        });
+    }());
+
+    (function(){
+
+    }());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

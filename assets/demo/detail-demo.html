@@ -11,6 +11,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <link rel="stylesheet" href="assets/css/icon-font/iconfont.css" />
     <link rel="stylesheet" href="assets/css/common/normalize.css">
+    <link rel="stylesheet" href="assets/js/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css?v=12" />
     <link rel="stylesheet" href="assets/css/common/common.css" />
     <link rel="stylesheet" href="./assets/css/detail.css?v=1233" />
 </head>
@@ -42,11 +43,13 @@
         </div>
     </header>
     <section class="main-content">
-        <div id="J_tab-box" class="tab-box">
-            <ul>
-                <li class="on">详情</li>
-                <li>评论<small>6575条</small></li>
-            </ul>
+        <div class="fixed-box">
+            <div id="J_tab-box" class="tab-box">
+                <ul>
+                    <li class="on">详情</li>
+                    <li>评论<small>6575条</small></li>
+                </ul>
+            </div>
         </div>
         <div id="J_content-swipe" class="">
         <div class="tab-content swipe-wrap">
@@ -68,29 +71,46 @@
 
                     <ul class="item-box detail">
                         <li class="item">
-                            <dl class="introduce fold">
-                                <dt><span class="iconfont icon-paper"></span>应用介绍<span id="J_fold" class="iconfont icon-unfold ly-fr"></span></dt>
+                            <dl class="introduce">
+                                <dt><span class="iconfont icon-paper"></span>应用介绍<span class="iconfont icon-unfold ly-fr"></span></dt>
                                 <dd class="editer-recmd blue">小编推荐：灵活补刀、游走杀人、热血激斗尽在掌中！</dd>
                                 <dd class="text-content gray">【注：游戏中心升级到V1.6版本，即可领取专属礼包】
-                                    <br />这里的内容可能会被折叠，这里的内容可能会被折叠，这里的内容可能会被折叠，这里的内容可能会被折叠，这里的内容可能会被折叠，这里的内容可能会被折叠，这里的内容可能会被折叠
                                     <br />网易游戏出品
                                 </dd>
                             </dl>
                         </li>
-
+                        <li class="item">
+                            <dl class="test">
+                                <dt><span class="iconfont icon-edit"></span>评测</dt>
+                                <dd>
+                                    <a href="#" >《火柴人联盟》评测：做自己的英雄</a>
+                                </dd>
+                                <dd>
+                                    <a href="#" >当英雄联盟变成《火柴人联盟》评测</a>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li class="item">
+                            <dl class="stretegy">
+                                <dt><span class="iconfont icon-zuanshiline"></span>攻略</dt>
+                                <dd><a href="#" >火柴人联盟英雄搭配攻略 瑞文猴子搭配心得</a></dd>
+                                <dd><a href="#" >火柴人联盟2星防装攻略 2星血防撞详解</a></dd>
+                                <dd><a href="#" >火柴人联盟瑞文技能加点顺序推荐 英雄攻略</a></dd>
+                            </dl>
+                        </li>
                         <li class="item">
                             <dl class="recommend clearfix">
                                 <dt><span class="iconfont icon-star"></span>相关推荐</dt>
                                 <dd>
                                     <ul>
-                                        <li><img src="./assets/img/recommend/rec-1.png"/>英雄国度</li>
-                                        <li><img src="./assets/img/recommend/rec-2.png"/>叫我撸至深</li>
-                                        <li><img src="./assets/img/recommend/rec-3.jpg"/>天天大乱斗</li>
-                                        <li><img src="./assets/img/recommend/rec-4.png"/>乱斗堂</li>
-                                        <li><img src="./assets/img/recommend/rec-5.png"/>英雄国度</li>
-                                        <li><img src="./assets/img/recommend/rec-6.png"/>叫我撸至深</li>
-                                        <li><img src="./assets/img/recommend/rec-7.png"/>天天大乱斗</li>
-                                        <li><img src="./assets/img/recommend/rec-8.png"/>乱斗堂</li>
+                                        <li><img src="./assets/img/recommend/rec-1.png"/></li>
+                                        <li><img src="./assets/img/recommend/rec-2.png"/></li>
+                                        <li><img src="./assets/img/recommend/rec-3.jpg"/></li>
+                                        <li><img src="./assets/img/recommend/rec-4.png"/></li>
+                                        <li><img src="./assets/img/recommend/rec-5.png"/></li>
+                                        <li><img src="./assets/img/recommend/rec-6.png"/></li>
+                                        <li><img src="./assets/img/recommend/rec-7.png"/></li>
+                                        <li><img src="./assets/img/recommend/rec-8.png"/></li>
                                     </ul>
                                 </dd>
                             </dl>
@@ -125,32 +145,39 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="comment-box-title item">用户评论</li>
+                        <li class="version-type item">
+                            <div class="default-comment">默认评论</div>
+                            <ul class="clearfix">
+                                <li class="on">当前版本</li>
+                                <li>历史版本</li>
+                            </ul>
+
+                        </li>
                         <li class="comment-box item">
                             <ul class="comment-item">
-                                <li class="user-info">匿名用户<span>2015-07-07</span></li>
-                                <li class="comment-content">说了算就到了附近路口时间多久了公开个，快速的咖啡馆，深咖啡说的妇科，恶化个考核课如何海口分行滑动。送风机口水库的肌肤收到，说的妇科睡觉了个人个。</li>
+                                <li class="user-info">匿名用户<span>2015-07-07 | vivo Y27</span></li>
+                                <li class="comment-content">......</li>
                                 <li class="stars">
                                     <span class="iconfont icon-star-fill"></span>
                                     <span class="iconfont icon-star-fill"></span>
                                     <span class="iconfont icon-star-fill"></span>
                                     <span class="iconfont icon-star"></span>
                                     <span class="iconfont icon-star"></span>
-                                    <span class="version">版本：1.2.4  | vivo Y27</span>
+                                    <span class="version">版本：1.2.4</span>
                                 </li>
                             </ul>
                         </li>
                         <li class="comment-box item">
                             <ul class="comment-item">
-                                <li class="user-info">匿名用户<span>2015-07-07</span></li>
-                                <li class="comment-content">相当给力，强烈推荐</li>
+                                <li class="user-info">匿名用户<span>2015-07-07 | vivo Y27</span></li>
+                                <li class="comment-content">......</li>
                                 <li class="stars">
                                     <span class="iconfont icon-star-fill"></span>
                                     <span class="iconfont icon-star-fill"></span>
                                     <span class="iconfont icon-star-fill"></span>
                                     <span class="iconfont icon-star"></span>
                                     <span class="iconfont icon-star"></span>
-                                    <span class="version">版本：4.0  | vivo X5 Max</span>
+                                    <span class="version">版本：1.2.4</span>
                                 </li>
                             </ul>
                         </li>
@@ -165,7 +192,8 @@
         </div>
     </section>
 
-    <script src="./assets/js/bower_components/jquery/dist/jquery.min.js" ></script>
+    <script src="./assets/js/bower_components/zepto/zepto.min.js" ></script>
+    <script src="./assets/js/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js" ></script>
     <script src="./assets/js/bower_components/swipe/swipe.js" ></script>
     <script src="./assets/js/bower_components/touchjs/dist/touch-0.2.14.js"></script>
     <script src="./assets/js/project/detail.js?v=11" ></script>

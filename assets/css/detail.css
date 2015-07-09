@@ -47,6 +47,18 @@ header{
         font-size: 18px;
         color:#000000;
     }
+
+    .item-introduce-title .tag-official{
+        display:inline-block;
+        height:20px;
+        width:38px;
+        margin-left: 10px;
+        position:relative;
+        top:3px;
+        background: url("../img/tag-official.png") no-repeat;
+        background-size: contain;
+    }
+
     .item-introduce-download{
         height:24px;
         line-height:24px;
@@ -87,6 +99,7 @@ header{
     .tab-box{
         width:100%;
         background-color: #ffffff;
+        border-top: solid 1px #f3f3f3;
         border-bottom: solid 1px #d7d7d7;
         overflow: hidden;
     }
@@ -147,11 +160,9 @@ header{
 
     .item-box .item dt{
         height:25px;
-        padding-left:30px;
         font-size: 16px;
         font-weight: bold;
         color: #020202;
-        vertical-align: top;
         position: relative;
     }
 
@@ -193,30 +204,28 @@ header{
     详情页列表
 ------------------------*/
 .detail .item .iconfont:first-child{
-    display: inline-block;
     color:#ffffff;
     font-size:18px;
     border-radius: 50%;
+    margin-right:5px;
     padding:3px;
-    position: absolute;
-    left:2px;
-    top:-4px;
 }
 
     .introduce .icon-paper{
         background-color: #FFAE04;
     }
 
-    .introduce .icon-unfold{
+    .introduce .icon-unfold,.introduce .icon-fold{
+        font-size: 18px;
         color:#828282;
     }
 
-    .test .iconfont{
-        background-color: #6FC24A;
+    .fold .text-content{
+        height:40px;
+        line-height:20px;
+        overflow-y: hidden;
     }
-    .stretegy .iconfont{
-        background-color: #FF7647;
-    }
+
     .recommend .iconfont{
         background-color: #03B9FF;
     }
@@ -232,10 +241,16 @@ header{
     }
 
     .item-box .recommend li{
-        width:20%;
-        margin-right:5%;
+        float:left;
+        width:22%;
+        margin-right:4%;
         margin-bottom: 10px;
-        float: left;
+        color:#454545;
+        text-align: center;
+    }
+
+    .item-box .recommend li:nth-child(4n){
+        margin-right:0;
     }
 
     .item-box .recommend li img{
@@ -255,10 +270,6 @@ header{
     /*------------------------
         评论选项卡
     ------------------------*/
-    .comment-list{
-        border:solid 1px #ededed;
-    }
-
     .comment-list .item{
         margin:0 auto;
         padding:10px 3%;
@@ -266,7 +277,12 @@ header{
     }
 
     .comment-list .comment-box{
-        border-bottom:solid 1px #ededed;
+        border:solid 1px #ededed;
+        border-top:none;
+    }
+
+    .comment-list .summary{
+        border:solid 1px #ededed;
     }
 
     .summary-left{
@@ -280,7 +296,7 @@ header{
         height:72px;
         margin: 0 auto;
         line-height: 72px;
-        font-size: 32px;
+        font-size: 30px;
         font-weight: bold;
         color:#ffffff;
         background:url("../img/bg-points.png") no-repeat;
@@ -342,41 +358,14 @@ header{
         border-radius: 0 3px 3px  0;
     }
 
-    .version-type{
-        position: relative;
-        overflow: hidden;
+    .comment-list .comment-box-title{
+        margin-top: 5px;
+        color:#020202;
+        font-size:18px;
+        padding-bottom: 0;
+        border:solid 1px #ededed;
+        border-bottom: none;
     }
-
-    .version-type ul{
-        margin: 5px auto;
-        width:50%;
-        border:1px solid #02BAFF;
-        border-radius: 5px;
-    }
-
-        .version-type ul li{
-            height:25px;
-            line-height:26px;
-            text-align: center;
-            width:49%;
-            float: left;
-            font-size: 14px;
-            color:#020202;
-        }
-
-        .version-type ul li.on{
-            background-color: #02BAFF;
-            color:#ffffff;
-        }
-
-        .version-type .default-comment{
-            position:absolute;
-            right:3%;
-            top:16px;
-            font-size: 14px;
-            height:25px;
-            line-height:25px;
-        }
 
         .comment-item li{
             padding:5px 0;
