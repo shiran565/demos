@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/icon-font/iconfont.css" />
     <link rel="stylesheet" href="assets/css/common/normalize.css">
     <link rel="stylesheet" href="assets/css/common/common.css" />
-    <link rel="stylesheet" href="./assets/css/detail.css?v=1233" />
+    <link rel="stylesheet" href="./assets/css/detail.css" />
 </head>
 <body>
     <header>
@@ -42,11 +42,13 @@
         </div>
     </header>
     <section class="main-content">
-        <div id="J_tab-box" class="tab-box">
-            <ul>
-                <li class="on">详情</li>
-                <li>评论<small>6575条</small></li>
-            </ul>
+        <div class="fixed-box">
+            <div id="J_tab-box" class="tab-box">
+                <ul>
+                    <li class="on">详情</li>
+                    <li>评论<small>6575条</small></li>
+                </ul>
+            </div>
         </div>
         <div id="J_content-swipe" class="">
         <div class="tab-content swipe-wrap">
@@ -62,7 +64,7 @@
                 </div>
                 <div class="wrap">
                     <ul class="comment clearfix">
-                        <li class="ly-fl"><small>版本 1.2.4</small></li>
+                        <li class="ly-fl"><small>版本：1.2.4</small></li>
                         <li class="ly-fr"><small>更新时间：2015-06-18</small></li>
                     </ul>
 
@@ -83,14 +85,14 @@
                                 <dt><span class="iconfont icon-star"></span>相关推荐</dt>
                                 <dd>
                                     <ul>
-                                        <li><img src="./assets/img/recommend/rec-1.png"/>英雄国度</li>
-                                        <li><img src="./assets/img/recommend/rec-2.png"/>叫我撸至深</li>
-                                        <li><img src="./assets/img/recommend/rec-3.jpg"/>天天大乱斗</li>
-                                        <li><img src="./assets/img/recommend/rec-4.png"/>乱斗堂</li>
-                                        <li><img src="./assets/img/recommend/rec-5.png"/>英雄国度</li>
-                                        <li><img src="./assets/img/recommend/rec-6.png"/>叫我撸至深</li>
-                                        <li><img src="./assets/img/recommend/rec-7.png"/>天天大乱斗</li>
-                                        <li><img src="./assets/img/recommend/rec-8.png"/>乱斗堂</li>
+                                        <li><a href="#"><img src="./assets/img/recommend/rec-1.png"/>英雄国度</a></li>
+                                        <li><a href="#"><img src="./assets/img/recommend/rec-2.png"/>叫我撸至深</a></li>
+                                        <li><a href="#"><img src="./assets/img/recommend/rec-3.jpg"/>天天大乱斗</a></li>
+                                        <li><a href="#"><img src="./assets/img/recommend/rec-4.png"/>乱斗堂</a></li>
+                                        <li><a href="#"><img src="./assets/img/recommend/rec-5.png"/>英雄国度</a></li>
+                                        <li><a href="#"><img src="./assets/img/recommend/rec-6.png"/>叫我撸至深</a></li>
+                                        <li><a href="#"><img src="./assets/img/recommend/rec-7.png"/>天天大乱斗</a></li>
+                                        <li><a href="#"><img src="./assets/img/recommend/rec-8.png"/>乱斗堂</a></li>
                                     </ul>
                                 </dd>
                             </dl>
@@ -168,6 +170,7 @@
     <script src="./assets/js/bower_components/jquery/dist/jquery.min.js" ></script>
     <script src="./assets/js/bower_components/swipe/swipe.js" ></script>
     <script src="./assets/js/bower_components/touchjs/dist/touch-0.2.14.js"></script>
+    <script src="./assets/js/project/common/touch-move.js"></script>
     <script src="./assets/js/project/detail.js?v=11" ></script>
 </body>
 </html>

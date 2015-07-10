@@ -3,7 +3,6 @@
  */
 $(function(){
 
-
     //列表轮播
     var contentSwipe = new Swipe($('#J_content-swipe')[0], {
         startSlide: 0,
@@ -29,65 +28,13 @@ $(function(){
             var width = ($("#J_gallery img").eq(0).width()+10)*5;
             $("#J_gallery .img-box").width(width);
             $("#J_gallery").css("overflow","hidden");
-            maxDistance = $("#J_gallery .img-box").width()-$("#J_gallery").width()-10;
+
+            $("#J_gallery").TouchMove({
+                callback:function(){
+                    $("#J_tab-box li").eq(1).triggerHandler("touchstart");
+                }
+            });
         });
-
-        touch.on(target, 'touchmove', function(ev){
-            console.dir(ev.touches[0]);
-        })
-        touch.on(target, 'touchend', function(ev){
-
-        })
-        return;
-        $('#J_gallery').on('touchstart', function(ev){
-            ev.preventDefault();
-            //防止在滚动图片时，触发页面选项卡切换
-            contentSwipe.kill();
-        });
-
-        touch.on(target, 'drag', function(ev){
-            dx = dx || 0;
-            var offx = dx + ev.x;
-
-            //当滑动到最右端，再次滑动则触发选项卡切换
-            if(ev.x <0 && (dx+maxDistance) == 0){
-                $("#J_tab-box li").eq(1).triggerHandler("touchstart");
-                return;
-            }
-
-            //限制左右滑动的范围
-            if(ev.x>0 && (ev.x + dx) >= 0){
-                offx = 0;
-            }else if(ev.x < 0 && (dx + ev.x + maxDistance) <=0){
-                offx = -maxDistance;
-            }
-            //由于触摸事件默认效果已被屏蔽，这里模拟页面滚动，为了提升体验，只有在横向移动较小的情况触发滚动
-
-            if(Math.abs(ev.x)<Math.abs(ev.y)){
-                $(window).scrollTop($(window).scrollTop()-ev.y);
-            }else{
-                target.style.webkitTransform = "translate3d(" + offx + "px,0,0)";
-            }
-        });
-
-        touch.on(target, 'dragend', function(ev){
-            if(ev.x>0 && (ev.x + dx) >= 0){
-                dx = 0;
-            }else if(ev.x < 0 && (ev.x + dx + maxDistance) <=0){
-                dx = -maxDistance;
-            }else{
-                dx += ev.x;
-            }
-            //重新激活外层选项卡切换事件监听
-            contentSwipe.init();
-        });
-
-        //横屏事件,重新初始化一些参数
-        window.onorientationchange = function(){
-            maxDistance = $("#J_gallery .img-box").width()-$("#J_gallery").width()-10;
-            contentSwipe.setup();
-        }
-
     }());
 
     //点击展开或折叠应用介绍部分内容
@@ -109,65 +56,22 @@ $(function(){
     (function(){
 
         //固定工具条的触发标记位
-        var flexBoxOffset = $("#J_tab-box").offset().top-$("#J_tab-box").height();
-
-        touch.on(document,"dragend",function(ev){
+        var flexBoxOffset = $("#J_tab-box").offset().top;
+        var prevScroll = 0;
+        $(window).on("scroll",function(){
             var nowScroll = $(window).scrollTop();
-
-            //排除误触发情况
-            if(Math.abs(ev.y)<3){
-                return false;
-            }
-
-            if(nowScroll < flexBoxOffset && ev.y < 0){
-
+            if(nowScroll >= flexBoxOffset){
                 $("#J_tab-box").css({
                     "position":"fixed",
                     "top":"-1px",
                     "z-index":"99"
                 });
-
-                $("body").stop(true,true).animate({
-                    "scrollTop":flexBoxOffset
-                },100);
-            }
-
-            if(nowScroll <= flexBoxOffset && ev.y > 0){
-                $("body").stop(true,true).animate({
-                    "scrollTop":0
-                },100,function(){
-                    $("#J_tab-box").css({
-                        "position":"static"
-                    });
-
+            }else{
+                $("#J_tab-box").css({
+                    "position":"static"
                 });
             }
         });
     }());
-
-    (function(){
-
-    }());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 });
