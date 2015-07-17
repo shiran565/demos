@@ -3,8 +3,41 @@
  */
 $(function(){
 
+    var isTouch = ("ontouchstart" in window) ;
+
+    $(window).on("load",function () {
+        var width = ($("#J_gallery img").eq(0).width()+10)*5;
+        $("#J_gallery .img-box").width(width);
+        $("#J_gallery").css("overflow","hidden");
+
+        //图片墙滑动效果相关
+        $("#J_gallery").TouchMove();
+    });
+
+    //点击展开或折叠应用介绍部分内容
+    $("#J_fold").on(isTouch?"touchstart":"click",function(){
+        $(this).toggleClass("icon-fold");
+        $(this).toggleClass("icon-unfold");
+        $(this).closest(".introduce").toggleClass("fold");
+    });
+
+    (function(){
+
+        //固定工具条的触发标记位
+        var flexBoxOffset = $("#J_download").offset().top;
+        var boxHeight = $("#J_download").height();
+        $(window).on("scroll",function(){
+            var nowScroll = $(window).scrollTop();
+            if(nowScroll >= flexBoxOffset+10){
+                $("#J_download").addClass("fixed").parent().css("padding-bottom",boxHeight);
+            }else{
+                $("#J_download").removeClass("fixed").parent().css("padding-bottom",0);
+            }
+        });
+    }());
+
     //列表轮播
-    var contentSwipe = new Swipe($('#J_content-swipe')[0], {
+    var imgSwipe = new Swipe($('#J_full-img-box')[0], {
         startSlide: 0,
         speed: 400,
         auto: false,
@@ -13,65 +46,29 @@ $(function(){
         stopPropagation: false,
         callback: function(index, elem) {},
         transitionEnd: function(index, elem) {
-            $("#J_tab-box li").eq(index).addClass("on").siblings().removeClass("on");
         }
     });
 
-    (function(){
+    $("#J_gallery img").on("click",function(){
+        var index = $("#J_gallery img").index(this);
 
-        //图片墙滑动效果相关
-        var maxDistance;
-        var target = $("#J_gallery .img-box").get(0);
-        var dx;
-
-        $(window).on("load",function () {
-            var width = ($("#J_gallery img").eq(0).width()+10)*5;
-            $("#J_gallery .img-box").width(width);
-            $("#J_gallery").css("overflow","hidden");
-
-            $("#J_gallery").TouchMove({
-                callback:function(){
-                    $("#J_tab-box li").eq(1).triggerHandler("touchstart");
-                }
-            });
+        $("#J_full-img-box").show();
+        $('#J_full-img-box img').css({
+            height:$(window).height(),
+            width:"auto"
         });
-    }());
-
-    //点击展开或折叠应用介绍部分内容
-    $("#J_fold").on("touchstart",function(){
-        $(this).toggleClass("icon-fold");
-        $(this).toggleClass("icon-unfold");
-        $(this).closest(".introduce").toggleClass("fold");
+        imgSwipe.setup();
+        imgSwipe.slide(index,100);
     });
 
-
-    //点击分类按钮切换页面
-    $("#J_tab-box li").on("touchstart",function(){
-        var index = $("#J_tab-box li").index(this);
-        $(this).siblings().removeClass("on");
-        $(this).addClass("on");
-        contentSwipe.slide(index, 400);
+    $('#J_full-img-box img').on(isTouch?"tap":"click",function(){
+        $("#J_full-img-box").hide();
     });
 
-    (function(){
-
-        //固定工具条的触发标记位
-        var flexBoxOffset = $("#J_tab-box").offset().top;
-        var prevScroll = 0;
-        $(window).on("scroll",function(){
-            var nowScroll = $(window).scrollTop();
-            if(nowScroll >= flexBoxOffset){
-                $("#J_tab-box").css({
-                    "position":"fixed",
-                    "top":"-1px",
-                    "z-index":"99"
-                });
-            }else{
-                $("#J_tab-box").css({
-                    "position":"static"
-                });
-            }
+    window.onorientationchange = function(){
+        $('#J_full-img-box img').css({
+            height:$(window).height(),
+            width:"auto"
         });
-    }());
-
+    }
 });
