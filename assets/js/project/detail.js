@@ -72,13 +72,25 @@ $(function(){
         });
     }
 
-    alert(is_weixn())
-    function is_weixn(){
-        var ua = navigator.userAgent.toLowerCase();
-        if(ua.match(/MicroMessenger/i)=="micromessenger") {
-            return true;
-        } else {
-            return false;
+
+    $("#J_download_trigger").on("click",function(){
+        if(is_weixn()){
+            $(".weixin-tip-mask").show();
         }
-    }
+
+        function is_weixn(){
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    });
+
+    $(".weixin-tip-mask").on("click",function(){
+        $(this).hide();
+    })
+
+
 });
