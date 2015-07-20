@@ -61,7 +61,7 @@ $(function(){
         imgSwipe.slide(index,100);
     });
 
-    $('#J_full-img-box img').on(isTouch?"tap":"click",function(){
+    $('#J_full-img-box img').on("click",function(){
         $("#J_full-img-box").hide();
     });
 
@@ -70,5 +70,15 @@ $(function(){
             height:$(window).height(),
             width:"auto"
         });
+    }
+
+    alert(is_weixn())
+    function is_weixn(){
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+            return true;
+        } else {
+            return false;
+        }
     }
 });
