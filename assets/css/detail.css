@@ -30,25 +30,26 @@ body{
 
 .logo{
     width: 100%;
-    padding:12px 0;
+    padding:9px 0;
+    line-height: 0;
     background-color:#f4f4f4;
 }
 
 .logo img{
-    width:35%;
+    width:auto;
+    height:14px;
     margin-left: 2%;
-    max-width: 200px;
-    height:auto;
 }
 
 .header-box{
     width:96%;
-    padding:10px 2%;
+    padding:0 2%;
 }
 
 .item-content{
     width:100%;
     position: relative;
+    padding-top:15px;
 }
 
 .item-introduce{
@@ -83,7 +84,7 @@ body{
     .item-introduce-download{
         height:24px;
         line-height:24px;
-        font-size:14px;
+        font-size:12px;
         color:#BBBBBB;
     }
     .item-introduce-tags{
@@ -93,14 +94,20 @@ body{
 
     .item-introduce-tags .tag{
         display: inline-block;
-        width:64px;
-        height:24px;
-        margin-right: 10px;
-        line-height: 24px;
-        text-align: center;
+        width:50px;
+        height:19px;
+        margin-right: 5px;
+        line-height: 19px;
+        text-align: left;
+        padding-left: 13px;
+        font-size: 12px;
         color:#ffffff;
         background: url("../img/bg-tag.png") no-repeat;
         background-size: contain;
+    }
+
+    .item-introduce-tags .tag.no-ad{
+        padding-left:6px;
     }
 
     .fixed-box{
@@ -123,10 +130,10 @@ body{
     .item-operation{
         width: 100%;
         margin-top:15px;
-        height:40px;
-        line-height: 40px;
+        height:35px;
+        line-height: 35px;
         padding: 0;
-        font-size:20px;
+        font-size:18px;
         color:#ffffff;
         background-color: #00baff;
         border-radius: 5px;
@@ -186,9 +193,7 @@ body{
         color:#00baff;
     }*/
 
-    .tab-content{
-        margin-top:5px;
-    }
+
 
 
 
@@ -199,11 +204,17 @@ body{
 
 .comment{
     width:98%;
-    padding:5px 1%;
+    line-height: 12px;
+    padding:8px 1%;
     color:#959595;
 }
 
+.comment small{
+    font-size: 12px;
+}
+
 .item-box{
+    margin-top:8px;
     width: 100%;
 }
 
@@ -215,12 +226,21 @@ body{
         border: solid 1px #ededed;
     }
 
+.item-box .item dl{
+    padding:15px 0;
+}
+
     .item-box .item dt{
         height:25px;
-        font-size: 16px;
-        font-weight: bold;
+        line-height: 25px;
+        font-size: 15px;
         color: #020202;
         position: relative;
+        margin-bottom: 10px;
+    }
+
+    section.main-content{
+        margin-top: 15px;
     }
 
 /*-----------------------
@@ -230,18 +250,23 @@ body{
     position:relative;
     overflow-x: hidden;
     width: 98%;
-    height:250px;
+    height:200px;
     margin: 0 auto;
 }
     .gallery .img-box{
         position:absolute;
-        height:250px;
+        height:200px;
     }
 
     .gallery img{
+        float: left;
         width:auto;
-        height:250px;
-        margin-right:5px;
+        height:200px;
+        margin-right:8px;
+    }
+
+    .gallery img:last-child{
+        margin-right:0;
     }
 
     .item-img{
@@ -260,15 +285,45 @@ body{
 /*-----------------------
     详情页列表
 ------------------------*/
-.detail .item .iconfont:first-child{
-    color:#ffffff;
-    font-size:18px;
-    border-radius: 50%;
-    margin-right:5px;
-    padding:3px;
+
+.item-box .iconfont{
+    font-weight:200!important;
 }
 
-    .introduce .icon-paper{
+.item-box dd,.item-box dd a{
+    color:gray;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.icon-paper-bg{
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    left: 2px;
+    top: 1px;
+    z-index: 0;
+}
+
+
+.detail .item .iconfont:first-child{
+    color: #fff;
+    font-size: 18px;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: 4px;
+    top: 0;
+    z-index: 1;
+}
+
+    .introduce dt,.recommend dt{
+        padding-left: 25px;
+    }
+
+
+    .introduce .icon-paper-bg{
         background-color: #FFAE04;
     }
 
@@ -289,18 +344,8 @@ body{
         height:80px;
     }
 
-    .recommend .iconfont{
+    .recommend .icon-paper-bg{
         background-color: #03B9FF;
-    }
-
-    .item-box .iconfont{
-        font-weight:200!important;
-    }
-
-    .item-box dd,.item-box dd a{
-        color:gray;
-        text-decoration: none;
-        font-size: 14px;
     }
 
     .item-box .recommend li{
@@ -321,6 +366,10 @@ body{
         height: auto;
         border-radius: 15%;
     }
+
+.item-box .recommend li a{
+    font-size: 12px;
+}
 
     .stretegy dd,.test dd{
         height:30px;

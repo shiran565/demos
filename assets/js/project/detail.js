@@ -6,7 +6,7 @@ $(function(){
     var isTouch = ("ontouchstart" in window) ;
 
     $(window).on("load",function () {
-        var width = ($("#J_gallery img").eq(0).width()+10)*5;
+        var width = ($("#J_gallery img").eq(0).width()+8)*$("#J_gallery img").size()-8;
         $("#J_gallery .img-box").width(width);
         $("#J_gallery").css("overflow","hidden");
 
