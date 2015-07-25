@@ -25,7 +25,7 @@ $(function(){
 
         //固定工具条的触发标记位
         var flexBoxOffset = $("#J_download").offset().top;
-        var boxHeight = $("#J_download").height();
+        var boxHeight = $("#J_download").outerHeight();
         $(window).on("scroll",function(){
             var nowScroll = $(window).scrollTop();
             if(nowScroll >= flexBoxOffset+10){
