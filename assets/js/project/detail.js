@@ -19,6 +19,7 @@ $(function(){
         $(this).toggleClass("icon-fold");
         $(this).toggleClass("icon-unfold");
         $(this).closest(".introduce").toggleClass("fold");
+        return false;
     });
 
     (function(){

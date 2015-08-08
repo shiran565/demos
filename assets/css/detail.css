@@ -72,16 +72,36 @@ body{
         color:#000000;
     }
 
-    .item-introduce-title .tag-official{
-        display:inline-block;
-        height:20px;
-        width:38px;
-        margin-left: 10px;
-        position:relative;
-        top:3px;
-        background: url("../img/tag-official.png") no-repeat;
-        background-size: contain;
+
+
+    @media screen and (min-width: 320px) {
+        .item-introduce-title .tag-official {
+            display: inline-block;
+            height: 20px;
+            width: 38px;
+            margin-left: 5px;
+            position: relative;
+            top: 3px;
+            background: url("../img/tag-official.png") no-repeat;
+            background-size: contain;
+        }
     }
+
+    @media screen and (max-width: 320px) {
+        .item-introduce-title .tag-official {
+            display: inline-block;
+            height: 20px;
+            width: 38px;
+            position: absolute;
+            top: 3px;
+            right: 0;
+            background: url("../img/tag-official.png") no-repeat;
+            background-size: contain;
+        }
+    }
+
+
+
 
     .item-introduce-download{
         height:24px;
