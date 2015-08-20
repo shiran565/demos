@@ -38,7 +38,7 @@ a:hover { text-decoration: underline; }
 
 /** 重置表单元素 **/
 legend { color: #000; } /* for ie6 */
-fieldset, img { border: 0; } /* img 搭车：让链接里的 img 无边框 */
+fieldset, img { border: 0; } /* image 搭车：让链接里的 image 无边框 */
 button, input, select, textarea { font-size: 100%; } /* 使得表单元素在 ie 下能继承字体大小 */
 /* 注：optgroup 无法扶正 */
 

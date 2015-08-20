@@ -44,7 +44,7 @@ body{
     right: 5px;
     top: 0;
     border: none;
-    background:#ffffff url("../img/bg-spirit.png") left top no-repeat;
+    background:#ffffff url("../image/bg-spirit.png") left top no-repeat;
     -webkit-background-size: contain;
     background-size: contain;
 }
@@ -97,12 +97,12 @@ body{
     height: 20px;
 }
 
-/* ·ÖÀà */
+/* ï¿½ï¿½ï¿½ï¿½ */
 .cls-must{
     background-color:#43CAC0 ;
 }
     .cls-must .icon{
-        background: url("../img/icons/icon-must.jpg");
+        background: url("../image/icons/icon-must.jpg");
         background-size: contain;
     }
 
@@ -110,7 +110,7 @@ body{
     background-color:#FF8158;
 }
     .cls-new .icon{
-        background: url("../img/icons/icon-new.jpg");
+        background: url("../image/icons/icon-new.jpg");
         background-size: contain;
     }
 
@@ -118,14 +118,14 @@ body{
     background-color:#F7C903;
 }
     .cls-topic .icon{
-        background: url("../img/icons/icon-topic.jpg") no-repeat;
+        background: url("../image/icons/icon-topic.jpg") no-repeat;
         background-size: contain;
     }
 .cls-activity{
     background-color: #7ACD54;
 }
     .cls-activity .icon{
-        background: url("../img/icons/icon-activity.jpg");
+        background: url("../image/icons/icon-activity.jpg");
         background-size: contain;
     }
 

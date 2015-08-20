@@ -5,9 +5,11 @@ $(function(){
 
     var isTouch = ("ontouchstart" in window) ;
 
+    $("#J_download_trigger").text("下载（13.06M）");
+	
     $(window).on("load",function () {
-        var width = ($("#J_gallery img").eq(0).width()+8)*$("#J_gallery img").size()-8;
-        $("#J_gallery .img-box").width(width);
+        var width = ($("#J_gallery image").eq(0).width()+8)*$("#J_gallery image").size()-8;
+        $("#J_gallery .image-box").width(width);
         $("#J_gallery").css("overflow","hidden");
 
         //图片墙滑动效果相关
@@ -38,7 +40,7 @@ $(function(){
     }());
 
     //列表轮播
-    var imgSwipe = new Swipe($('#J_full-img-box')[0], {
+    var imgSwipe = new Swipe($('#J_full-image-box')[0], {
         startSlide: 0,
         speed: 400,
         auto: false,
@@ -50,11 +52,11 @@ $(function(){
         }
     });
 
-    $("#J_gallery img").on("click",function(){
-        var index = $("#J_gallery img").index(this);
+    $("#J_gallery image").on("click",function(){
+        var index = $("#J_gallery image").index(this);
 
-        $("#J_full-img-box").show();
-        $('#J_full-img-box img').css({
+        $("#J_full-image-box").show();
+        $('#J_full-image-box image').css({
             height:$(window).height(),
             width:"auto"
         });
@@ -62,12 +64,12 @@ $(function(){
         imgSwipe.slide(index,100);
     });
 
-    $('#J_full-img-box img').on("click",function(){
-        $("#J_full-img-box").hide();
+    $('#J_full-image-box image').on("click",function(){
+        $("#J_full-image-box").hide();
     });
 
     window.onorientationchange = function(){
-        $('#J_full-img-box img').css({
+        $('#J_full-image-box image').css({
             height:$(window).height(),
             width:"auto"
         });
