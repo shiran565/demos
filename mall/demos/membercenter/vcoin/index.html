@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no,address=no,email=no" />
+    <meta name="mobileOptimized" content="width" />
+    <meta name="handheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="vivo,智能手机,官方商城" />
+    <meta name="description" content="vivo智能手机官方商城，我的V币页。" />
+    <title>我的V币</title>
+
+    <script>
+        (function () {
+            var doc = document;
+            var docEl = doc.documentElement;
+            var metaEl = doc.createElement('meta');
+            var scale = 1 / devicePixelRatio;
+            metaEl.setAttribute('name', 'viewport');
+            metaEl.setAttribute('content', 'width=device-width,initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+            if (docEl.firstElementChild) {
+                document.documentElement.firstElementChild.appendChild(metaEl);
+            } else {
+                var wrap = doc.createElement('div');
+                wrap.appendChild(metaEl);
+                document.write(wrap.innerHTML);
+            }
+        }());
+
+
+        //根据设备宽度调整html元素的font-size属性（即1rem的值）
+        function initRem() {
+            var deviceWidth = document.documentElement.clientWidth;
+
+            if (deviceWidth > 540*devicePixelRatio) deviceWidth = 540*devicePixelRatio;
+            if (deviceWidth < 320*devicePixelRatio) deviceWidth = 320*devicePixelRatio;
+
+            document.documentElement.style.fontSize = deviceWidth / 7.2 + 'px';
+
+            //兼容UC浏览器
+            if (navigator.userAgent.indexOf("UCBrowser") >= 0) {
+                if (document.body) {
+                    location.reload();
+                }
+            }
+        }
+        initRem();
+    </script>
+
+    <link rel="stylesheet" href="../../../css/base/normalize.css" />
+    <link rel="stylesheet" href="../../../css/base/layout.css" />
+    <link rel="stylesheet" href="../../../css/base/pages-membercenter-vcoin.css" />
+</head>
+<body>
+<header id="header">
+    <div class="wrapper">
+        <a href="javascript:;" class="hd-link-back"><img src="../../../images/common/icon-header-back.png"></a>
+        <h1>我的V币</h1>
+        <ul class="hd-links-right">
+            <li class="hd-link spcart"><i class="num">99</i><a href="../../shoppingcart/index.html"><img src="../../../images/common/icon-header-spcart.png"></a></li>
+            <li class="hd-link home"><a href="../../home/index.html"><img src="../../../images/common/icon-header-home.png"></a></li>
+        </ul>
+    </div>
+</header>
+<main id="content">
+    <div class="title">
+        <p class="left">
+            <img src="../../../images/membercenter/vcoin/icon-bag.png" />
+            <span>我的V币：6000</span>
+        </p>
+        <p class="right">
+            <img src="../../../images/membercenter/vcoin/icon-question.png" />
+            <a href="help.html">查看帮助</a>
+        </p>
+    </div>
+    <ul>
+        <li>
+            <div>
+                <p class="operation">操作内容：购买操作内容：购买操作内容：购买操作内容：购买操作内容：购买</p>
+                <p class="time">2015-9-22</p>
+            </div>
+            <div>
+                <p class="balance">余额：300V币</p>
+                <p class="number reduce">-220V币</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p class="operation">操作内容：购买</p>
+                <p class="time">2015-9-22</p>
+            </div>
+            <div>
+                <p class="balance">余额：300V币</p>
+                <p class="number add">+220V币</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p class="operation">操作内容：购买</p>
+                <p class="time">2015-9-22</p>
+            </div>
+            <div>
+                <p class="balance">余额：300V币</p>
+                <p class="number reduce">-220V币</p>
+            </div>
+        </li>
+    </ul>
+    <div id="default" class="show">
+        <div></div>
+        <p>您暂无V币流水</p>
+    </div>
+</main>
+<footer id="footer">
+    <section class="footer-bar border">
+        <ul class="ft-links">
+            <li class="ft-link"><a href="#">用户名称</a></li>
+            <li class="ft-link"><a href="#">退出账户</a></li>
+            <li class="ft-link"><a href="#">电脑版</a></li>
+            <li class="ft-link"><a id="j_goTop" href="javascript:;">返回顶部</a></li>
+        </ul>
+    </section>
+    <section class="footer-bottom">
+        <div class="sns-box">关注我们:<a class="sns-item" href="http://weibo.com/vivomobile"><img src="../../../images/common/icon-bottom-weibo.png"></a>
+            <a class="sns-item" href="http://t.qq.com/vivomobile"><img src="../../../images/common/icon-bottom-qq.png"></a>
+            <a class="sns-item"  href="http://page.renren.com/vivo"><img src="../../../images/common/icon-bottom-renren.png"></a></div>
+        <div class="online-service">在线客服：<a href="tel:400-578-9688">400-578-9688</a></div>
+        <div class="copyright">&copy; 2015 shop.vivo.com.cn</div>
+    </section>
+</footer>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no,address=no,email=no" />
+    <meta name="mobileOptimized" content="width" />
+    <meta name="handheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="vivo,智能手机,官方商城" />
+    <meta name="description" content="vivo智能手机官方商城，会员中心。" />
+    <title>会员中心</title>
+
+    <script>
+        (function () {
+            var doc = document;
+            var docEl = doc.documentElement;
+            var metaEl = doc.createElement('meta');
+            var scale = 1 / devicePixelRatio;
+            metaEl.setAttribute('name', 'viewport');
+            metaEl.setAttribute('content', 'width=device-width,initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+            if (docEl.firstElementChild) {
+                document.documentElement.firstElementChild.appendChild(metaEl);
+            } else {
+                var wrap = doc.createElement('div');
+                wrap.appendChild(metaEl);
+                document.write(wrap.innerHTML);
+            }
+        }());
+
+
+        //根据设备宽度调整html元素的font-size属性（即1rem的值）
+        function initRem() {
+            var deviceWidth = document.documentElement.clientWidth;
+
+            if (deviceWidth > 540*devicePixelRatio) deviceWidth = 540*devicePixelRatio;
+            if (deviceWidth < 320*devicePixelRatio) deviceWidth = 320*devicePixelRatio;
+
+            document.documentElement.style.fontSize = deviceWidth / 7.2 + 'px';
+
+            //兼容UC浏览器
+            if (navigator.userAgent.indexOf("UCBrowser") >= 0) {
+                if (document.body) {
+                    location.reload();
+                }
+            }
+        }
+        initRem();
+    </script>
+
+    <link rel="stylesheet" href="../../css/base/normalize.css" />
+    <link rel="stylesheet" href="../../css/base/layout.css" />
+    <link rel="stylesheet" href="../../css/base/pages-membercenter.css" />
+</head>
+<body>
+<header id="head">
+    <a href="../home/index.html" class="top left"><img src="../../images/membercenter/icon-header-back-white.png"></a>
+    <ul class="top right">
+        <li class="shopcart">
+            <i class="num">99</i>
+            <a href="../shoppingcart/index.html"><img src="../../images/membercenter/icon-header-spcart-white.png"></a>
+        </li>
+        <li>
+            <a href="../home/index.html"><img src="../../images/membercenter/icon-header-home-white.png"></a>
+        </li>
+    </ul>
+    <div class="photo-wrapper"><div class="photo"><img src="../../images/membercenter/head-photo.jpg" /></div></div>
+    <p class="name">Florence</p>
+    <p class="vcoin"><span>我的V币：480V币</span><a href="vcoin/index.html"><img src="../../images/membercenter/icon-arrow-blue.png" /></a></p>
+    <nav>
+        <div class="left">
+            <a href="order/index.html"><img src="../../images/membercenter/icon-my-indent.png" /><span>我的订单</span></a>
+        </div>
+        <div class="right">
+            <a href="coupon/index.html"><img src="../../images/membercenter/icon-coupon.png" /><span>优惠券</span></a>
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="title">
+        <h1><img src="../../images/membercenter/icon-my-collection.png" /><span>我的收藏</span></h1>
+    </div>
+    <div class="content">
+        <ul>
+            <li>
+                <div class="left">
+                    <a href="#"><img src="../../images/temp/list-prod-1.jpg" /></a>
+                    <div>
+                        <p>X5ProD 移动4G</p>
+                        <span>¥2199.00</span>
+                    </div>
+                </div>
+                <div class="right">
+                    <button>加入购物车</button>
+                </div>
+            </li>
+            <li>
+                <p class="deleted">对不起，该商品无库存</p>
+                <div class="left">
+                    <a href="#"><img src="../../images/temp/list-prod-1.jpg" /></a>
+                    <div>
+                        <p>X5ProD 32G小黄人ssdf是滴是滴</p>
+                        <span>¥2799.00</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <p class="deleted">对不起，该商品已下架</p>
+                <div class="left">
+                    <a href="#"><img src="../../images/temp/list-prod-1.jpg" /></a>
+                    <div>
+                        <p>X5ProD 32G小黄人ssdf是滴是滴</p>
+                        <span>¥2799.00</span>
+                    </div>
+                </div>
+            </li>
+            <li class="last">
+                <p class="deleted">对不起，该商品已删除</p>
+                <div class="left">
+                    <a href="#"><img src="../../images/temp/list-prod-1.jpg" /></a>
+                    <div>
+                        <p>X5ProD 32G小黄人ssdf是滴是滴</p>
+                        <span>¥2799.00</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="default">
+        <div></div>
+        <p>您还未收藏任何商品</p>
+        <button>去首页</button>
+    </div>
+</main>
+<footer id="footer">
+    <section class="footer-bar border">
+        <ul class="ft-links">
+            <li class="ft-link"><a href="#">用户名称</a></li>
+            <li class="ft-link"><a href="#">退出账户</a></li>
+            <li class="ft-link"><a href="#">电脑版</a></li>
+            <li class="ft-link"><a id="j_goTop" href="javascript:;">返回顶部</a></li>
+        </ul>
+    </section>
+    <section class="footer-bottom">
+        <div class="sns-box">关注我们:<a class="sns-item" href="http://weibo.com/vivomobile"><img src="../../images/common/icon-bottom-weibo.png"></a>
+            <a class="sns-item" href="http://t.qq.com/vivomobile"><img src="../../images/common/icon-bottom-qq.png"></a>
+            <a class="sns-item"  href="http://page.renren.com/vivo"><img src="../../images/common/icon-bottom-renren.png"></a></div>
+        <div class="online-service">在线客服：<a href="tel:400-578-9688">400-578-9688</a></div>
+        <div class="copyright">&copy; 2015 shop.vivo.com.cn</div>
+    </section>
+</footer>
+</body>
+</html>

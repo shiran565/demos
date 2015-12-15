@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn">
+    <meta charset="UTF-8">
+    <title>导航</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no,address=no,email=no"/>
+    <meta name="mobileOptimized" content="width"/>
+    <meta name="handheldFriendly" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <script>
+        //根据设备宽度调整html元素的font-size属性（即1rem的值）
+        function initRem() {
+            var deviceWidth = document.documentElement.clientWidth;
+
+            if (deviceWidth > 540) deviceWidth = 540;
+            if (deviceWidth < 320) deviceWidth = 320;
+
+            document.documentElement.style.fontSize = deviceWidth / 7.2 + 'px';
+
+            //兼容UC浏览器
+            if (navigator.userAgent.indexOf("UCBrowser") >= 0) {
+                if (document.body) {
+                    location.reload();
+                }
+            }
+        }
+        initRem();
+
+    </script>
+    <link rel="stylesheet" href="css/base/normalize.css">
+    <link rel="stylesheet" href="css/base/layout.css">
+    <link rel="stylesheet" href="css/base/pages-normal.css">
+
+    <style>
+        #content{
+            font-size: .5rem;
+            background-color: #ffffff;
+            margin-top:.2rem;
+        }
+    </style>
+
+</head>
+<body>
+
+<header id="header">
+    <div class="wrapper">
+        <a href="javascript:;" class="hd-link-back"><img src="images/common/icon-header-back.png"></a>
+        <h1>链接地址</h1>
+        <ul class="hd-links-right">
+            <li class="hd-link home"><a href="home/index.html"><img src="images/common/icon-header-home.png"></a></li>
+        </ul>
+    </div>
+</header>
+
+<main id="content">
+    <div class="wrapper">
+        <dl>
+            <dt>首页</dt>
+            <dd><a href="demos/home/index.html">首页</a></dd>
+            <dd><a href="demos/search/no-search-results.html">搜索-无结果</a></dd>
+            <dt>购买流程</dt>
+            <dd><a href="demos/products/index.html">产品列表</a></dd>
+            <dd><a href="demos/products/detail.html">产品详情</a></dd>
+            <dd><a href="demos/shoppingcart/index.html">购物车</a></dd>
+            <dd><a href="demos/orders/index.html">结算</a></dd>
+            <dd><a href="demos/orders/success.html">提交成功</a></dd>
+            <dt>个人中心</dt>
+            <dd><a href="demos/membercenter/index.html">首页</a></dd>
+            <dd><a href="demos/membercenter/coupon/index.html">我的优惠券</a></dd>
+            <dd><a href="demos/membercenter/evaluation/index.html">发表评价</a></dd>
+            <dd><a href="demos/membercenter/express/index.html">物流信息</a></dd>
+            <dd><a href="demos/membercenter/order/index.html">我的订单</a></dd>
+            <dd><a href="demos/membercenter/vcoin/index.html">我的V币</a></dd>
+            <dt>收货地址</dt>
+            <dd><a href="demos/address/index.html">选择收货地址</a></dd>
+            <dd><a href="demos/address/manager.html">管理收货地址</a></dd>
+            <dd><a href="demos/address/new.html">新增收货地址</a></dd>
+            <dd><a href="demos/address/edit.html">编辑收货地址</a></dd>
+            <dt>异常页面</dt>
+            <dd><a href="demos/errors/404.html">404</a></dd>
+            <dd><a href="demos/errors/500.html">500</a></dd>
+            <dd><a href="demos/errors/forbidden.html">会员阻止</a></dd>
+
+    </dl>
+
+    </div>
+
+
+</main>
+</body>
+</html>

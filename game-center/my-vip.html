@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn">
+    <meta charset="UTF-8">
+    <title>VIP 特权</title>
+    <meta name="format-detection" content="telephone=no,address=no,email=no"/>
+    <meta name="mobileOptimized" content="width"/>
+    <meta name="handheldFriendly" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <script>
+        (function () {
+            var doc = document;
+            var docEl = doc.documentElement;
+            var metaEl = doc.createElement('meta');
+            var scale = 1 / devicePixelRatio;
+            var deviceWidth = document.documentElement.clientWidth;
+            metaEl.setAttribute('name', 'viewport');
+            metaEl.setAttribute('content', 'width='+deviceWidth*devicePixelRatio+',initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no');
+            if (docEl.firstElementChild) {
+                document.documentElement.firstElementChild.appendChild(metaEl);
+            } else {
+                var wrap = doc.createElement('div');
+                wrap.appendChild(metaEl);
+                document.write(wrap.innerHTML);
+            }
+
+            window.addEventListener("load",function(){
+                document.documentElement.style.fontSize = document.documentElement.clientWidth / 14.4 + 'px';
+                //document.documentElement.style.transform = "scale(0.3333,0.3333)";
+            })
+        }());
+
+    </script>
+
+    <link rel="stylesheet" href="./assets/css/normalize.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css"/>
+</head>
+<body>
+
+
+<script type="text/html" id="j_template">
+    <section class="mem-info block">
+        <div class="wrapper">
+            <div class="table">
+                <div class="table-cell portrait">
+                    <div class="portrait-box">
+                        <div class="portrait-mask"></div>
+                        <img class="portrait-img" src="{{vipInfo.avatar}}">
+                        <span class="vip-level">{{vipInfo.level}}</span>
+                    </div>
+                </div>
+                <div class="table-cell  level">
+                    <h1>{{vipInfo.nickName}}</h1>
+
+                    <p class="comment">距离VIP{{vipInfo.level+1}}:还需要消耗<span class="orange">20000</span>V钻</p>
+
+                    <div class="process-box">
+                        <div class="process-bar">
+                            <div class="process-inner" style="width: 85%"></div>
+                        </div>
+                        <p class="comment">8000／10000V钻</p>
+                        <i class="icon-diamond"></i>
+                    </div>
+                    <i class="icon-service"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vip-privileges block">
+        <div class="title-box">
+            <h2 class="bg-box">VIP特权</h2>
+        </div>
+        <div id="j_listBox" class="list-box extended">
+            <ul class="privilig-list">
+                {{each privilege as prv i}}
+                <li>
+                    <div class="img-box">
+                        <img src="{{prv.icon}}">
+                    </div>
+                    <h3>{{prv.title}}</h3>
+
+                    <p>{{prv.remark}}</p>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+
+        {{if (privilege.length>6) }}
+            <div id="j_FoldBar" class="tool-bar"><span class="text-fold">收起</span><span class="text-extend">更多</span><i></i></div>
+        {{/if}}
+    </section>
+
+    <section class="vip-level block">
+        <div class="title-box">
+            <h2 class="bg-box">VIP等级说明</h2>
+        </div>
+        <div class="wrapper">
+            <p class="comment">根据累计消费V钻总额，确定您的VIP等级
+                <small>(注：单机、棋牌游戏消费金额不计入VIP的成长统计。)</small>
+            </p>
+            <table id="j_dataTable">
+                <thead>
+                <tr>
+                    <td style="width:2.9rem;">VIP等级</td>
+                    <td style="width: 4.4rem">累计消费(V钻)</td>
+                    <td style="width:3.3rem;">获赠礼券</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+
+                {{each vipLevelBenefit as vlb i}}
+
+                <tr>
+                    <th>VIP{{vlb.level}}</th>
+                    <td>≥{{vlb.reqVzAmt}}</td>
+                    <td>{{(vlb.ticketValue==0)?'无':vlb.ticketValue}}</td>
+                    <td>
+                        {{if vlb.hasTaken}}
+                            已领取
+                        {{/if}}
+
+
+                        {{if (!vlb.hasTaken)}}
+                            {{if vlb.ticketValue==0}} - {{/if}}
+                            {{if (vlb.ticketValue>0)&&(vlb.level>vipInfo.level)}}未达成{{/if}}
+                            {{if (vlb.ticketValue>0)&&(vlb.level<=vipInfo.level)}}
+                                <button class="btn-red" type="button">领取</button>
+                            {{/if}}
+                        {{/if}}
+                    </td>
+                </tr>
+                {{/each }}
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </section>
+
+</script>
+
+<script src="./assets/js/zepto/zepto.min.js"></script>
+<script src="./assets/js/template/template.js"></script>
+<script>
+    $("#j_FoldBar").live("tap", function () {
+        $("#j_listBox").toggleClass("extended");
+        $(this).toggleClass("extended")
+    });
+
+    $(function(){
+        var data = {"result":true,"vipInfo":{"avatar":"http://192.168.2.222/shequ/20151124/64db7c4cc80f41998cb9b6374e2ebe43.jpg","nickName":"哈喽","level":12,"total":267677,"nextLevelTotal":232323},"privilege":[{"icon":"http://113.98.231.125:8088/appstore/upload/vip/201511/201511262019443760.png","title":"特权1","remark":"特权1"},{"icon":"http://113.98.231.125:8088/appstore/upload/vip/201511/201511262019536924.png","title":"特权2","remark":"特权2"},{"icon":"http://113.98.231.125:8088/appstore/upload/vip/201511/201511262020025776.png","title":"特权3","remark":"特权3"},{"icon":"http://113.98.231.125:8088/appstore/upload/vip/201511/201511262020115940.png","title":"特权4","remark":"特权4"},{"icon":"http://113.98.231.125:8088/appstore/upload/vip/201511/201511262020204405.png","title":"特权5","remark":"特权5"},{"icon":"http://113.98.231.125:8088/appstore/upload/vip/201511/201511262020296358.png","title":"特权6","remark":"特权6"}],"vipLevelBenefit":[{"level":1,"reqVzAmt":1,"ticketValue":0,"hasTaken":false},{"level":2,"reqVzAmt":100,"ticketValue":0,"hasTaken":false},{"level":3,"reqVzAmt":200,"ticketValue":0,"hasTaken":false},{"level":4,"reqVzAmt":500,"ticketValue":10,"hasTaken":false},{"level":5,"reqVzAmt":1000,"ticketValue":30,"hasTaken":false},{"level":6,"reqVzAmt":2000,"ticketValue":50,"hasTaken":false},{"level":7,"reqVzAmt":5000,"ticketValue":100,"hasTaken":false},{"level":8,"reqVzAmt":10000,"ticketValue":150,"hasTaken":false},{"level":9,"reqVzAmt":20000,"ticketValue":150,"hasTaken":false},{"level":10,"reqVzAmt":50000,"ticketValue":200,"hasTaken":false},{"level":11,"reqVzAmt":100000,"ticketValue":300,"hasTaken":false},{"level":12,"reqVzAmt":200000,"ticketValue":500,"hasTaken":false},{"level":13,"reqVzAmt":500000,"ticketValue":1000,"hasTaken":false}]}
+
+
+        $(document.body).prepend(template("j_template", data));
+        return;
+
+        $.getJSON("http://172.20.199.13:8090/vip/myVip?openid=9b5b106236f4bfcb&token=OTRmZWI3ODVhNDU1ZDk0OGExNDAuMTAwMDA1MzkuMTQ0Nzc2NTgyNTc5NQ==",{},function(data){
+            if(data.result){
+                $(document.body).prepend(template("j_template", data));
+            }
+        })
+    });
+
+    $("#j_dataTable .btn-red").live("tap", function () {
+        alert("领取成功");
+
+        //ajax 请求领取
+
+
+        $(this).parent().html("已领取");
+    });
+
+</script>
+
+</body>
+</html>

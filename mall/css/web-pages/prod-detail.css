@@ -1,0 +1,646 @@
+/*
+    产品详情
+*/
+body{
+    padding-bottom:1.1rem;
+}
+
+.pd-summary{
+    background-color: #ffffff;
+    padding-bottom: .3rem;
+}
+
+.pd-summary .swipe-wrapper{
+    width: 5.4667rem;
+    height: 5.4667rem;
+    margin: 0 auto;
+}
+
+.pd-summary-top{
+    position: relative;
+}
+
+.pd-summary-top img{
+    width: 100%;
+}
+
+.pd-summary-top .indicator{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding:.05rem .15rem;
+    font-size: .3rem;
+    color:#ffffff;
+    background-color: #dbdbdb;
+    border-radius: .25rem;
+}
+
+.pd-summary-bottom h2{
+    padding-bottom:.1rem;
+    font-size: .3333rem;
+    font-weight: normal;
+    line-height: 1;
+    margin-bottom: 0;
+}
+
+.pd-summary-bottom .comment{
+    margin:.1rem 0;
+    font-size: .29rem;
+    color:#666666;
+    float: left;
+}
+
+.pd-summary-bottom .collection{
+    float: right;
+    clear: left;
+    font-size: .266rem;
+    color:#666666;
+}
+
+.pd-summary-bottom .collection .icon-collection{
+    display: inline-block;
+    width: .54rem;
+    height: .51rem;
+    background: url("../../images/prod/icon-collection.png") no-repeat;
+    background-size: .54rem;
+    margin-right: .1rem;
+    vertical-align: middle;
+}
+
+.pd-summary-bottom .collection .collected{
+    background-position-y:-0.65rem ;
+}
+.pd-summary-bottom .collection span{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.pd-summary-bottom .price{
+    color:#008cd6;
+    font-size: .42rem;
+    clear: left;
+}
+
+.pd-summary-bottom .origin-price{
+    color:#999999;
+    font-size: .28rem;
+    text-decoration:line-through;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: .1rem;
+}
+
+.pd-options{
+    background-color: #ffffff;
+    padding: .3rem 0 0;
+    border-top: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.pd-options table{
+    width: 100%;
+    margin-bottom: .2rem;
+    table-layout: fixed;
+    word-break: break-all;
+    font-size: .29rem;
+    color:#333333;
+}
+
+.pd-options table th{
+    width: 1rem;
+    padding-top:.2rem;
+    text-align: left;
+    font-weight: normal;
+    vertical-align: top;
+}
+
+
+.pd-options table td{
+    text-align: left;
+    vertical-align: top;
+}
+
+.pd-options table label{
+    display: inline-block;
+    box-sizing: border-box;
+    padding:.116rem;
+    min-width: 30%;
+    margin-right:3%;
+    margin-top: .1rem;
+    margin-bottom: 0.0867rem;
+    text-align: center;
+    border-radius: .05rem;
+    background-color:#f4f4f4 ;
+}
+
+.pd-options table label.on,.pd-options table ul li.on{
+    border: 2px solid #008cd2;
+    color:#008cd2;
+    background-color: #f8fdff;
+}
+
+
+.pd-options table label:last-child{
+    margin-right: 0;
+}
+
+.pd-options .num-box{
+    margin-top: .1rem;
+    margin-bottom: .2rem;
+    display: inline-block;
+}
+
+.pd-options .num-box label,.pd-options .num-box input{
+    display: inline-block;
+    width: .9rem;
+    min-width: .9rem;
+    height:.63rem;
+    line-height: .63rem;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+.pd-options .num-box label{
+    border: 1px solid #dcdcdc;
+    background-color: #f4f4f4;
+    padding: 0;
+    margin: 0;
+}
+
+.broken .num-box label{
+    color: #dcdcdc;
+    background-color: #ffffff;
+}
+
+.pd-options .num-box label:first-child{
+    border-radius: 3px 0 0 3px;
+}
+
+.pd-options .num-box label:last-child{
+    border-radius:  0 3px 3px 0;
+}
+
+
+
+.pd-options .num-box input{
+    border: none;
+    box-sizing: border-box;
+    padding: 0;
+    border-bottom:  1px solid #dcdcdc;
+    border-top:  1px solid #dcdcdc;
+    border-radius: 0;
+    background-color: #FFFFFF;
+}
+
+.pd-options .option-gift ul{
+    margin-bottom: .13rem;
+    overflow: hidden;
+}
+
+.pd-options .option-gift li{
+    margin-bottom: .07rem;
+}
+
+.pd-options .option-gift img{
+    width: .93rem;
+    height: .93rem;
+    margin-right: .21rem;
+    border: 1px solid #dcdcdc;
+    vertical-align: middle;
+}
+
+.pd-options .option-gift a,.pd-options .option-gift a:active{
+    color:#333333;
+    text-decoration: none;
+}
+
+.pd-options .option-service li{
+    width: 60%;
+    display: inline-block;
+    padding:.077rem .2rem;
+    border-radius: .05rem;
+    background-color:#f4f4f4;
+    border:1px solid #f4f4f4;
+    margin-right: .2rem;
+    margin-bottom: .2rem;
+}
+
+.pd-options .option-service li.link-detail{
+    background-color: #ffffff;
+    border: none;
+    padding: 0;
+    display: block;
+}
+
+.pd-options .option-service li.link-detail a{
+    color:#008cd6;
+    text-decoration: none;
+}
+
+.pd-options .option-service .icon{
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: .4rem;
+    height: .485rem;
+    background: url("../../images/prod/icon-prod-service.png") left top no-repeat;
+    background-size: .4rem .97rem;
+}
+
+.pd-options .option-service .icon-broken{
+    background-position:  left top;
+}
+
+.pd-options .option-service .icon-delay{
+    background-position:  left bottom;
+}
+
+.pd-activity{
+    position: relative;
+    padding:.2rem 0;
+    border-top: 1px solid #dcdcdc;
+}
+
+.pd-activity .activity-box{
+    font-size: 0;
+    color:#666666;
+}
+
+
+.pd-activity .activity-box li{
+    display: inline-block;
+    font-size: .2667rem;
+    margin-right: .347rem;
+}
+
+.pd-activity .activity-box li:last-child{
+    margin:0;
+}
+
+
+.pd-options .activity-box img{
+    width: .4rem;
+    position: relative;
+    top:-2px;
+    margin-right: .0667rem;
+    vertical-align: middle;
+}
+
+
+.pd-intrd{
+    margin-top: .1867rem;
+    font-size: .2667rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.pd-tabs{
+    position: relative;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.pd-tabs .tab-box{
+    height: .8rem;
+    line-height: .8rem;
+    position: relative;
+    text-align: center;
+    font-size: 0;
+}
+
+.pd-tabs .tab-box li{
+    display: inline-block;
+    width: 33.3%;
+    text-align: center;
+    font-size: .32rem;
+}
+
+
+.pd-tabs .accessory li{
+    width: 50%;
+}
+
+.pd-tabs .tab-box .on{
+    color:#008cd6;
+}
+
+.pd-tab-pages .tab-page{
+    width: 100%;
+    display: none;
+    padding:0  0 .3667rem;
+
+}
+
+.pd-tab-detail{
+    overflow-x: hidden;
+}
+
+.pd-tab-pages .pd-tab-standard,.pd-tab-pages .pd-tab-evaluations{
+    margin-top: .3667rem;
+}
+
+.pd-tab-detail .pre-box > p{
+    margin: 0;
+    overflow: hidden;
+}
+
+.pd-tab-detail .pre-box > p > img{
+    width: 100%;
+    float: left;
+}
+
+.pd-tab-standard h3{
+    margin: 0 0 .28rem;
+    font-size: .2534rem;
+    font-weight: normal;
+    height: .7rem;
+    line-height: .7rem;
+    background-color: #f4f4f4;
+    border-radius:.07rem ;
+    text-align: center;
+    color:#000;
+}
+
+.pd-tab-standard table{
+    width: 100%;
+    table-layout: fixed;
+    word-break: break-all;
+    border-collapse:collapse
+}
+
+.pd-tab-standard table td,.pd-tab-standard table th{
+    border: 1px solid #dedede;
+    text-align: left;
+    font-size: .28rem;
+    color:#333333;
+    padding: .25rem .08rem;
+    vertical-align: top;
+}
+
+.pd-tab-standard table th{
+    width: 2.347rem;
+    font-weight: normal;
+    border-left: none;
+}
+
+.pd-tab-standard table td{
+    border-right: none;
+}
+
+.pd-tab-evaluations .comprehensive{
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.pd-tab-evaluations .total-points{
+    width: 2.26rem;
+    text-align: center;
+}
+
+.pd-tab-evaluations .points-box{
+    display: inline-block;
+    position: relative;
+    width: 1.34rem;
+    height: 1.34rem;
+    color:#008cd6;
+    font-size: .525rem;
+    line-height: 1.34rem;
+}
+.pd-tab-evaluations .points-box p{
+    margin-top: .2rem;
+}
+
+.pd-tab-evaluations .point-0{
+    background:url("../../images/prod/points-0.png");
+}
+.pd-tab-evaluations .point-1{
+    background:url("../../images/prod/points-1.png");
+}
+.pd-tab-evaluations .point-2{
+    background:url("../../images/prod/points-2.png");
+}
+.pd-tab-evaluations .point-3{
+    background:url("../../images/prod/points-3.png");
+}
+.pd-tab-evaluations .point-4{
+    background:url("../../images/prod/points-4.png");
+}
+.pd-tab-evaluations .point-5{
+    background:url("../../images/prod/points-5.png");
+}
+
+.pd-tab-evaluations .points-box{
+    background-size: 100% 100%;
+}
+
+
+.pd-tab-evaluations .total-points,.pd-tab-evaluations .each-points{
+    float: left;
+}
+
+.pd-tab-evaluations .each-points{
+    font-size: .2667rem;
+}
+
+
+.pd-tab-evaluations .each-points li{
+    height: .6rem;
+    line-height: .6rem;
+}
+
+.pd-tab-evaluations .star-box{
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-left: .1rem;
+    font-size: 0;
+    line-height: 0;
+}
+
+.pd-tab-evaluations .star-box i{
+    display: inline-block;
+    width: .33rem;
+    height: .33rem;
+    margin-right: .05rem;
+    background: url("../../images/prod/icon-star.png") right 0 no-repeat;
+    background-size: .76rem .33rem;
+}
+
+.pd-tab-evaluations .star-box i.on{
+    background-position-x:0 ;
+}
+
+.pd-tab-evaluations .evaluate-list .item{
+    border-bottom: 1px solid #dcdcdc;
+    padding: .2667rem 0 .2rem;
+    overflow: hidden;
+}
+
+.pd-tab-evaluations .item > .wrapper{
+    position: relative;
+}
+
+.pd-tab-evaluations .portrait img{
+    width: .78rem;
+    height: .78rem;
+    float: left;
+    border-radius: .05rem;
+}
+
+.pd-tab-evaluations .portrait .title{
+    float: left;
+    width: 5.5rem;
+    margin-left: .28rem;
+}
+
+.pd-tab-evaluations .title .star-box{
+    float: left;
+    clear: both;
+    margin-left: 0;
+    width: 1.5rem;
+    margin-top: .0633rem;
+}
+
+.pd-tab-evaluations .title .star-box i{
+    width: .25rem;
+    height: .25rem;
+    background: url("../../images/prod/icon-star.png") 102% 0 no-repeat;
+    background-size: 230.3% 100%;
+}
+
+
+.pd-tab-evaluations .title .star-box i.on{
+    background-position-x:0;
+}
+
+
+.pd-tab-evaluations .date-time{
+    position: absolute;
+    right: 0;
+    top: 0;
+    color:#bbbbbb;
+    font-size: .2533rem;
+}
+
+.pd-tab-evaluations .user-name{
+    color:#008cd6;
+    font-size: .2667rem;
+    display: block;
+}
+
+
+.pd-tab-evaluations .content-box{
+    float: left;
+    clear: left;
+    overflow: hidden;  /* 解决chrome下字体大小异常问题 */
+    margin-top: .1333rem;
+}
+
+.pd-tab-evaluations .content-box > div {
+    float: left;
+    clear: left;
+    color:#666666;
+    word-break: break-all;
+    font-size: .28rem;
+    line-height: .412rem;
+}
+
+.pd-tab-evaluations .content-box .append,.pd-tab-evaluations .content-box .reply{
+    margin-top: .2rem;
+}
+
+.pd-tab-evaluations .content-box .reply{
+    padding: .32rem .18rem;
+    background-color: #f0f9ff;
+    position: relative;
+}
+
+
+.pd-tab-evaluations .content-box .reply i{
+    position: absolute;
+    left: .28rem;
+    top: -.07rem;
+    width: .21rem;
+    height: .07rem;
+    background: url("../../images/prod/icon-reply-angular.png") no-repeat;
+    background-size: contain;
+
+}
+
+.pd-tab-evaluations .content-box em{
+    font-style: normal;
+    color:#008cd6;
+}
+
+
+
+.pd-bottom-bar{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    background-color: #f4f4f4;
+    z-index: 11;
+    border-top:1px solid #dedede;
+}
+
+.pd-bottom-bar .fixed-wrapper{
+    width: 7.2rem;
+    margin: 0 auto;
+}
+
+.pd-bottom-bar .wrapper{
+    position: relative;
+    height: 1.09rem;
+    font-size: 0;
+}
+
+.pd-bottom-bar button{
+    width: 3.8rem;
+    height: .7067rem;
+    font-size: .3467rem;
+    color:white;
+    background-color: #fe5152;
+    border-radius: .07rem;
+    border: none;
+    margin-top: .192rem;
+}
+
+.pd-bottom-bar button.disabled{
+    background-color:#dadada;
+}
+
+.pd-bottom-bar .shopcart-box{
+    width: .76rem;
+    position: absolute;
+    bottom: .15rem;
+    right: .3rem;
+    text-align: center;
+    font-size: 0;
+    color:#333;
+}
+
+.pd-bottom-bar .shopcart-box p{
+    margin: 0;
+    font-size: .219rem;
+    line-height: 1;
+}
+
+.pd-bottom-bar .shopcart-box i{
+    position: absolute;
+    top:-.12rem;
+    right:-.1rem;
+    width: .37rem;
+    height: .37rem;
+    line-height: .37rem;
+    color:#fff;
+    background-color: #fe5152;
+    border-radius: 50%;
+    font-size: .2rem;
+    font-style: normal;
+}
+
+.pd-bottom-bar .shopcart-box img{
+    margin-bottom: .05rem;
+    width: .5rem;
+}

@@ -1,0 +1,172 @@
+#nav {
+  position: relative;
+  background-color: white;
+  border-bottom: 1px solid #dcdcdc;
+}
+#nav ul {
+  overflow: hidden;
+}
+#nav li {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+#nav li.active a {
+  color: #008bd2;
+}
+#nav li.active div {
+  display: block;
+}
+#nav li.extension div {
+  left: 0;
+}
+#nav li.broken-screen div {
+  left: 50%;
+}
+#nav a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #666;
+  font-size: .32rem;
+  line-height: .85rem;
+}
+#nav div {
+  display: none;
+  position: absolute;
+  bottom: -1px;
+  width: 50%;
+  height: .05rem;
+  background-color: #008bd2;
+}
+#content .extension h1,
+#content .extension p {
+  margin: 0;
+  font-weight: normal;
+}
+#content .extension .introduction {
+  padding: .95rem .52rem .85rem .52rem;
+  text-align: center;
+  color: white;
+  background-color: #69c1ff;
+}
+#content .extension .introduction img {
+  width: 4.9rem;
+  height: 3.85rem;
+  margin-bottom: .6rem;
+  vertical-align: bottom;
+}
+#content .extension .introduction h1 {
+  font-size: .5rem;
+  margin-bottom: .23rem;
+}
+#content .extension .introduction p {
+  font-size: .31rem;
+  line-height: 170%;
+  text-align: left;
+}
+#content .extension .buy-process {
+  padding: .9rem 0 .8rem 0;
+  text-align: center;
+  background-color: white;
+}
+#content .extension .buy-process h1 {
+  margin-bottom: .32rem;
+  color: #353535;
+  font-size: .5rem;
+}
+#content .extension .buy-process img {
+  width: 6.12rem;
+  height: 3.82rem;
+}
+#content .extension .buy-note {
+  padding: .8rem 0 .9rem 0;
+  color: white;
+  background-color: #69c1ff;
+}
+#content .extension .buy-note h1 {
+  text-align: center;
+  font-size: .47rem;
+}
+#content .extension .buy-note ul {
+  padding: 0 .6rem 0 .8rem;
+  list-style-type: disc;
+}
+#content .extension .buy-note li {
+  margin-top: .23rem;
+  font-size: .31rem;
+  line-height: 160%;
+  text-align: justify;
+}
+#content .broken-screen h1,
+#content .broken-screen p {
+  margin: 0;
+  font-weight: normal;
+}
+#content .broken-screen .introduction {
+  padding: .95rem 0 .99rem 0;
+  text-align: center;
+  background-color: white;
+}
+#content .broken-screen .introduction h1 {
+  margin-bottom: .28rem;
+  color: #353535;
+  font-size: .5rem;
+  line-height: 1;
+}
+#content .broken-screen .introduction img {
+  width: 2.44rem;
+  height: 9.33rem;
+  vertical-align: bottom;
+}
+#content .broken-screen .buy-process {
+  padding: .99rem 0 .85rem 0;
+  text-align: center;
+  background-color: #69c1ff;
+}
+#content .broken-screen .buy-process h1 {
+  color: white;
+  font-size: .5rem;
+  line-height: 1;
+  margin-bottom: .37rem;
+}
+#content .broken-screen .buy-process img {
+  width: 6.12rem;
+  height: 3.82rem;
+  vertical-align: bottom;
+}
+#content .broken-screen .service-process {
+  padding: .99rem 0 .85rem 0;
+  text-align: center;
+  background-color: white;
+}
+#content .broken-screen .service-process h1 {
+  color: #333;
+  font-size: .5rem;
+  line-height: 1;
+  margin-bottom: .55rem;
+}
+#content .broken-screen .service-process img {
+  width: 5.55rem;
+  height: 8.47rem;
+}
+#content .broken-screen .buy-note {
+  padding: .79rem 0 1rem 0;
+  text-align: center;
+  color: white;
+  background-color: #69c1ff;
+}
+#content .broken-screen .buy-note h1 {
+  font-size: .5rem;
+  line-height: 1;
+  padding-bottom: .11rem;
+}
+#content .broken-screen .buy-note ul {
+  padding: 0 .55rem 0 .83rem;
+  list-style-type: disc;
+}
+#content .broken-screen .buy-note li {
+  margin-top: .2rem;
+  font-size: .31rem;
+  line-height: 160%;
+  text-align: justify;
+}

@@ -1,0 +1,48 @@
+#content {
+  margin-top: .18rem;
+  padding: .1rem .3rem .6rem .3rem;
+  overflow: hidden;
+  background-color: white;
+}
+#content h1,
+#content p {
+  margin: 0;
+}
+#content h1 {
+  float: left;
+  width: 100%;
+  padding-top: .15rem;
+  color: #333;
+  font-size: .32rem;
+  font-weight: normal;
+  line-height: 250%;
+}
+#content p,
+#content strong {
+  float: left;
+  width: 100%;
+  font-size: .28rem;
+  line-height: 200%;
+  text-align: justify;
+}
+#content p {
+  color: #666;
+}
+#content strong {
+  position: relative;
+  display: block;
+  margin-top: .3rem;
+  color: #fe5e5e;
+  font-weight: normal;
+  text-indent: .45rem;
+}
+#content strong:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .105rem;
+  width: .31rem;
+  height: .32rem;
+  background: left top no-repeat url("../../images/membercenter/vcoin/icon-warning.png");
+  background-size: 100% 100%;
+}

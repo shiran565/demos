@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no,address=no,email=no" />
+    <meta name="mobileOptimized" content="width" />
+    <meta name="handheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="vivo,智能手机,官方商城" />
+    <meta name="description" content="vivo智能手机官方商城，快递信息页。" />
+    <title>物流信息</title>
+
+    <script>
+        (function () {
+            var doc = document;
+            var docEl = doc.documentElement;
+            var metaEl = doc.createElement('meta');
+            var scale = 1 / devicePixelRatio;
+            metaEl.setAttribute('name', 'viewport');
+            metaEl.setAttribute('content', 'width=device-width,initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+            if (docEl.firstElementChild) {
+                document.documentElement.firstElementChild.appendChild(metaEl);
+            } else {
+                var wrap = doc.createElement('div');
+                wrap.appendChild(metaEl);
+                document.write(wrap.innerHTML);
+            }
+        }());
+
+
+        //根据设备宽度调整html元素的font-size属性（即1rem的值）
+        function initRem() {
+            var deviceWidth = document.documentElement.clientWidth;
+
+            if (deviceWidth > 540*devicePixelRatio) deviceWidth = 540*devicePixelRatio;
+            if (deviceWidth < 320*devicePixelRatio) deviceWidth = 320*devicePixelRatio;
+
+            document.documentElement.style.fontSize = deviceWidth / 7.2 + 'px';
+
+            //兼容UC浏览器
+            if (navigator.userAgent.indexOf("UCBrowser") >= 0) {
+                if (document.body) {
+                    location.reload();
+                }
+            }
+        }
+        initRem();
+    </script>
+
+    <link rel="stylesheet" href="../../../css/base/normalize.css" />
+    <link rel="stylesheet" href="../../../css/base/layout.css" />
+    <link rel="stylesheet" href="../../../css/base/pages-membercenter-vcoin-help.css" />
+</head>
+<body>
+<header id="header">
+    <div class="wrapper">
+        <a href="javascript:;" class="hd-link-back"><img src="../../../images/common/icon-header-back.png"></a>
+        <h1>V币兑换原则</h1>
+        <ul class="hd-links-right">
+            <li class="hd-link spcart"><i class="num">99</i><a href="../../shoppingcart/index.html"><img src="../../../images/common/icon-header-spcart.png"></a></li>
+            <li class="hd-link home"><a href="../../home/index.html"><img src="../../../images/common/icon-header-home.png"></a></li>
+        </ul>
+    </div>
+</header>
+<main id="content">
+    <h1>积分获得</h1>
+    <p>1：在官方商城购买产品即可获得数量与商品原价相对应的V币，列如：您的订单商品原价总额为3498元，无论是否享受优惠，在订单完成后都可获得3498 V币</p>
+    <p>2：参加官方商城的相关活动获得V币在订单完成后都可获得3498 V币</p>
+    <h1>积分兑换</h1>
+    <p>1：在官方商城购买产品即可获得数量与商品原价相对应的V币，列如：您的订单商品原价总额为3498元</p>
+    <p>2：参加官方商城的相关活动获得V币在订单完成后都可获得3498 V币</p>
+    <p>3：在官方商城购买产品即可获得数量与商品原价相对应的V币，列如：您的订单商品原价总额为3498元</p>
+    <strong>注意：目前移动端暂时不支持v币兑换，请切换到电脑版进行兑换</strong>
+</main>
+<footer id="footer">
+    <section class="footer-bar border">
+        <ul class="ft-links">
+            <li class="ft-link"><a href="#">用户名称</a></li>
+            <li class="ft-link"><a href="#">退出账户</a></li>
+            <li class="ft-link"><a href="#">电脑版</a></li>
+            <li class="ft-link"><a id="j_goTop" href="javascript:;">返回顶部</a></li>
+        </ul>
+    </section>
+    <section class="footer-bottom">
+        <div class="sns-box">关注我们:<a class="sns-item" href="http://weibo.com/vivomobile"><img src="../../../images/common/icon-bottom-weibo.png"></a>
+            <a class="sns-item" href="http://t.qq.com/vivomobile"><img src="../../../images/common/icon-bottom-qq.png"></a>
+            <a class="sns-item"  href="http://page.renren.com/vivo"><img src="../../../images/common/icon-bottom-renren.png"></a></div>
+        <div class="online-service">在线客服：<a href="tel:400-578-9688">400-578-9688</a></div>
+        <div class="copyright">&copy; 2015 shop.vivo.com.cn</div>
+    </section>
+</footer>
+</body>
+</html>

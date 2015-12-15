@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn">
+    <meta charset="UTF-8">
+    <title>选择收货地址</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no,address=no,email=no"/>
+    <meta name="mobileOptimized" content="width"/>
+    <meta name="handheldFriendly" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <script>
+        //根据设备宽度调整html元素的font-size属性（即1rem的值）
+        function initRem() {
+            var deviceWidth = document.documentElement.clientWidth;
+
+            if (deviceWidth > 540) deviceWidth = 540;
+            if (deviceWidth < 320) deviceWidth = 320;
+
+            document.documentElement.style.fontSize = deviceWidth / 7.2 + 'px';
+
+            //兼容UC浏览器
+            if (navigator.userAgent.indexOf("UCBrowser") >= 0) {
+                if (document.body) {
+                    location.reload();
+                }
+            }
+        }
+        initRem();
+
+        //alert(navigator.userAgent)
+
+        //alert("您的分辨率是:"+(document.documentElement.clientHeight*window.devicePixelRatio)+"*"+(document.documentElement.clientWidth*window.devicePixelRatio));
+
+    </script>
+    <link rel="stylesheet" href="../../css/base/normalize.css">
+    <link rel="stylesheet" href="../../css/base/layout.css">
+    <link rel="stylesheet" href="../../css/base/pages-normal.css">
+</head>
+<body>
+<header id="header">
+    <div class="wrapper">
+        <a href="javascript:;" class="hd-link-back"><img src="../../images/common/icon-header-back.png"></a>
+
+        <h1>选择收货地址</h1>
+        <ul class="hd-links-right">
+            <li class="hd-link home"><a href="${webCtx}/"><img src="../../images/common/icon-header-home.png"></a></li>
+        </ul>
+    </div>
+</header>
+
+<main id="content">
+
+    <section class="addr-select">
+        <div class="addr-container">
+            <div class="wrapper">
+                <table class="table">
+                    <tr>
+                        <td class="select-box">
+                            <i class="icon-checkbox checked"></i>
+                        </td>
+                        <td class="address-box">
+                            <p>收货人：李晶 <span class="phone-number">18973028724</span></p>
+
+                            <p class="detail"><span class="blue">【默认】</span> 广东省深圳市福田区梅林街道安得街道安得街89号步步高大楼</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="select-box">
+                            <i class="icon-checkbox"></i>
+                        </td>
+                        <td class="address-box">
+                            <p>收货人：李晶 <span class="phone-number">18973028724</span></p>
+
+                            <p class="detail">广东省深圳市福田区梅林街道安得街道安得街89号步步高大楼</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="link-box">
+            <div class="wrapper">
+                <a class="link-direct" href="../manager.html">
+                    管理收货地址<img src="../../images/common/icon-next.png"></a>
+            </div>
+        </div>
+
+    </section>
+
+
+</main>
+<section id="default" class="select-address">
+    <div></div>
+    <p>您还没有收货地址</p>
+    <button>新建地址</button>
+</section>
+<footer id="footer">
+    <section class="footer-bar border">
+        <ul class="ft-links">
+            <li class="ft-link"><a href="#">登录</a></li>
+            <li class="ft-link"><a href="#">注册</a></li>
+            <li class="ft-link"><a href="#">电脑版</a></li>
+            <li class="ft-link"><a id="j_goTop" href="javascript:;">返回顶部</a></li>
+        </ul>
+    </section>
+    <section class="footer-bottom">
+        <p class="sns-box">关注我们:<a class="sns-item" href="http://weibo.com/vivomobile"><img
+                src="../../images/common/icon-bottom-weibo.png"></a>
+            <a class="sns-item" href="http://t.qq.com/vivomobile"><img src="../../images/common/icon-bottom-qq.png"></a>
+            <a class="sns-item" href="http://page.renren.com/vivo"><img
+                    src="../../images/common/icon-bottom-renren.png"></a></p>
+
+        <p class="online-service">在线客服：<a href="tel:400-578-9688">400-578-9688</a></p>
+
+        <p class="copyright">&copy; 2015 shop.vivo.com.cn</p>
+    </section>
+</footer>
+
+<script src="../../js/plugins/zepto/zepto.js"></script>
+<script src="../../js/project/common/common.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,338 @@
+html{
+    font-family: Arial,"Microsoft YaHei";
+    background-color: #f4f4f4;
+}
+
+body{
+    width: 14.4rem;
+}
+
+
+/* 去掉点击区域效果 */
+a, button, input {
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+}
+
+.wrapper{
+    width: 13.12rem;
+    margin: 0 auto;
+}
+
+.orange{
+    color:#ff9c00!important;
+}
+
+
+.table{
+    display: table;
+    table-layout: fixed;
+    word-break: break-all;
+}
+
+.table-cell{
+    display: table-cell;
+}
+
+
+
+.block{
+    border-top:1px solid #e4e4e4;
+    border-bottom:1px solid #e4e4e4;
+    background-color: #ffffff;
+    margin-top:.26rem;
+}
+
+.mem-info{
+    padding: .75rem;
+}
+
+.mem-info .table{
+    width: 100%;
+}
+
+.mem-info .portrait{
+    width: 3.27rem;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.mem-info .portrait-box{
+    width: 3.48rem;
+    text-align: left;
+    position: relative;
+    height:3.83rem;
+}
+
+.portrait-mask{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 3.27rem;
+    height: 3.83rem;
+    background: url("../img/vip/crown.png") no-repeat;
+    background-size:100%  100%;
+    z-index: 2;
+}
+
+.portrait-img{
+    position: absolute;
+    width: 2.76rem;
+    height: 2.76rem;
+    left: 0.33rem;
+    bottom: .45rem;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.mem-info .vip-level{
+    position: absolute;
+    left: 2.14rem;
+    bottom: 0;
+    line-height: .6rem;
+    color:#ffffff;
+    font-size: .5rem;
+    z-index: 3;
+}
+
+.level{
+    padding-left: .6rem;
+    position: relative;
+}
+
+.level h1{
+    margin-top:.6rem;
+    margin-bottom: .65rem;
+    font-size: .72rem;
+    line-height: 1;
+    font-weight: normal;
+    color:#333333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.level .comment{
+    margin: .67rem 0;
+    font-size: .56rem;
+    line-height: 1;
+    color:#aaaaaa;
+
+}
+
+.level .icon-service{
+    position: absolute;
+    width: 1.22rem;
+    height: 1.37rem;
+    right: .25rem;
+    top: .4rem;
+    background: url("../img/vip/icon-service.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.mem-info .process-box{
+    position: relative;
+}
+
+.mem-info .process-box .icon-diamond{
+    width: .94rem;
+    height: .74rem;
+    position: absolute;
+    left: 0;
+    top:-.1rem;
+    background: url("../img/vip/icon-diamond.png")  no-repeat;
+    background-size: contain;
+}
+
+.mem-info .process-bar{
+    width: 8.46rem;
+    margin-left:.18rem;
+    padding-left:.22rem;
+    background-color: #f7b743;
+    border:.07rem solid #ffe983;
+    border-radius:.2rem;
+}
+
+.mem-info .process-inner{
+    height: .33rem;
+    background: url("../img/vip/process.png") top right no-repeat;
+    background-size: 8.45rem 100%;
+}
+
+.process-box .comment{
+    margin-top: .2rem;
+    margin-bottom: 0;
+    font-size: .44rem;
+    text-align: right;
+    padding-right: .6rem;
+    color:#333333;
+    line-height: 1;
+}
+
+
+.block .title-box{
+    position: relative;
+    width: 100%;
+    height: .94rem;
+    padding:.8rem 0;
+}
+
+.block .bg-box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left:-2.865rem;
+    margin-top: -.47rem;
+    width: 5.73rem;
+    height:.94rem;
+    background: url("../img/vip/bg-title.png");
+    background-size: 100% 100%;
+    font-size: .56rem;
+    line-height: 1.4;
+    color:#ffffff;
+    text-align: center;
+    font-weight: normal;
+}
+
+/* vip特权 */
+.vip-privileges .list-box.extended{
+    overflow: hidden;
+    height: 11rem;
+}
+
+.privilig-list{
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -webkit-justify-content: space-between;
+    justify-content:space-between;
+}
+
+.privilig-list li{
+    width: 33.33%;
+    padding:.5rem 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.privilig-list li .img-box{
+    font-size: 0;
+}
+
+.privilig-list li img{
+    width: 2.06rem;
+    height: auto;
+}
+
+.privilig-list li h3{
+    margin: .66rem 0 .35rem;
+    font-size: .6rem;
+    font-weight: normal;
+    line-height: 1;
+    color:#333333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.privilig-list li p{
+    margin: .35rem 0;
+    font-size: .44rem;
+    font-weight: normal;
+    line-height: 1;
+    color:#a7a7a7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.vip-privileges .tool-bar{
+    font-size: .56rem;
+    color:#333333;
+    line-height: 1;
+    text-align: center;
+    margin: .6rem 0;
+}
+
+.vip-privileges .tool-bar i{
+    margin-left: .1rem;
+    display: inline-block;
+    width: .5rem;
+    height: .3rem;
+    background: url("../img/icon-unfold.png") no-repeat;
+    background-size: contain;
+    position: relative;
+    top:-.05rem;
+}
+
+.vip-privileges .extended i{
+    background: url("../img/icon-fold.png") no-repeat;
+    background-size: contain;
+}
+
+.vip-privileges .text-fold{
+    display: none;
+}
+
+.vip-privileges .extended .text-fold{
+    display: inline;
+}
+
+.vip-privileges .extended .text-extend{
+    display: none;
+}
+
+/* 等级说明 */
+
+.vip-level .comment{
+    font-size: .56rem;
+    color:#a7a7a7;
+    margin: .2rem 0 .3rem;
+}
+
+.vip-level .comment small{
+    font-size: .44rem;
+    color:#ff9c00;
+}
+
+.vip-level table{
+    width: 100%;
+    table-layout: fixed;
+    word-break: break-all;
+    font-size: .56rem;
+    color:#696969;
+    background-color: #f9f9f9;
+    border-right: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: .76rem;
+}
+
+.vip-level table th,.vip-level table td{
+    border-left: 1px solid #d9d9d9;
+    border-top: 1px solid #d9d9d9;
+    text-align: center;
+    padding: .6rem 0;
+}
+
+.vip-level table th{
+    font-weight: normal;
+    color:#ff9c00;
+}
+
+.vip-level tbody td:last-child{
+    color:#a7a7a7;
+}
+
+.vip-level .btn-red{
+    background-color: #fe5050;
+    color:#ffffff;
+    width: 1.92rem;
+    height: 1.05rem;
+    text-align: center;
+    border: .05rem solid #ff7878;
+    border-bottom-color: #fa2c2c;
+    border-right-color: #fa2c2c;
+    border-radius: .1rem;
+    padding: 0;
+}

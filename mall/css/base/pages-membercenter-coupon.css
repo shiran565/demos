@@ -1,0 +1,120 @@
+#content p {
+  margin: 0;
+}
+#content ul {
+  padding: .45rem .35rem .3rem .35rem;
+}
+#content li {
+  height: 2.35rem;
+  margin-bottom: .33rem;
+  border: 1px solid #dcdcdc;
+}
+#content li.last {
+  margin-bottom: 0;
+}
+#content .container {
+  display: table;
+  width: 100%;
+  background-color: white;
+}
+#content .top,
+#content .bottom {
+  display: table-row;
+}
+#content .top {
+  height: 32%;
+}
+#content .bottom {
+  height: 68%;
+}
+#content .title,
+#content .content {
+  display: table-cell;
+  width: 100%;
+  padding: 0 .35rem;
+  vertical-align: middle;
+}
+#content .title {
+  color: white;
+  font-size: .28rem;
+  line-height: 1;
+}
+#content .time {
+  float: left;
+}
+#content .state {
+  float: right;
+}
+#content .content {
+  position: relative;
+  font-size: 0;
+}
+#content .content div {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  z-index: 5;
+}
+#content .money {
+  display: inline-block;
+  margin-right: .25rem;
+  font-size: .34rem;
+  vertical-align: middle;
+}
+#content em {
+  font-size: .81rem;
+  font-style: normal;
+}
+#content .name {
+  font-size: .3rem;
+  margin-bottom: .21rem;
+}
+#content .number {
+  font-size: .24rem;
+}
+#content img {
+  position: absolute;
+}
+#content .unused .title {
+  background: left top repeat-x url("../../images/membercenter/coupon/unused-bg.gif");
+  background-size: 100% 100%;
+}
+#content .unused .content {
+  overflow: hidden;
+}
+#content .unused .money {
+  color: #ff4a4a;
+}
+#content .unused .name {
+  color: #5b5b5b;
+}
+#content .unused .number {
+  color: #888;
+}
+#content .unused img {
+  right: -0.26rem;
+  bottom: -0.26rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+#content .dated-used .title {
+  background: left top repeat-x url("../../images/membercenter/coupon/used-bg.gif");
+  background-size: 100% 100%;
+}
+#content .dated-used .money {
+  color: #e2e2e2;
+}
+#content .dated-used .name,
+#content .dated-used .number {
+  color: #d6d6d6;
+}
+#content .dated-used img {
+  right: .075rem;
+  bottom: .21rem;
+  width: 1.81rem;
+  height: 1.48rem;
+  z-index: 10;
+}
+#default div {
+  background-position: -3.28rem 0;
+}
