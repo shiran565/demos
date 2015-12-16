@@ -17,61 +17,64 @@
 
 </head>
 <body>
-
-<section class="img-text-module no-border">
-    <ul>
-        <li>
-            <img src="./assets/image/temp/train.png">
-            <div>火车票</div>
-            <a href="./index.html"></a>
-        </li>
-        <li>
-            <img src="./assets/image/temp/plane.png">
-            <div>机票</div>
-            <a href="//m.xyz.cn"></a>
-        </li>
-        <li>
-            <img src="./assets/image/temp/money.png">
-            <div>话费充值</div>
-            <a href="//m.xyz.cn"></a>
-        </li>
-        <li>
-            <img src="./assets/image/temp/film.png">
-            <div>电影</div>
-            <a href="//m.xyz.cn"></a>
-        </li>
-        <li>
-            <img src="./assets/image/temp/house.png">
-            <div>家政</div>
-            <a href="//m.xyz.cn"></a>
-        </li>
-        <li>
-            <img src="./assets/image/temp/group.png">
-            <div>团购</div>
-            <a href="//m.xyz.cn"></a>
-        </li>
-        <li>
-            <img src="./assets/image/temp/snack.png">
-            <div>外卖</div>
-            <a href="//m.xyz.cn"></a>
-        </li>
-        <li class="light">
-            <img src="./assets/image/temp/delivery.png">
-            <div>快递</div>
-            <a href="//m.xyz.cn"></a>
-        </li>
-        <li>
-            <img src="./assets/image/temp/hotel.png">
-            <div>酒店</div>
-            <a href="//m.xyz.cn"></a>
-        </li>
-        <li>
-            <img src="./assets/image/temp/lottery.png">
-            <div>彩票</div>
-            <a href="//m.xyz.cn"></a>
-        </li>
-    </ul>
+<!--<section class="life-module ">
+    <section class="img-text-module">
+        <ul>
+            <li>
+                <img src="./assets/image/temp/train.png">
+                <div>火车票</div>
+                <a href="./index.html"></a>
+            </li>
+            <li>
+                <img src="./assets/image/temp/plane.png">
+                <div>机票</div>
+                <a href="//m.xyz.cn"></a>
+            </li>
+            <li>
+                <img src="./assets/image/temp/money.png">
+                <div>话费充值</div>
+                <a href="//m.xyz.cn"></a>
+            </li>
+            <li>
+                <img src="./assets/image/temp/film.png">
+                <div>电影</div>
+                <a href="//m.xyz.cn"></a>
+            </li>
+            <li>
+                <img src="./assets/image/temp/house.png">
+                <div>家政</div>
+                <a href="//m.xyz.cn"></a>
+            </li>
+            <li>
+                <img src="./assets/image/temp/group.png">
+                <div>团购</div>
+                <a href="//m.xyz.cn"></a>
+            </li>
+            <li>
+                <img src="./assets/image/temp/snack.png">
+                <div>外卖</div>
+                <a href="//m.xyz.cn"></a>
+            </li>
+            <li class="light">
+                <img src="./assets/image/temp/delivery.png">
+                <div>快递</div>
+                <a href="//m.xyz.cn"></a>
+            </li>
+            <li>
+                <img src="./assets/image/temp/hotel.png">
+                <div>酒店</div>
+                <a href="//m.xyz.cn"></a>
+            </li>
+            <li>
+                <img src="./assets/image/temp/lottery.png">
+                <div>彩票</div>
+                <a href="//m.xyz.cn"></a>
+            </li>
+        </ul>
+    </section>
+    
 </section>
+
 
 <section class="life-module">
     <h2 class="title"><img src="./assets/image/temp/icon-blue.png">综合服务</h2>
@@ -157,10 +160,130 @@
             </li>
         </ul>
     </section>
+</section>-->
+
+<script id="j_template" type="text/html"> 
+
+
+{{each initLifeData as snd}}
+    
+<section class="life-module">
+    {{if snd.name}}
+        <h2 class="title">
+            {{if snd.icon}}
+                <img src="./assets/image/temp/icon-comprehensive.png">
+            {{/if}}
+            {{snd.name}}
+        </h2>
+    {{/if}}
+
+    {{each snd.subArray as sa i}}
+        {{if sa.type ==3 && sa.subArray.length}}
+            <section class="img-module">
+                <div class="wrapper">
+                    <ul>
+                        {{each sa.subArray as sasa}}
+                        <li><a data-href="{{sasa.url}}"><img src="{{sasa.icon}}" /></a></li>
+                        {{/each}}
+                    </ul>        
+                </div>
+            </section>
+        {{/if}}
+
+        {{if sa.type == 4 && sa.subArray.length}}
+            <section class="text-module">
+                <div class="wrapper">
+                    <ul>
+                        {{each sa.subArray as sasa}}
+                        <li><a data-href="{{sasa.url}}">{{sasa.name}}</a></li>
+                        {{/each}}
+                    </ul>        
+                </div>
+            </section>
+        {{/if}}
+
+
+        {{if sa.type == 5 && sa.subArray.length}}
+            <section class="img-text-module">
+                <ul>
+                    {{each sa.subArray as sasa i}}
+                    <li>
+                        <img src="{{sasa.icon}}">
+                        <div>{{sasa.name}}</div>
+                        <a data-href="{{sasa.url}}}"></a>
+                    </li>
+                    {{/each}}                        
+                </ul>
+            </section>       
+        {{/if}}
+    {{/each}}
 </section>
+{{/each}}
+
+{{if toolsArrayData}}
+
+    {{each toolsArrayData as snd}}
+    
+        <section class="life-module">
+            {{if snd.name}}
+                <h2 class="title">
+                    {{if snd.icon}}
+                        <img src="./assets/image/temp/icon-comprehensive.png">
+                    {{/if}}
+                    {{snd.name}}
+                </h2>
+            {{/if}}
+
+            {{each snd.subArray as sa i}}
+                {{if sa.type ==3 && sa.subArray.length}}
+                    <section class="img-module">
+                        <div class="wrapper">
+                            <ul>
+                                {{each sa.subArray as sasa}}
+                                <li><a data-href="{{sasa.url}}"><img src="{{sasa.icon}}" /></a></li>
+                                {{/each}}
+                            </ul>        
+                        </div>
+                    </section>
+                {{/if}}
+
+                {{if sa.type == 4 && sa.subArray.length}}
+                    <section class="text-module">
+                        <div class="wrapper">
+                            <ul>
+                                {{each sa.subArray as sasa}}
+                                <li><a data-href="{{sasa.url}}">{{sasa.name}}</a></li>
+                                {{/each}}
+                            </ul>        
+                        </div>
+                    </section>
+                {{/if}}
+
+
+                {{if sa.type == 5 && sa.subArray.length}}
+                    <section class="img-text-module">
+                        <ul class="tools">
+                            {{each sa.subArray as sasa i}}
+                            <li>
+                                <img src="{{sasa.icon}}">
+                                <div>{{sasa.name}}</div>
+                                <a data-href="{{sasa.url}}}"></a>
+                            </li>
+                            {{/each}}                        
+                        </ul>
+                    </section>       
+                {{/if}}
+            {{/each}}
+        </section>
+    {{/each}}
+
+{{/if}}
+
+</script>
 
 
 <script src="./assets/js/zepto/zepto.min.js"></script>
 <script src="./assets/js/template/template.js"></script>
+<script src="./assets/js/project/life.js"></script>
 </body>
 </html>
