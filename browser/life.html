@@ -17,150 +17,6 @@
 
 </head>
 <body>
-<!--<section class="life-module ">
-    <section class="img-text-module">
-        <ul>
-            <li>
-                <img src="./assets/image/temp/train.png">
-                <div>火车票</div>
-                <a href="./index.html"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/plane.png">
-                <div>机票</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/money.png">
-                <div>话费充值</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/film.png">
-                <div>电影</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/house.png">
-                <div>家政</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/group.png">
-                <div>团购</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/snack.png">
-                <div>外卖</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li class="light">
-                <img src="./assets/image/temp/delivery.png">
-                <div>快递</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/hotel.png">
-                <div>酒店</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/lottery.png">
-                <div>彩票</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-        </ul>
-    </section>
-    
-</section>
-
-
-<section class="life-module">
-    <h2 class="title"><img src="./assets/image/temp/icon-blue.png">综合服务</h2>
-
-
-    <section class="famous-site">
-        <div class="wrapper">
-            <ul>
-                <li><a href="//www.baidu.com"> </a><img src="./assets/image/temp/baidu.png" /><span>百度</span></li>
-                <li><a href="//www.taobao.com"> </a><img src="./assets/image/temp/taobao.png" /><span>淘宝</span></li>
-                <li class="light"><a href="//www.baidu.com"> </a><img src="./assets/image/temp/baidu.png" /><span>百度</span></li>
-                <li><a href="//www.taobao.com"> </a><img src="./assets/image/temp/taobao.png" /><span>淘宝宝</span></li>
-                <li><a href="//www.taobao.com"></a><img src="./assets/image/temp/taobao.png" /><span>淘宝</span></li>
-                <li><a href="//www.baidu.com"></a><img src="./assets/image/temp/baidu.png" /><span>百度</span></li>
-                <li class="light"><a href="//www.taobao.com"></a><img src="./assets/image/temp/taobao.png" /><span>淘宝宝</span></li>
-                <li><a href="//www.baidu.com"></a><img src="./assets/image/temp/baidu.png" /><span>百度</span></li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="text-modules">
-        <div class="wrapper">                
-            <ul>
-                <li>手机维修</li>
-                <li>送药上门</li>
-                <li>家电维修</li>
-                <li>鲜花预定</li>
-                <li>租房</li>
-                <li>健身</li>
-                <li>二手闲置</li>
-                <li>养车</li>
-            </ul>
-        </div>
-        
-    </section>
-
-</section>
-
-<section class="life-module">
-    <h2 class="title"><img src="./assets/image/temp/icon-orange.png">常用工具</h2>
-
-    <section class="img-text-module">
-        <ul class="tools">
-            <li>
-                <img src="./assets/image/temp/img-zipcode.png">
-                <div>邮编</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/img-translate.png">
-                <div>翻译</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/img-mobile.png">
-                <div>电话归属</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/img-tax.png">
-                <div>个税</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/img-rate.png">
-                <div>汇率</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/img-map.png">
-                <div>地图</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/img-clendar.png">
-                <div>万年历</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-            <li>
-                <img src="./assets/image/temp/img-constellation.png">
-                <div>星座</div>
-                <a href="//m.xyz.cn"></a>
-            </li>
-        </ul>
-    </section>
-</section>-->
 
 <script id="j_template" type="text/html"> 
 
@@ -182,8 +38,10 @@
             <section class="img-module">
                 <div class="wrapper">
                     <ul>
-                        {{each sa.subArray as sasa}}
+                        {{each sa.subArray as sasa j}}                        
+                        {{if j<4}}
                         <li><a data-href="{{sasa.url}}"><img src="{{sasa.icon}}" /></a></li>
+                        {{/if}}
                         {{/each}}
                     </ul>        
                 </div>
