@@ -1,0 +1,157 @@
+html{
+	font-family: "黑体",Arial;
+}
+
+#header{
+	height:70px;
+	background-color:#3aa2fe;
+	position: fixed;
+	top:0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+}
+
+#header .logo img{
+	margin-top: 10px;
+}
+
+#header .label{
+	float: right;
+	margin-right: 25px;
+	height: 70px;
+	color:#b5cdfe;
+	font-size: 18px;
+	line-height: 70px;
+}
+
+
+
+#nav{
+	position: fixed;
+	width: 120px;
+	top:80px;
+	left: 40px;
+}
+#nav ul{
+	padding: 0;
+}
+
+#nav li{
+	padding: 20px 0;
+	font-size: 18px;
+	color:#747474;
+	line-height: 1;
+}
+
+
+#nav li.on{
+	padding: 22px 0;
+	font-size: 24px;
+	color:#3aa2fe;
+} 
+
+.section .content{
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+
+.section .left,.section .right{
+	width: 50%;
+	display: table-cell;
+	vertical-align: middle;
+	height: 100%;
+	text-align:right;
+}
+
+.app-store .right{
+	background-color: #ebf5ff;
+}
+
+.game-center .right{
+	background-color: #fff7f7;
+}
+
+.browser .right{
+	background-color: #ebf3ff;
+}
+
+.left .contriner{
+	margin-left: auto;
+	margin-right: auto;
+	width: 295px;
+	text-align: center;
+}
+
+.contriner .icon{
+	margin-left: 73px;
+}
+
+.contriner .comment{
+	text-align: left;
+	font-size: 16px;
+	line-height: 1.8;
+	color:#868691;
+	margin-bottom: 50px;
+}
+
+.contriner .download{
+	display: inline-block;
+	width: 142px;
+	height: 50px;
+	border-radius: 10px;
+	font-size: 18px;
+	line-height: 50px;
+	color:#ffffff;
+	background-color: #3fa5ff;
+	text-decoration: none;
+	margin-bottom: 40px;
+}
+
+.contriner .download:hover{
+	background-color: #007cea;
+}
+
+.right .figure{
+	height: 590px;
+	position: relative;
+}
+
+.right .figure img{
+	position: absolute;
+	top:0;
+	right:-658px;
+	z-index: 9;
+    -webkit-transition: all 0.7s ease-out 1.6s;
+    -moz-transition: all 0.7s ease-out 1.6s;
+    -ms-transition: all 0.7s ease-out 1.6s;
+    transition: all 0.7s ease-out 1.6s;
+}
+
+
+.right .figure img.middle{
+	top:80px;
+	z-index: 8;
+    -webkit-transition: all 0.7s ease-out .8s;
+    -moz-transition:all 0.7s ease-out .8s;
+    -ms-transition:all 0.7s ease-out .8s;
+    transition:all 0.7s ease-out .8s;
+}
+
+.right .figure img.bottom{
+	top:160px;
+	z-index: 7;
+    -webkit-transition: all 0.7s ease-out .1s;
+    -moz-transition: all 0.7s ease-out .1s;
+    -ms-transition: all 0.7s ease-out .1s;
+    transition: all 0.7s ease-out .1s;
+}
+
+
+ .transform .right img{
+    -webkit-transform:translatex(-480px);
+    -moz-transform:translatex(-480px);
+    -ms-transform:translatex(-480px);
+    transform:translatex(-480px);
+}

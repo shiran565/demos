@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>vivo智能手机</title>
+    <meta name="keywords" content='vivo智能手机'/>
+    <meta name="description" content='vivo智能手机'/>
+	<link rel="stylesheet" type="text/css" href="./assets/css/normalize.css" /> 
+	<link rel="stylesheet" type="text/css" href="./assets/js/plugins/fullPage/jquery.fullpage.min.css" /> 
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css" /> 
+    <!--[if lt IE 9]>
+    <script src="./assets/js/plugins/html5shiv/html5shiv.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+	<header id="header">
+		<div class="wrapper">
+			<a class="logo"><img src="./assets/image/logo.png"></a>
+			<div class="label">开发者平台</div>
+		</div>
+	</header>
+	<nav id="nav">
+		<ul>
+			<li>应用商店</li>
+			<li>游戏中心</li>
+			<li>浏览器</li>
+		</ul>
+	</nav>
+	<section id="fullpage"> 
+		<div class="section app-store">
+			<div class="content">
+				<div class="left">
+					<div class="contriner">
+						<img class="icon" src="./assets/image/icon-appstore.png" />
+						<div class="comment">应用商店是vivo智能手机为用户打造的官方手机软件下载平台，帮助用户发现最好的应用和游戏，为用户提供一站式的软件下载、管理和升级服务。</div>
+
+						<a class="download" target="_blank" href="http://smsbook.bbk.com/clientRequest/appdata/downNew?id=472">点击下载</a>
+						<div>
+							<img src="./assets/image/qrcode-appstore.png" />						
+						</div>
+
+
+					</div>
+				</div>
+				<div class="right">
+					<div class="figure">
+						<img class="top" src="./assets/image/app-1.png" />
+						<img class="middle"  src="./assets/image/app-2.png" />
+						<img class="bottom"  src="./assets/image/app-3.png" />
+					</div>
+				</div>
+			</div>
+		</div>
+	    <div class="section game-center">
+		    <div class="content">
+				<div class="left">
+					<div class="contriner">
+						<img class="icon" src="./assets/image/icon-gamecenter.png" />
+						<div class="comment">游戏中心旨在为vivo游戏玩家打造基于移动游戏的游戏内容推荐平台和玩家互动平台，为用户提供集游戏推荐、资讯、功略社区、互动和管理于一体的一战式游戏体验服务。</div>
+
+						<a class="download" target="_blank" href="http://smsbook.bbk.com/clientRequest/appdata/downNew?id=470">点击下载</a>
+						<div>
+							<img src="./assets/image/qrcode-gamecenter.png" />						
+						</div>
+
+
+					</div>
+				</div>
+				<div class="right">
+					<div class="figure">
+						<img class="top" src="./assets/image/game-1.png" />
+						<img class="middle"  src="./assets/image/game-2.png" />
+						<img class="bottom"  src="./assets/image/game-3.png" />
+					</div>
+				</div>
+			</div>
+	    </div>
+	    <div class="section browser">
+	    	<div class="content">
+				<div class="left">
+					<div class="contriner">
+						<img class="icon" src="./assets/image/icon-browser.png" />
+						<div class="comment">浏览器是vivo智能手机为用户打造的官方浏览器，追求高速、安全、稳定、省流量具有搜索引擎、网址导航、资讯小说阅读视频播放、购物、下载等功能。</div>
+
+						<a class="download" target="_blank" href="http://smsbook.bbk.com/clientRequest/appdata/downNew?id=473">点击下载</a>
+						<div>
+							<img src="./assets/image/qrcode-browser.png" />						
+						</div>
+
+
+					</div>
+				</div>
+				<div class="right">
+					<div class="figure">
+						<img class="top" src="./assets/image/browser-1.png" />
+						<img class="middle"  src="./assets/image/browser-2.png" />
+						<img class="bottom"  src="./assets/image/browser-3.png" />
+					</div>
+				</div>
+			</div>
+	    </div>
+	</section>
+
+	
+
+	<script type="text/javascript" src="./assets/js/plugins/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="./assets/js/plugins/fullPage/jquery.fullpage.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+		    $('#fullpage').fullpage({   
+		    	afterLoad: function(anchorLink, index){
+		            var _index = index-1;
+		    		$("#nav li").eq(_index).addClass("on").siblings().removeClass("on");
+		    		setTimeout(function(){
+		    			$("#fullpage .section").eq(_index).addClass("transform").siblings().removeClass("transform");
+		    		}, 1);
+		        } 
+		    });
+
+		});
+
+	</script>
+</body>
+</html>
