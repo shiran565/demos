@@ -17,7 +17,7 @@
             var scale = 1 / devicePixelRatio;
             var deviceWidth = document.documentElement.clientWidth;
             metaEl.setAttribute('name', 'viewport');
-            metaEl.setAttribute('content', 'width='+deviceWidth*devicePixelRatio+',initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no');
+            metaEl.setAttribute('content', 'width='+deviceWidth*devicePixelRatio+',initial-scale='+scale+', maximum-scale='+scale+', minimum-scale='+scale+', user-scalable=yes');
             if (docEl.firstElementChild) {
                 document.documentElement.firstElementChild.appendChild(metaEl);
             } else {
@@ -28,7 +28,6 @@
 
             window.addEventListener("load",function(){
                 document.documentElement.style.fontSize = document.documentElement.clientWidth / 14.4 + 'px';
-                //document.documentElement.style.transform = "scale(0.3333,0.3333)";
             })
         }());
 
@@ -157,7 +156,6 @@
 
 
         $(document.body).prepend(template("j_template", data));
-        return;
 
         $.getJSON("http://172.20.199.13:8090/vip/myVip?openid=9b5b106236f4bfcb&token=OTRmZWI3ODVhNDU1ZDk0OGExNDAuMTAwMDA1MzkuMTQ0Nzc2NTgyNTc5NQ==",{},function(data){
             if(data.result){
