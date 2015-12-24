@@ -2,6 +2,14 @@ html{
 	font-family: "黑体",Arial;
 }
 
+body{
+	min-width: 1440px;
+}
+
+.fullpage-wrapper{
+	padding-top: 70px;
+}
+
 #header{
 	height:70px;
 	background-color:#3aa2fe;
@@ -21,7 +29,7 @@ html{
 	margin-right: 25px;
 	height: 70px;
 	color:#b5cdfe;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 70px;
 }
 
@@ -39,15 +47,15 @@ html{
 
 #nav li{
 	padding: 20px 0;
-	font-size: 18px;
+	font-size: 16px;
 	color:#747474;
 	line-height: 1;
 }
 
 
 #nav li.on{
-	padding: 22px 0;
-	font-size: 24px;
+	padding: 20px 0;
+	font-size: 20px;
 	color:#3aa2fe;
 } 
 
@@ -78,19 +86,20 @@ html{
 }
 
 .left .contriner{
-	margin-left: auto;
-	margin-right: auto;
+    float: right;
+    margin-right: 350px;
 	width: 295px;
 	text-align: center;
 }
 
 .contriner .icon{
-	margin-left: 73px;
+	width: 200px;
+	margin-left: 71px;
 }
 
 .contriner .comment{
 	text-align: left;
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 1.8;
 	color:#868691;
 	margin-bottom: 50px;
@@ -114,44 +123,43 @@ html{
 }
 
 .right .figure{
-	height: 590px;
+	height: 80%;
 	position: relative;
 }
 
 .right .figure img{
 	position: absolute;
-	top:0;
-	right:-658px;
+	top:10%;
+	width: auto;
+	height: 60%;
+	left:1300px;
 	z-index: 9;
-    -webkit-transition: all 0.7s ease-out 1.6s;
-    -moz-transition: all 0.7s ease-out 1.6s;
-    -ms-transition: all 0.7s ease-out 1.6s;
-    transition: all 0.7s ease-out 1.6s;
+    -webkit-transition: all 0.7s ease-out 1.4s;
+    -moz-transition: all 0.7s ease-out 1.4s;
+    -ms-transition: all 0.7s ease-out 1.4s;
+    transition: all 0.7s ease-out 1.4s;
 }
 
 
 .right .figure img.middle{
-	top:80px;
+	top:25%;
 	z-index: 8;
-    -webkit-transition: all 0.7s ease-out .8s;
-    -moz-transition:all 0.7s ease-out .8s;
-    -ms-transition:all 0.7s ease-out .8s;
-    transition:all 0.7s ease-out .8s;
+    -webkit-transition: all 0.7s ease-out .7s;
+    -moz-transition:all 0.7s ease-out .7s;
+    -ms-transition:all 0.7s ease-out .7s;
+    transition:all 0.7s ease-out .7s;
 }
 
 .right .figure img.bottom{
-	top:160px;
+	top:40%;
 	z-index: 7;
-    -webkit-transition: all 0.7s ease-out .1s;
-    -moz-transition: all 0.7s ease-out .1s;
-    -ms-transition: all 0.7s ease-out .1s;
-    transition: all 0.7s ease-out .1s;
+    -webkit-transition: all 0.7s ease-out 0s;
+    -moz-transition: all 0.7s ease-out 0s;
+    -ms-transition: all 0.7s ease-out 0s;
+    transition: all 0.7s ease-out 0s;
 }
 
 
  .transform .right img{
-    -webkit-transform:translatex(-480px);
-    -moz-transform:translatex(-480px);
-    -ms-transform:translatex(-480px);
-    transform:translatex(-480px);
+ 	left:360px;
 }
