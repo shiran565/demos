@@ -9,26 +9,23 @@
 	<link rel="stylesheet" type="text/css" href="./assets/css/normalize.css" /> 
 	<link rel="stylesheet" type="text/css" href="./assets/js/plugins/fullPage/jquery.fullpage.min.css" /> 
 	<link rel="stylesheet" type="text/css" href="./assets/css/style.css" /> 
-    <!--[if lt IE 9]>
-    <script src="./assets/js/plugins/html5shiv/html5shiv.min.js"></script>
-    <![endif]-->
 
 </head>
 <body>
-	<header id="header">
+	<div id="header">
 		<div class="wrapper">
 			<a class="logo"><img src="./assets/image/logo.png"></a>
-			<div class="label">开发者平台</div>
+			<div class="label"><a href="https://dev.vivo.com.cn/">开发者平台</a></div>
 		</div>
-	</header>
-	<nav id="nav">
-		<ul>
-			<li>应用商店</li>
-			<li>游戏中心</li>
-			<li>浏览器</li>
+	</div>
+	<div id="nav">
+		<ul id="myMenu">
+			<li data-menuanchor="firstPage"><a href="#firstPage">应用商店</a></li>
+			<li data-menuanchor="secondPage"><a href="#secondPage">游戏中心</a></li>
+			<li data-menuanchor="thirdPage"><a href="#thirdPage">浏览器</a></li>
 		</ul>
-	</nav>
-	<section id="fullpage"> 
+	</div>
+	<div id="fullpage"> 
 		<div class="section app-store">
 			<div class="content">
 				<div class="left">
@@ -101,7 +98,7 @@
 				</div>
 			</div>
 	    </div>
-	</section>
+	</div>
 
 	
 
@@ -111,6 +108,8 @@
 		$(document).ready(function() {
 
 		    $('#fullpage').fullpage({   
+			    anchors: ['firstPage', 'secondPage', 'thirdPage'],
+			    menu: '#myMenu',
 		    	afterLoad: function(anchorLink, index){
 		            var _index = index-1;
 		    		$("#nav li").eq(_index).addClass("on").siblings().removeClass("on");

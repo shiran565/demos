@@ -28,9 +28,13 @@ body{
 	float: right;
 	margin-right: 25px;
 	height: 70px;
-	color:#b5cdfe;
-	font-size: 16px;
 	line-height: 70px;
+}
+
+#header .label a{
+	color:#b5cdfe;
+	font-size: 16px;	
+	text-decoration: none;
 }
 
 
@@ -40,6 +44,7 @@ body{
 	width: 120px;
 	top:80px;
 	left: 40px;
+	z-index: 10;
 }
 #nav ul{
 	padding: 0;
@@ -47,17 +52,22 @@ body{
 
 #nav li{
 	padding: 20px 0;
-	font-size: 16px;
-	color:#747474;
-	line-height: 1;
 }
 
 
-#nav li.on{
-	padding: 20px 0;
+#nav li a{
+	font-size: 16px;
+	color:#747474;
+	line-height: 1;
+	text-decoration: none;	
+}
+
+
+#nav li.on a{
 	font-size: 20px;
 	color:#3aa2fe;
-} 
+
+}
 
 .section .content{
 	display: table;
