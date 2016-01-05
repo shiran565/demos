@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>vivo智能手机</title>
+    <meta name="keywords" content='vivo智能手机'/>
+    <meta name="description" content='vivo智能手机'/>
+	<link rel="stylesheet" type="text/css" href="./assets/css/normalize.css" /> 
+	<link rel="stylesheet" type="text/css" href="./assets/js/plugins/fullPage/jquery.fullpage.min.css" /> 
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css" /> 
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+	<script>
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 10.8 + 'px';
+    </script>
+
+</head>
+<body>
+	<div id="header">
+		<div class="wrapper">
+			<a class="logo"><img src="./assets/image/logo.png"></a>
+			<div class="label"><a href="https://dev.vivo.com.cn/">开发者平台</a></div>
+		</div>
+	</div>
+	<div id="nav">
+		<ul id="myMenu">
+			<li data-menuanchor="firstPage"><a href="#firstPage">应用商店</a></li>
+			<li data-menuanchor="secondPage"><a href="#secondPage">游戏中心</a></li>
+			<li data-menuanchor="thirdPage"><a href="#thirdPage">浏览器</a></li>
+		</ul>
+	</div>
+	<div id="fullpage"> 
+		<div class="section app-store">
+			<div class="content">
+				<div class="left">
+					<div class="container">						
+						<img class="icon" src="./assets/image/icon-appstore.png" />
+						<a class="download" target="_blank" href="http://smsbook.bbk.com/clientRequest/appdata/downNew?id=472">点击下载</a>			
+					</div>
+				</div>
+				<div class="right">
+					<div class="figure">
+						<img class="top" src="./assets/image/app-1.png" />
+					</div>
+				</div>
+			</div>
+		</div>
+	    <div class="section game-center">
+		    <div class="content">
+				<div class="left">
+					<div class="container">
+						<img class="icon" src="./assets/image/icon-gamecenter.png" />
+						<a class="download" target="_blank" href="http://smsbook.bbk.com/clientRequest/appdata/downNew?id=470">点击下载</a>
+					</div>
+				</div>
+				<div class="right">
+					<div class="figure">
+						<img class="top" src="./assets/image/game-1.png" />
+					</div>
+				</div>
+			</div>
+	    </div>
+	    <div class="section browser">
+	    	<div class="content">
+				<div class="left">
+					<div class="container">
+						<img class="icon" src="./assets/image/icon-browser.png" />
+						<a class="download" target="_blank" href="http://smsbook.bbk.com/clientRequest/appdata/downNew?id=473">点击下载</a>
+						
+					</div>
+				</div>
+				<div class="right">
+					<div class="figure">
+						<img class="top" src="./assets/image/browser-1.png" />
+					</div>
+				</div>
+			</div>
+	    </div>
+	</div>
+
+	
+
+	<script type="text/javascript" src="./assets/js/plugins/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="./assets/js/plugins/fullPage/jquery.fullpage.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+		    $('#fullpage').fullpage({   
+			    anchors: ['firstPage', 'secondPage', 'thirdPage'],
+			    menu: '#myMenu',
+        		css3: false,
+		    	afterLoad: function(anchorLink, index){
+		            var _index = index-1;
+		    		$("#nav li").eq(_index).addClass("on").siblings().removeClass("on");
+		        } 
+		    });
+
+		});
+
+	</script>
+</body>
+</html>
