@@ -21,7 +21,8 @@ body{
 }
 
 #header .logo img{
-	margin-top: 10px;
+	height:41px;
+	margin-top: 15px;
 }
 
 #header .label{
@@ -32,7 +33,7 @@ body{
 }
 
 #header .label a{
-	color:#D1DDF5;
+	color:#DDEEF7;
 	font-size: 16px;	
 	text-decoration: none;
 }
