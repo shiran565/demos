@@ -6,10 +6,37 @@
     <title>vivo智能手机</title>
     <meta name="keywords" content='vivo智能手机'/>
     <meta name="description" content='vivo智能手机'/>
-	<link rel="stylesheet" type="text/css" href="./assets/css/normalize.css" /> 
-	<link rel="stylesheet" type="text/css" href="./assets/js/plugins/fullPage/jquery.fullpage.min.css" /> 
-	<link rel="stylesheet" type="text/css" href="./assets/css/style.css?t=1" /> 
 
+	<script>
+		(function (ua) {	
+			/**
+			 * 根据ua判断操作系统类型，移动端设备自动跳转到wap版
+			 */	
+			if(ua.indexOf("Android")>-1){
+				p = "android";
+			}
+			else if(ua.indexOf("iPhone")>-1 || ua.indexOf("iPad")>-1 || ua.indexOf("iPod")>-1){
+				p = "ios";
+			}
+			else if(ua.indexOf("Windows Phone") > -1 || ua.indexOf("WPDesktop") > -1){
+				p = "winphone";
+			}
+			else {
+				p = "pc";
+			}
+
+			if(p != "pc"){
+				location.href = "../wap/index.html";
+			}
+
+		}(navigator.userAgent));
+
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="./assets/css/normalize.css" /> 
+	<link rel="stylesheet" type="text/css" href="./assets/js/plugins/fullpage/jquery.fullpage.min.css" /> 
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css" /> 
+	
 </head>
 <body>
 	<div id="header">
@@ -103,7 +130,7 @@
 	
 
 	<script type="text/javascript" src="./assets/js/plugins/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="./assets/js/plugins/fullPage/jquery.fullpage.min.js"></script>
+	<script type="text/javascript" src="./assets/js/plugins/fullpage/jquery.fullpage.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 

@@ -1,0 +1,46 @@
+
+<!--index.wxml-->
+<view class="header">
+  <view class="header-item header-logo">
+    <image src="http://m.vivo.com.cn/asset/images/vivo-m-logo.png" style="width:75px;height:25px;"></image>
+  </view>
+  <view class="header-item header-icon_user" bindtap="login">
+    <image src="http://m.vivo.com.cn/asset/images/top-users-btn.png" style="width:30px;height:30px;"></image>
+  </view>
+</view>
+<view class="container">
+  <swiper class="swiper-prod" indicator-dots="{{indicatorDots}}" 
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
+    indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}">
+    <block wx:for="{{imgUrls}}" wx:key="item">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>  
+  <view class="operation">
+    <view class="operation-item operation-title">
+      <text>Xplay6</text>
+    </view>
+    <view class="operation-item operation-button">
+      <button class="btn-buy" bindtap="buy">立即购买</button>
+    </view>
+  </view>
+  <view class="summary-list">
+    <block wx:for="{{paramList}}" wx:key="item">
+      <view bindtap="viewDetail" class="summary-item"  data-url="{{item.url}}">
+        <view class="summary-icon {{item.icon}}"></view>
+        <view class="summary-content">{{item.title}}</view>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="footer">
+  <view>
+    <image class="footer-logo" src="http://m.vivo.com.cn/asset/images/m-vivo-footer-logo.png"></image>
+  </view>
+  <view class="footer-copyright">
+    <text class="footer-text">COPYRIGHT © 1996-2017 </text>
+    <text class="footer-text">ALL RIGHTS RESERVED. 粤ICP备05100288号</text>
+  </view>
+</view>

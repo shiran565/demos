@@ -7,6 +7,9 @@ body{
     width: 14.4rem;
 }
 
+.long{
+    border:solid 5px red;
+}
 
 /* 去掉点击区域效果 */
 a, button, input {
@@ -68,8 +71,8 @@ a, button, input {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 3.27rem;
-    height: 3.83rem;
+    width: 2.9rem;
+    height: 3.25rem;
     background: url("../img/vip/crown.png") no-repeat;
     background-size:100%  100%;
     z-index: 2;
@@ -77,20 +80,22 @@ a, button, input {
 
 .portrait-img{
     position: absolute;
-    width: 2.76rem;
-    height: 2.76rem;
-    left: 0.33rem;
-    bottom: .45rem;
+    width: 2.86rem;
+    height: 2.86rem;
+    left: .02rem;
+    bottom: .35rem;
     z-index: 1;
     border-radius: 50%;
 }
 
 .mem-info .vip-level{
     position: absolute;
-    left: 2.14rem;
+    left: 1.4rem;
+    width: .7rem;
+    text-align: center;
     bottom: 0;
     line-height: .6rem;
-    color:#ffffff;
+    color: #ffffff;
     font-size: .5rem;
     z-index: 3;
 }
@@ -188,10 +193,69 @@ a, button, input {
     background-size: 100% 100%;
     font-size: .56rem;
     line-height: 1.4;
-    color:#ffffff;
+    color:#fff;
     text-align: center;
     font-weight: normal;
 }
+
+
+.vip-activity-content .wrapper{
+    width: 13.8rem;
+    font-size: 0;
+
+}
+
+.vip-activity-content img{
+    width: 100%;
+    height: 4.92rem;
+}
+
+.vip-activity-content .comment{
+    margin-bottom: .47rem;
+    color: #999;
+    font-size: .56rem;
+    line-height: 1.03rem;    
+}
+
+.vip-activity-content .comment em{    
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 .23rem;
+    width: .95rem;
+    height: 1.03rem;
+    color: #fcac0c;
+    font-size: .6rem;
+    font-weight: bolder;
+    font-style: normal;
+    text-align: center;
+    background: left top no-repeat url(../img/vjewel-activity/page.png);
+    background-size: 100% 100%;
+}
+
+.vip-activity-title{
+    font-size: .64rem;
+    color:#333;
+    margin:.3rem 0 .2rem;
+}
+
+.comment-box{
+    position: relative;
+}
+.vip-activity-content button{
+    position: absolute;
+    right: 0;
+    width: 2.5rem;
+    height:1.08rem;
+    color: #00d4cc;
+    font-size: .56rem;
+    text-align: center;
+    background-color: #fff;
+    border: 4px solid #00d4cc;
+    border-radius: .48rem;
+    top:50%;
+    margin-top:-.54rem;
+}
+
 
 /* vip特权 */
 .vip-privileges .list-box.extended{
@@ -204,8 +268,8 @@ a, button, input {
     display: -webkit-flex;
     flex-wrap: wrap;
     -webkit-flex-wrap: wrap;
-    -webkit-justify-content: space-between;
-    justify-content:space-between;
+    -webkit-justify-content: flex-start;
+    justify-content:flex-start;
 }
 
 .privilig-list li{
@@ -289,12 +353,15 @@ a, button, input {
     font-size: .56rem;
     color:#a7a7a7;
     margin: .2rem 0 .3rem;
+    text-align: center;
 }
 
 .vip-level .comment small{
     font-size: .44rem;
-    color:#ff9c00;
+    display: block;
 }
+
+
 
 .vip-level table{
     width: 100%;
@@ -335,4 +402,78 @@ a, button, input {
     border-right-color: #fa2c2c;
     border-radius: .1rem;
     padding: 0;
+}
+
+
+.popup{
+    position: fixed;
+    top:50%;
+    left:50%;
+    margin-left: -6rem;
+    margin-top:-3.05rem;
+    width: 12rem;
+    background-color: #fff;
+    border-radius: .13rem;
+    display: none;
+    z-index: 100;
+}
+
+.popup .top{
+    height:2.3rem;
+    text-align: center;
+}
+
+.popup .top img{
+    margin-top:-2.26rem;
+    width: 4.19rem;
+    height: 4.56rem;
+}
+
+.popup .wrapper{
+    width: 10.74rem;
+    margin: 0 auto;
+}
+
+.popup .content{
+    text-align: center;
+    font-size: .72rem;
+    color:#333;
+}
+
+.popup .btn-box{
+    overflow: hidden;
+    margin: 1.25rem 0 .9rem;
+}
+
+.popup .btn-box button{
+    width: 5.06rem;
+    height:1.21rem;
+    border-radius: .6rem;
+    border:2px solid #ccc;
+    color:#ccc;
+    font-size: .56rem;
+    text-align: center;
+}
+
+.popup .btn-box .btn-confirm{
+    float: left;
+    color:#fff;
+    background-color: #ffc247;
+    border-color:#ffc247;
+}
+
+.popup .btn-box .btn-cancel{
+    float: right;
+    background-color: #fff;
+}
+
+.mask{
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    opacity: .4;
 }

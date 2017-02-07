@@ -1,0 +1,5 @@
+<view class="container">
+    <image class="prod-image" src="../../images/image-1.jpg" style="width:375px;height:522px;"> </image>
+    <image class="prod-image" src="../../images/image-2.jpg" style="width:375px;height:559px"></image>
+    <image class="prod-image" src="../../images/image-3.jpg" style="width:375px;height:542px"></image>
+</view>

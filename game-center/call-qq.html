@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn">
+    <meta charset="UTF-8">
+    <title>正在打开QQ，请耐心等待</title>
+    <meta name="format-detection" content="telephone=no,address=no,email=no"/>
+    <meta name="mobileOptimized" content="width"/>
+    <meta name="handheldFriendly" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <link rel="stylesheet" href="./assets/css/normalize.css"/>
+    
+    <style>
+        html{
+            height:100%;          
+        }
+
+        body{
+            height:100%;
+            box-sizing:border-box;
+            padding-top:.2rem;  
+        }
+
+        .wrapper{
+            height:100%;
+            background: url(./assets/img/vip/bg-bottom.png) center bottom no-repeat;
+            background-color: #fff;            
+        }
+
+        .call-qq{
+            margin-top:.2rem;
+            border-top:1px solid #e4e4e4;
+            text-align: center;
+            width: 10.4rem;
+            margin: 0 auto;
+            font-size: 0;
+        }
+
+        .call-qq .icons{
+            width: 100%;
+            height: auto;
+            margin-top:2rem;
+        }
+
+        .call-qq .comment{
+            font-size: .72rem;
+            color:#333333;
+            margin-top: 2rem;
+        }
+
+        .call-qq .process{
+            width: 100%;
+            height: auto;
+            margin-top: .6rem;
+        }
+
+    </style>
+
+    <script src="./assets/js/common/global.js"></script>
+
+</head>
+<body>
+<div class="wrapper">
+    <div class="call-qq">        
+        <img class="icons" src="./assets/img/vip/gamecenter-qq.jpg" />
+        <div class="comment">正在打开QQ，请耐心等待</div>
+        <img class="process" src="./assets/img/vip/process.gif" />
+    </div>    
+</div>
+
+<script src="./assets/js/common/index.js"></script>
+<script type="text/javascript"> 
+    var url4006299688="mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Fk%3DPuIVEyY06S6h-Pi_2No_pLgMjtqE-huB%26jump_from%3D%26auth%3D"
+
+    
+    setTimeout(function(){
+        invokeLocal("goBack",{"info":{}});
+    }, 3000);
+
+    var f = document.createElement("iframe");
+    f.style.display = "none";
+    document.body.appendChild(f);
+
+    setTimeout(function(){
+        f.src="mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Fk%3DPuIVEyY06S6h-Pi_2No_pLgMjtqE-huB%26jump_from%3D%26auth%3D";
+    }, 1000);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+#content {
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+#content .wrapper {
+    width: 13.48rem;
+    padding-top: 0.71rem;
+    margin: 0 auto;
+}
+#content .coupon {
+    font-size: 0;
+    margin-top: 0.71rem;
+}
+#content .first-coupon {
+    margin-top: 0;
+}
+.balance p {
+    padding: 0;
+    padding-left: 0.57rem;
+    display: inline-block;
+    margin: 0;
+}
+#content .coupon-balance {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    width: 4.81rem;
+    height: 4.54rem;
+    vertical-align: middle;
+   /* background: url("../img/coupon/uneffictive.png");*/
+    background-size: 100%;
+    font-size: 0.44rem;
+}
+
+.coupon-balance .balance {
+    display: inline-block;
+    width: 4.05rem;
+    height: 3.76rem;
+    margin-top: 0.36rem;
+    margin-left: 0.36rem;
+    border: 1px dashed #ffffff;
+    border-radius: 0.08rem;
+    background-color: #cccccc;
+    color: #ffffff;
+}
+.coupon-balance .balance-head {
+    margin-top: 0.88rem;
+}
+.coupon-balance .balance-content {
+   font-size: 1.6rem;
+}
+.coupon-balance .largeValue {
+    font-size: 1.1rem;
+}
+.coupon-balance .littleValue {
+    margin-left: 1.03rem;
+}
+#content .coupon-text {
+    display: inline-block;
+    width:8.65rem;
+    height: 4.56rem;
+    vertical-align: middle;
+    /*background: url("../img/coupon/overdue.png");*/
+    background-size: 100%;
+    font-size:0.44rem;
+    color: #888888;
+}
+ .coupon-head {
+    font-size: 0.56rem;
+     /*margin-top: 0.62rem;*/
+   /*  margin-bottom: 0.52rem;*/
+     padding-left: 0.47rem;
+     line-height: 0.6rem;
+}
+#content .coupon-term {
+    margin-top: 0;
+    margin-bottom:0;
+    padding-left: 0.47rem;
+    font-size: 0.44rem;
+    line-height:0.6rem;
+}

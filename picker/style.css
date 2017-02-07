@@ -1,0 +1,141 @@
+html,body{
+	height: 100%;
+}
+
+body{
+	width: 14.4rem;
+	margin: 0 auto;
+}
+
+.picker{
+	position: fixed;
+	bottom:0;
+	left: 0;
+	width: 100%;
+	
+    background-color: #f4f4f4;
+	overflow: hidden;
+	box-shadow: 1px 0 1px #ccc;
+
+    -webkit-transition-property: -webkit-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+}
+
+.picker.move-in{
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+}
+
+.picker-toolbar{
+	position: relative;
+	line-height: 1.6rem;
+	font-size: .64rem;
+	overflow: hidden;
+	border-bottom:1px solid #eaeaea;
+	background-color: #fff;
+}
+
+.picker-toolbar .title{
+	margin: 0;
+
+	color:#666;
+	line-height: 1.6rem;
+	font-size: .64rem;
+	font-weight: normal;
+	overflow: hidden;
+	text-align: center;
+}
+
+.picker-action{
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 20%;
+	height: 100%;
+
+	color:#00acff;
+	text-decoration: none;
+	text-align: center;
+}
+
+.picker-items{
+	display: -webkit-box;	
+	display: flex;
+	-webkit-box-pack:center;
+	justify-content: center;
+	position: relative;
+
+	text-align: center;
+    -webkit-mask-box-image: -webkit-linear-gradient(bottom, transparent, transparent 5%, white 20%, white 80%, transparent 95%, transparent);
+    -webkit-mask-box-image: linear-gradient(to top, transparent, transparent 5%, white 20%, white 80%, transparent 95%, transparent);
+}
+
+.picker-item-container{
+	-webkit-box-flex:1;
+	flex:1 1 0%;
+    font-size: .72rem;
+    overflow: hidden;
+    position: relative;
+    max-height: 100%;
+}
+
+.picker-items .item{
+	padding:0 .2rem;
+	height: 1.4rem;
+
+	line-height: 1.4rem;
+	font-size: .72rem;
+	color:#666;	
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.picker-items .picker-selected{
+	color:#000;
+}
+
+.picker-center-highlight{
+	content: "";
+    height: 1.4rem;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 50%;
+    margin-top: -.7rem;
+    pointer-events: none;
+}
+
+.picker-center-highlight:before, .picker-center-highlight:after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: #d2caca;
+  display: block;
+  z-index: 15;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+
+.picker-center-highlight:before {
+  left: 0;
+  top: 0;
+  bottom: auto;
+  right: auto;
+}
+
+.picker-center-highlight:after {
+  left: 0;
+  bottom: 0;
+  right: auto;
+  top: auto;
+}

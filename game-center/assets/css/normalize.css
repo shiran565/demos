@@ -7,17 +7,24 @@
  */
 
 html {
-  font-family: sans-serif; /* 1 */
+  font-family: Arial,"Microsoft YaHei"; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
+    background-color: #f4f4f4;
 }
 
+body{
+    width: 14.4rem;
+    margin: 0 auto;
+    overflow-x:hidden; 
+}
 /**
  * Remove default margin.
  */
 
 body {
   margin: 0;
+  width: 14.4rem;
 }
 
 /* HTML5 display definitions

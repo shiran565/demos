@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head lang="cn">
+<head lang="zh_CN">
     <meta charset="UTF-8">
     <title>我的VIP</title>
     <meta name="format-detection" content="telephone=no,address=no,email=no"/>
@@ -9,65 +9,69 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
 
-    <script>
-        (function () {
-            var doc = document;
-            var docEl = doc.documentElement;
-            var metaEl = doc.createElement('meta');
-            var scale = 1 / devicePixelRatio;
-            var deviceWidth = document.documentElement.clientWidth;
-            metaEl.setAttribute('name', 'viewport');
-            metaEl.setAttribute('content', 'width='+deviceWidth*devicePixelRatio+',initial-scale='+scale+', maximum-scale='+scale+', minimum-scale='+scale+', user-scalable=yes');
-            if (docEl.firstElementChild) {
-                document.documentElement.firstElementChild.appendChild(metaEl);
-            } else {
-                var wrap = doc.createElement('div');
-                wrap.appendChild(metaEl);
-                document.write(wrap.innerHTML);
-            }
-
-            window.addEventListener("DOMContentLoaded",function(){
-                document.documentElement.style.fontSize = document.documentElement.clientWidth / 14.4 + 'px';
-            });
-            
-        }());
-
-    </script>
+    <script src="./assets/js/common/global.js"></script>
 
     <link rel="stylesheet" href="./assets/css/normalize.css"/>
     <link rel="stylesheet" href="./assets/css/style.css"/>
 </head>
 <body>
-
-
 <script type="text/html" id="j_template">
-    <section class="mem-info block">
+    <section class="mem-info block long">
         <div class="wrapper">
             <div class="table">
                 <div class="table-cell portrait">
                     <div class="portrait-box">
                         <div class="portrait-mask"></div>
-                        <img class="portrait-img" src="{{vipInfo.avatar}}">
+                        <img class="portrait-img" src="{{vipInfo.smallAvatar}}">
                         <span class="vip-level">{{vipInfo.level}}</span>
                     </div>
                 </div>
                 <div class="table-cell  level">
-                    <h1>{{vipInfo.nickName}}</h1>
+                    <h1>{{vipInfo.nickname}}</h1>
 
-                    <p class="comment">距离VIP{{vipInfo.level+1}}:还需要消耗<span class="orange">20000</span>V钻</p>
+                    {{if vipInfo.level<13}}
+                        <p class="comment">距离VIP{{vipInfo.level+1}}:还需要消耗<span class="orange">{{vipInfo.nextLevelTotal
+                        }}</span>V钻</p>
+                    {{/if}}
 
                     <div class="process-box">
                         <div class="process-bar">
-                            <div class="process-inner" style="width: 85%"></div>
+                            <div class="process-inner" style="width:{{vipInfo.total*100/(vipInfo.total+ vipInfo.nextLevelTotal)}}%"></div>
                         </div>
-                        <p class="comment">8000／10000V钻</p>
+                        <p class="comment">{{vipInfo.total}}／{{vipInfo.total+ vipInfo.nextLevelTotal}}V钻</p>
                         <i class="icon-diamond"></i>
                     </div>
-                    <i class="icon-service"></i>
+                    {{if vipInfo.level>=0}}
+                    <i id="j_service" class="icon-service"></i>
+                    {{/if}}
                 </div>
             </div>
         </div>
     </section>
+
+    {{if vipActivity&&vipActivity.title}}
+        <section class="vip-activity block">
+            <div class="title-box">
+                <h2 class="bg-box">VIP活动</h2>
+            </div>
+            <div class="vip-activity-content">
+                <div class="wrapper">
+                    <img class="app-picture" src="{{vipActivity.icon_url}}" />
+                    <div class="comment-box">
+                        <h3 class="vip-activity-title">{{vipActivity.title}}</h3>                        
+                            <div class="comment">
+                                {{if vipActivity.status == 1}}
+                                    活动已结束
+                                {{else}}
+                                    {{responseTime | formatStartDate:vipActivity.startTime,vipActivity.endTime}}
+                                {{/if}}
+                            </div>
+                        <button id="j_viewActivity" class="button" ac-id="{{vipActivity.id}}">去看看</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {{/if}}
 
     <section class="vip-privileges block">
         <div class="title-box">
@@ -89,7 +93,8 @@
         </div>
 
         {{if (privilege.length>6) }}
-            <div id="j_FoldBar" class="tool-bar"><span class="text-fold">收起</span><span class="text-extend">更多</span><i></i></div>
+        <div id="j_FoldBar" class="tool-bar"><span class="text-fold">收起</span><span class="text-extend">更多</span><i></i>
+        </div>
         {{/if}}
     </section>
 
@@ -111,25 +116,22 @@
                 </tr>
                 </thead>
                 <tbody>
-
                 {{each vipLevelBenefit as vlb i}}
-
-                <tr>
+                <tr level="{{vlb.level}}">
                     <th>VIP{{vlb.level}}</th>
                     <td>≥{{vlb.reqVzAmt}}</td>
                     <td>{{(vlb.ticketValue==0)?'无':vlb.ticketValue}}</td>
                     <td>
                         {{if vlb.hasTaken}}
-                            已领取
+                        已领取
                         {{/if}}
 
-
                         {{if (!vlb.hasTaken)}}
-                            {{if vlb.ticketValue==0}} - {{/if}}
-                            {{if (vlb.ticketValue>0)&&(vlb.level>vipInfo.level)}}未达成{{/if}}
-                            {{if (vlb.ticketValue>0)&&(vlb.level<=vipInfo.level)}}
-                                <button class="btn-red" type="button">领取</button>
-                            {{/if}}
+                        {{if vlb.ticketValue==0}} - {{/if}}
+                        {{if (vlb.ticketValue>0)&&(vlb.level>vipInfo.level)}}未达成{{/if}}
+                        {{if (vlb.ticketValue>0)&&(vlb.level<=vipInfo.level)}}
+                        <button class="btn-red" type="button">领取</button>
+                        {{/if}}
                         {{/if}}
                     </td>
                 </tr>
@@ -138,41 +140,171 @@
                 </tbody>
             </table>
         </div>
-
-
     </section>
 
 </script>
 
+<div id="j_popup" class="popup">
+    <div class="top"><img src="./assets/img/vip/popup-icon.png" /></div>
+    <div class="wrapper">
+        <div class="content">
+            VIP客服QQ：800105105
+        </div>
+        <div class="btn-box">
+            <button class="btn-confirm" type="button">立即交谈</button>
+            <button class="btn-cancel" type="button">取消</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="j_popup-receive" class="popup-receive">
+    <div class="bg-top"><img src="./assets/img/vip/bg-popup.png" /></div>
+    <div class="wrapper">
+        <div class="content">
+            VIP客服QQ：800105105
+        </div>
+        <div class="btn-box">
+            <button class="btn-confirm" type="button">立即交谈</button>
+            <button class="btn-cancel" type="button">取消</button>
+        </div>
+    </div>
+</div>
+
 <script src="./assets/js/zepto/zepto.min.js"></script>
 <script src="./assets/js/template/template.js"></script>
+<script src="./assets/js/common/index.js"></script>
+<script src="./assets/js/cookie/cookie.js"></script>
 <script>
-    $("#j_FoldBar").live("tap", function () {
+
+    //客户端回调方法：检查是否安装QQ
+    function syncInstallStatus(status){
+        if(status){
+            $("#j_popup").fadeIn();
+            if($(".mask").length){
+                $(".mask").fadeIn();
+            }else{
+                $(document.body).append("<div class='mask'>")
+            }
+        }else{            
+            if (typeof webToastShow == "function") {
+                webToastShow("请先安装手机QQ");
+            }
+        }
+    }
+
+    $(document).on("tap","#j_viewActivity",function () {
+         var id = $(this).attr("ac-id");
+
+        invokeLocal("jumpTo",{"info":{
+                "relativeType": "3",
+                "relative": {
+                    "id": id,  //id为活动号，当id为小于等于0时跳活动详情；
+                }
+            }});
+
+    })
+
+    //“立即交谈”、“取消”按钮事件
+    $(document).on("tap","#j_popup button",function () {        
+        if($(this).hasClass("btn-confirm")){
+            location.href = "./call-qq.html";
+        } else{
+            $("#j_popup").hide();
+            if($(".mask").length){
+                $(".mask").hide();
+            }
+        }
+    })
+
+    //VIP特权折叠展开
+    $(document).on("tap","#j_FoldBar", function() {
         $("#j_listBox").toggleClass("extended");
         $(this).toggleClass("extended")
     });
+ 
+    document.cookie = "n=880461d865bd98c5";
+    document.cookie = "r=MTliMDBmNWE4ZGJiYjBkNWQxMGEuNTI1OTI3NS4xNDUzNDY2Mjg3NDY4";
 
-    $(function(){
-        var data = {"result":true,"vipInfo":{"avatar":"http://192.168.2.222/shequ/20151124/64db7c4cc80f41998cb9b6374e2ebe43.jpg","nickName":"哈喽","level":12,"total":267677,"nextLevelTotal":232323},"privilege":[{"icon":"http://113.98.231.125:8088/appstore/upload/vip/201511/201511262019443760.png","title":"特权1","remark":"特权1"},{"icon":"http://113.98.231.125:8088/appstore/upload/vip/201511/201511262019536924.png","title":"特权2","remark":"特权2"},{"icon":"http://113.98.231.125:8088/appstore/upload/vip/201511/201511262020025776.png","title":"特权3","remark":"特权3"},{"icon":"http://113.98.231.125:8088/appstore/upload/vip/201511/201511262020115940.png","title":"特权4","remark":"特权4"},{"icon":"http://113.98.231.125:8088/appstore/upload/vip/201511/201511262020204405.png","title":"特权5","remark":"特权5"},{"icon":"http://113.98.231.125:8088/appstore/upload/vip/201511/201511262020296358.png","title":"特权6","remark":"特权6"}],"vipLevelBenefit":[{"level":1,"reqVzAmt":1,"ticketValue":0,"hasTaken":false},{"level":2,"reqVzAmt":100,"ticketValue":0,"hasTaken":false},{"level":3,"reqVzAmt":200,"ticketValue":0,"hasTaken":false},{"level":4,"reqVzAmt":500,"ticketValue":10,"hasTaken":false},{"level":5,"reqVzAmt":1000,"ticketValue":30,"hasTaken":false},{"level":6,"reqVzAmt":2000,"ticketValue":50,"hasTaken":false},{"level":7,"reqVzAmt":5000,"ticketValue":100,"hasTaken":false},{"level":8,"reqVzAmt":10000,"ticketValue":150,"hasTaken":false},{"level":9,"reqVzAmt":20000,"ticketValue":150,"hasTaken":false},{"level":10,"reqVzAmt":50000,"ticketValue":200,"hasTaken":false},{"level":11,"reqVzAmt":100000,"ticketValue":300,"hasTaken":false},{"level":12,"reqVzAmt":200000,"ticketValue":500,"hasTaken":false},{"level":13,"reqVzAmt":500000,"ticketValue":1000,"hasTaken":false}]}
+    $(function () {
+        //初始化页面数据
+        var url = "http://192.168.2.234:1261/vip/myVip";
+        $.getJSON(url,
+            {
+                openid: $.cookie("n"), 
+                token: $.cookie("r")
+            },
+            function (data) {
+                if (data.result) {
+                    template.config("escape",false);
 
+                    //根据开始、结束时间返回特定内容
+                    template.helper(
+                        "formatStartDate",
+                        function (now,startTime,endTime){
+                            var hh,mm,
+                                start = startTime-now;
+                                end = endTime-now;
+                            //大于1天
+                            if(start >= (24*3600*1000) ){
+                                return "距离开始<em>"+Math.floor(start/(24*3600*1000))+"</em>天";
+                            }else if(start > 0){
+                                //不足一天
+                                hh = Math.floor(start/(3600*1000));
+                                mm = Math.ceil((start%(3600*1000))/(60*1000));
+                                return "距离开始<em>"+(hh>10?hh:("0"+hh))+"</em>:<em>"+(mm>10?mm:("0"+mm))+"</em>";
 
-        $(document.body).prepend(template("j_template", data));
-
-        $.getJSON("http://172.20.199.13:8090/vip/myVip?openid=9b5b106236f4bfcb&token=OTRmZWI3ODVhNDU1ZDk0OGExNDAuMTAwMDA1MzkuMTQ0Nzc2NTgyNTc5NQ==",{},function(data){
-            if(data.result){
-                $(document.body).prepend(template("j_template", data));
-            }
-        })
+                            }else if(end >= (24*3600*1000)){
+                                return "距离结束<em>"+Math.floor(end/(24*3600*1000))+"</em>天";
+                            }else if(end>0){
+                                //不足一天
+                                hh = Math.floor(start/(3600*1000));
+                                mm = Math.ceil((start%(3600*1000))/(60*1000));
+                                return "距离结束<em>"+(hh>10?hh:("0"+hh))+"</em>:<em>"+(mm>10?mm:("0"+mm))+"</em>";
+                            }else{
+                                return "活动已结束";
+                            }
+                        });
+                    $(document.body).prepend(template("j_template", data));
+                }
+                else {
+                    webToastShow(data.errMsg);
+                }
+            });
     });
 
-    $("#j_dataTable .btn-red").live("tap", function () {
-        alert("领取成功");
+    //vip活动开始时间格式化工具
 
+    //点击客服按钮
+    $(document).on("tap","#j_service", function () {
+        //调用native检查是否安装QQ
+        if(typeof invokeLocal == "function"){
+            invokeLocal("QueryAppInstallStatus",{
+                "info":{
+                    "packageName":"com.tencent.mobileqq"
+                }
+            });
+        }
+    });
+
+    $(document).on("tap","#j_dataTable .btn-red", function () {
+        var that = this;
+        var level = $(this).closest("tr").attr("level");
         //ajax 请求领取
+        var url = "http://192.168.2.230:1266/vip/getVipBenefitTicket";
+        $.getJSON(url,
+                {openid: $.cookie("n"), token: $.cookie("r"), level: level},
+                function (data) {
+                    if (data.result) {
+                        $(that).parent().html("已领取");
+                    } else {
+                        webToastShow(data.errMsg);
+                    }
+                })
 
-
-        $(this).parent().html("已领取");
     });
+
+
 
 </script>
 

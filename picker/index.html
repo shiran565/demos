@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="format-detection" content="telephone=no,address=no,email=no"/>
+    <meta name="mobileOptimized" content="width"/>
+    <meta name="handheldFriendly" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>Picker</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=yes">
+
+    <link rel="stylesheet" href="../browser/assets/css/normalize.css"/>
+    <link rel="stylesheet" href="./style.css"/>
+
+    <script type="text/javascript">
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 14.4 + "px";
+    </script>
+
+</head>
+<body>
+<div class="item-content">
+    <div class="item-inner">
+      <div class="item-title label">省市区</div>
+      <div class="item-input">
+        <input type="text" placeholder="省市区" value="江苏 南京 建邺区" id="city-picker">
+      </div>
+    </div>
+  </div>
+
+  <div class="item-content">
+    <div class="item-inner">
+      <div class="item-title label">出生日期</div>
+      <div class="item-input">
+        <input type="text" placeholder="出生日期" value="1989-07-10" id="date-picker">
+      </div>
+    </div>
+  </div>
+
+  <div class="area-linkage" id="area-linkage">      
+        <select data-level-index="0" name="province"></select>
+        <select data-level-index="1" name="city"></select>
+        <select data-level-index="2" name="area"></select>
+  </div>
+
+<script src="./zepto.min.js"></script>
+<script src="./picker.js"></script>
+<script src="./area-picker.js"></script>
+<script src="./area-linkage.js"></script>
+<script src="./date-picker.js"></script>
+<script src="./index.js"></script>
+</body>
+</html>
