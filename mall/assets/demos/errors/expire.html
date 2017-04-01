@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn">
+    <meta charset="UTF-8">
+    <title>活动过已过期</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no,address=no,email=no"/>
+    <meta name="mobileOptimized" content="width"/>
+    <meta name="handheldFriendly" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <script>
+        //根据设备宽度调整html元素的font-size属性（即1rem的值）
+        function initRem() {
+            var deviceWidth = document.documentElement.clientWidth;
+
+            if (deviceWidth > 540) deviceWidth = 540;
+            if (deviceWidth < 320) deviceWidth = 320;
+
+            document.documentElement.style.fontSize = deviceWidth / 7.2 + 'px';
+
+            //兼容UC浏览器
+            if (navigator.userAgent.indexOf("UCBrowser") >= 0) {
+                if (document.body) {
+                    location.reload();
+                }
+            }
+        }
+        initRem();
+
+    </script>
+    <link rel="stylesheet" href="../../css/base/normalize.css">
+    <style>
+        body{
+            background-color: #f2f2f2;
+        }
+
+        .red{
+            color:#fe5152 !important;
+        }
+
+        .error-box{
+            margin-top: 2.6rem;
+            color:#4a4a4a;
+            text-align: center;
+        }
+
+        .error-box > img{
+            width: 2.6rem;
+            margin-top: 1rem;
+        }
+
+
+        .error-box .comment{
+            font-size: .2933rem;
+            font-weight: normal;
+            color:#888;
+            margin: .2rem 0 1rem;
+            margin: .1rem 0;
+        }
+
+        .error-box a{
+            display: inline-block;
+            width: 3.8rem;
+            height:.72rem;
+            line-height: .72rem;
+            font-size: .35rem;
+            text-decoration: none;
+            border: 2px solid #008bd1;
+            border-radius:.07rem;
+            color:#008bd1;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="error-box">
+        <img src="../../images/common/clock.png" />
+        <p class="comment">活动已过期</p>
+        <p class="comment">请稍等，<span id="j_CountDownNum" class="red">5</span>秒后自行跳转首页</p>
+        <a href="../home/index.html">返回首页</a>
+    </div>
+
+<script src="../../js/plugins/zepto/zepto.js"></script>
+<script>
+    var time = 5;
+    function cutdown() {
+        setTimeout(function () {
+            if (time === 0) {
+                window.location.href =  "../home/index.html";
+                return;
+            }
+
+            $("#j_CountDownNum").text(time--);
+            cutdown();
+        }, 1000);
+    }
+
+    cutdown();
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh_cn">
+    <meta charset="UTF-8">
+    <title>vivo x9/x9plus新品发布盛典</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no,address=no,email=no"/>
+    <meta name="mobileOptimized" content="width"/>
+    <meta name="handheldFriendly" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <script>
+        document.documentElement.style.fontSize = document.documentElement.clientWidth /14.4 + "px";
+    </script>
+    <link rel="stylesheet" href="../../css/base/normalize.css">
+    <link rel="stylesheet" href="./online.css" />
+</head>
+<body>
+
+<header style="margin-top: 8rem">
+    <div id="j_down-count" class="down-count">
+        <div class="wrapper">
+            <span class="numbers days"></span>天
+            <span class="numbers hours"></span>时
+            <span class="numbers minutes"></span>分
+            <span class="numbers seconds"></span>秒
+        </div>
+    </div>
+
+</header>
+<section class="video">
+    <div id="j_videoContainer" class="container">
+        <iframe height=100% width=100% src='http://player.youku.com/embed/XMTc3MzM3MzY1Ng==' frameborder=0 allowfullscreen></iframe>
+        <span id="j_fullScreen" class="icon-full-screen"></span>
+    </div>
+</section>
+
+<section class="user-interaction">
+    <div class="wrapper">
+        <ul id="j_share" class="share-container">
+            <li class="weibo" data-type="weibo">微博</li>
+            <li class="qzone" data-type="qzone">qq空间</li>
+            <li class="qq" data-type="qq">qq</li>
+        </ul>
+    </div>
+</section>
+
+<section style="margin-top: 20rem;">
+    <button id="j_sendMsg">发短信</button>
+</section>
+
+
+<script src="../../js/plugins/zepto/zepto.js"></script>
+<script src="../../js/plugins/zepto/extends/fx.js"></script>
+<script src="../../js/plugins/zepto/extends/fx_methods.js"></script>
+<script src="../../js/plugins/dialog/dialog.js"></script>
+<script src="./downCount.js"></script>
+<script src="./index.js"></script>
+
+
+</body>
+</html>

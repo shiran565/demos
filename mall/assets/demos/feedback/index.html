@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>意见反馈</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no,address=no,email=no"/>
+    <meta name="mobileOptimized" content="width"/>
+    <meta name="handheldFriendly" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <script src="../../js/project/common/global.js"></script>
+    <link rel="stylesheet" href="../../css/base/normalize.css">
+    <link rel="stylesheet" href="../../css/base/layout.css">
+    <link rel="stylesheet" href="../../css/web-pages/feedback/index.css">
+</head>
+<body class="no-footer">
+<header id="header">
+    <div class="wrapper">
+        <a href="javascript:;" class="hd-link-back"><img src="../../images/common/icon-header-back.png"></a>
+
+        <h1>意见反馈</h1>
+        <ul class="hd-links-right">
+            <li class="hd-link home"><a href="${webCtx}/"><img src="../../images/common/icon-header-home.png"></a></li>
+        </ul>
+    </div>
+</header>
+<main id="content">
+    <div class="problem-wrapper">
+        <div class="problem">
+            <p>请选择问题类型</p>
+            <select>
+                <option disabled="disabled" selected="selected">请选择问题类型</option>
+                <option>购物流程（页面浏览、下单、支付等）</option>
+                <option>服务问题（物流时效、客服态度、退换货、售后维修等）</option>
+                <option>商品质量（手机、配件问题）</option>
+                <option>优化建议（活动、服务、购物体验等）</option>
+                <option>其他问题</option>
+            </select>
+        </div>
+    </div>
+    <div class="input-wrapper">
+        <textarea maxlength="200" placeholder="请输入您的建议或具体问题，我们将不断改进。"></textarea>
+        <input type="text" class="contact-way" maxlength="50" placeholder="邮箱或vivo账户 (选填)">
+        <a class="change-code">看不清，换一张</a>
+        <img class="code" src="">
+        <input type="text" class="code-input" placeholder="输入右侧验证码">
+        <p class="error">请输入正确的信息</p>
+    </div>
+    <div class="fixed-btn-wrapper">
+        <button>提交</button>
+    </div>
+</main>
+</body>
+</html>

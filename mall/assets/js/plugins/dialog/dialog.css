@@ -1,0 +1,107 @@
+.popup-dialog{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: none;
+    z-index: 99;
+    background: rgba(0,0,0,0.7);
+}
+
+.popup-dialog .table{
+    display: table;
+    width: 100%;
+    height:100%;
+}
+
+.popup-dialog .dialog-wrapper{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.dialog-container{
+    position: relative;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 6.4rem;
+    padding:.47rem .4rem;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px #333;
+    z-index:100;
+}
+
+.dialog-title{
+    margin: .1rem 0 .47rem;
+    font-size: .33rem;
+    line-height: 1;
+    color:#333333;
+    text-align: center;
+}
+
+.dialog-content{
+    font-size: 0;
+    text-align: center;
+}
+
+.dialog-content > p{
+    margin: .1rem;
+    font-size: .293rem;
+    line-height: 1.5;
+    color:#585858;
+    text-align: center;
+}
+
+.dialog-container .btn{
+    width: 2.63rem;
+    height:.66rem;
+    margin-top:.2rem;
+    border-radius: .0533rem;
+    font-size: .32rem;
+    border: 2px solid #dcdcdc;
+}
+
+.dialog-container .btn-confirm{
+    margin-left: .333rem;
+    background-color: #35abe2;
+    border-color: #35abe2;
+    color:#ffffff;
+}
+
+.dialog-container .btn-cancel{
+    color:#666666;
+    background-color: #ffffff;
+}
+
+.appointment .dialog-form-item{
+    text-align: center;
+}
+.appointment input.full{
+    box-sizing: border-box;
+    padding: .05rem .1rem;
+    font-size: .293rem;
+    width: 5.6rem;
+    height:.6667rem;
+    border: 1px solid #dcdcdc;
+    border-radius: .07rem;
+}
+
+.appointment .close{
+    position:absolute;
+    width:.4rem;
+    height:.4rem;
+    top:.2rem;
+    right:.2rem;
+}
+
+.appointment .prompt{
+    font-size:.2667rem;
+}
+
+.appointment .prompt img{
+    display:inline-block;
+    width:.32rem;
+    vertical-align: text-bottom;
+}
+

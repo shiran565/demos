@@ -1,0 +1,26 @@
+#content {
+    margin-top: .18rem;
+    padding: .1rem .3rem .6rem .3rem;
+    overflow: hidden;
+    background-color: white;
+}
+
+#content dt {
+    padding-top: .15rem;
+    color: #333;
+    font-size: .32rem;
+    font-weight: normal;
+    line-height: 250%;
+}
+
+#content dd {
+    margin: 0;
+    color: #666;
+    font-size: .28rem;
+    line-height: 200%;
+    text-align: justify;
+}
+
+#content .strong {
+    color: red;
+}

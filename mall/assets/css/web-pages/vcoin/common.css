@@ -1,0 +1,689 @@
+p {
+    margin: 0;
+}
+
+.mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.mask .table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.mask .table-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/*V币商品详情页*/
+.prod-base-info {
+    position: relative;
+    margin-bottom: .16rem;
+    padding: .21rem .31rem 0;
+    line-height: 1;
+    border-bottom: 1px solid #e7e9ea;
+    background-color: #fff;
+}
+
+.prod-base-info .img-wrapper {
+    position: relative;
+    text-align: center;
+}
+
+.prod-base-info .img-wrapper img {
+    vertical-align: top;
+    width: 5.5rem;
+    height: 5.5rem;
+}
+
+.prod-base-info .exchange-num {
+    position: absolute;
+    right: .31rem;
+    bottom: .49rem;
+    font-size: .23rem;
+    color:#858585;
+}
+
+.prod-base-info .prod-name {
+    margin: .3rem 0 0;
+    padding-bottom: .24rem;
+    color: #000;
+    font-size: .37rem;
+    line-height: 1;
+    font-weight: normal;
+}
+
+.prod-base-info .period-validity {
+    margin: 0;
+    color: #858585;
+    font-size: .23rem;
+    line-height: 1.5;
+}
+
+.prod-base-info .period-validity span {
+    color: #008cd6;
+}
+
+.prod-base-info .price {
+    margin: 0;
+    padding: .47rem 0 .49rem;
+    color: #858585;
+    font-size: .27rem;
+    line-height: 1;
+}
+
+.prod-base-info .current-price{
+    color: #f04042;
+    font-size: .48rem;
+}
+
+.prod-base-info .exchange-time {
+    margin: 0 -.31rem;
+    padding: .23rem .31rem;
+    color: #666;
+    font-size: .2667rem;
+    line-height: .32rem;
+    background-color: #f0f8fd;
+}
+
+.prod-base-info .exchange-time::before {
+    content: "";
+    display: inline-block;
+    vertical-align: top;
+    margin-right: .08rem;
+    width: .32rem;
+    height: .32rem;
+    background: center center no-repeat url("../../../images/vcoin/icon-clock.png");
+    background-size: 100% 100%;
+}
+
+.prod-detail-info {
+    padding-bottom: 1rem;
+    font-size: .2667rem;
+}
+
+.prod-detail-info img {
+    vertical-align: top;
+    width: 100%;
+}
+
+.prod-detail-info h1,
+.prod-detail-info h2,
+.prod-detail-info h3 {
+    margin: 0;
+    font-weight: normal;
+    text-align: justify;
+}
+
+.prod-detail-info h1 {
+    font-size: .4rem;
+}
+
+.prod-detail-info h2 {
+    font-size: .34rem;
+}
+
+.prod-detail-info h3 {
+    font-size: .3rem;
+}
+
+.fixed-btn-wrapper {
+    position: fixed;
+    z-index: 9;
+    bottom: 0;
+    width: 100%;
+    height:1rem;
+    box-sizing: border-box;
+    max-width: 7.2rem;
+    font-size: 0;
+    text-align: center;
+    background-color: #fe5152;
+}
+
+.fixed-btn-wrapper button {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: .35rem;
+    outline: none;
+    border: none;
+    background-color: #fe5152;
+}
+
+.fixed-btn-wrapper button.disabled {
+    background-color: #dadada;
+}
+
+.detail-vcoin {
+    display: none;
+    z-index: 10;
+}
+
+.detail-vcoin .content-box {
+    position: relative;
+    margin: 0 auto;
+    padding: .15rem .4rem .48rem;
+    width: 5.6rem;
+    text-align: center;
+    border-radius: .03rem;
+    background-color: #fff;
+}
+
+.detail-vcoin .close {
+    position: absolute;
+    right: .18rem;
+    top: .18rem;
+    width: .33rem;
+    height: .33rem;
+    background: center center no-repeat url("../../../images/prod/close.png");
+    background-size: 100% 100%;
+}
+
+.detail-vcoin img {
+    vertical-align: top;
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+.detail-vcoin .name {
+    margin: 0;
+    padding-top: .13rem;
+    color: #000;
+    font-size: .3333rem;
+    line-height: 1;
+}
+
+.detail-vcoin .price {
+    margin: 0;
+    padding-top: .18rem;
+    color: #666;
+    font-size: .2667rem;
+    line-height: 1;
+}
+
+.detail-vcoin .price span {
+    color: #fe5152;
+}
+
+.detail-vcoin form {
+    padding: .24rem 0 0;
+    font-size: 0;
+}
+
+.detail-vcoin input {
+    box-sizing: border-box;
+    display: block;
+    margin-top: .14rem;
+    padding: 0 .12rem;
+    width: 100%;
+    color: #b7b7b7;
+    font-size: .2933rem;
+    line-height: .64rem;
+    border-radius: .05rem;
+    border: 1px solid #dcdcdc;
+}
+
+.detail-vcoin button {
+    vertical-align: top;
+    margin-top: .29rem;
+    color: #fff;
+    font-size: .32rem;
+    width: 2.63rem;
+    height: .67rem;
+    outline: none;
+    border: none;
+    border-radius: .05rem;
+    background-color: #35abe2;
+}
+
+/*实体商品兑换页*/
+.address-box {
+    display: inline-block;
+    vertical-align: top;
+    margin: .18rem 0;
+    padding: .38rem 0 .34rem;
+    width: 100%;
+    font-size: 0;
+    white-space: nowrap;
+    background: center center no-repeat url("../../../images/vcoin/vcoin-address-bg.png");
+    background-size: 100% 100%;
+}
+
+.address-icon {
+    vertical-align: middle;
+    margin: 0 .31rem;
+    width: .36rem;
+    height: .53rem;
+}
+
+.address-info {
+    display: inline-block;
+    vertical-align: middle;
+    width: 5.3rem;
+}
+
+.address-box .prompt-title {
+    padding: .12rem 0 .08rem;
+    color: #333;
+    font-size: .32rem;
+    line-height: 1;
+}
+
+.address-box .prompt-text {
+    padding-bottom: .15rem;
+    color: #888;
+    font-size: .2667rem;
+    line-height: 1;
+}
+
+.address-box .receiver-telephone {
+    float: right;
+    color: #333;
+    font-size: .32rem;
+    line-height: 1;
+}
+
+.address-box .receiver-telephone::before {
+    content: "";
+    display: inline-block;
+    vertical-align: top;
+    margin: -.06rem .03rem;
+    width: .33rem;
+    height: .45rem;
+    background: center center no-repeat url("../../../images/vcoin/icon-telephone.png");
+    background-size: 100% 100%;
+}
+
+.address-box .receiver-name {
+    color: #333;
+    font-size: .32rem;
+    line-height: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.address-box .receiver-address {
+    padding-top: .12rem;
+    color: #666;
+    font-size: .2933rem;
+    line-height: .35rem;
+    text-align: justify;
+    white-space: normal;
+    word-break: break-all;
+}
+
+.address-box .img-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+    width: .9rem;
+    line-height: .9rem;
+    text-align: center;
+}
+
+.address-box .img-wrapper img {
+    vertical-align: middle;
+    width: .2rem;
+    height: .36rem;
+}
+
+.prod-box {
+    padding: .39rem 0;
+    height: rem;
+    font-size: 0;
+    background-color: #fff;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.prod-box img {
+    vertical-align: middle;
+    margin: 0 .31rem;
+    width: 1.44rem;
+    height: 1.44rem;
+    border: 1px solid #dcdcdc;
+}
+
+.prod-box .prod-info {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.prod-box .prod-name {
+    color: #000;
+    font-size: .32rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.prod-box .prod-price {
+    padding-top: .16rem;
+    color: #666;
+    font-size: .2667rem;
+}
+
+.prod-box .prod-price span {
+    color: #008cd6;
+}
+
+.fixed-btn-wrapper.address {
+    background-color: #fafafa;
+}
+
+/*我的兑换和V币流水页*/
+.banner {
+    position: relative;
+    padding: .55rem 0 .53rem;
+    text-align: center;
+    background: center center no-repeat url("../../../images/vcoin/banner-bg.png");
+    background-size: 100% 100%;
+}
+
+.banner .help {
+    position: absolute;
+    top: .22rem;
+    right: .32rem;
+    width: .4rem;
+    height: .4rem;
+    background: center center no-repeat url("../../../images/vcoin/icon-help.png");
+    background-size: 100% 100%;
+}
+
+.banner .vcoin-text {
+    color: #fff;
+    font-size: .3411rem;
+    line-height: 1;
+}
+
+.banner .vcoin-text::before {
+    content: "";
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 .06rem 0 0;
+    width: .31rem;
+    height: .31rem;
+    background: center center no-repeat url("../../../images/vcoin/icon-vcoin.png");
+    background-size: 100% 100%;
+}
+
+.banner .vcoin-balance {
+    padding-top: .12rem;
+    color: #fff;
+    font-size: .5581rem;
+    line-height: 1;
+}
+
+.tab {
+    font-size: 0;
+    white-space: nowrap;
+    background-color: #fff;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.tab .tab-item {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    color: #666;
+    font-size: .2933rem;
+    line-height: .86rem;
+    text-align: center;
+}
+
+.tab .tab-item::after {
+    content: "";
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: .05rem;
+    background-color: #00a9ff;
+}
+
+.tab .active {
+    color: #008bd2;
+}
+
+.tab .active::after {
+    display: block;
+}
+
+.exchange {
+    margin-top: .18rem;
+    background-color: #fff;
+    border-top: 1px solid #ededed;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.exchange .status {
+    float: right;
+    margin-right: .32rem;
+    color: #008cd6;
+    font-size: .2667rem;
+    line-height: .84rem;
+}
+
+.exchange .exchange-num {
+    padding-left: .32rem;
+    color: #000;
+    font-size: .2667rem;
+    line-height: .84rem;
+}
+
+.exchange img {
+    float: left;
+    margin: .27rem 0 0 .32rem;
+    width: 1.45rem;
+    height: 1.45rem;
+    border: 1px solid #e3e3e3;
+}
+
+.exchange .prod-info {
+    padding: .26rem .32rem .26rem 2.08rem;
+    border-top: 1px solid #efefef;
+}
+
+.exchange .prod-num {
+    float: right;
+    padding: .15rem 0 0 .1rem;
+    color: #a2a2a2;
+    font-size: .32rem;
+    line-height: 1;
+}
+
+.exchange .prod-name {
+    padding: .15rem 0 .14rem;
+    color: #000;
+    font-size: .32rem;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.exchange .prod-price {
+    padding-bottom: .18rem;
+    color: #008cd6;
+    font-size: .32rem;
+    line-height: 1;
+}
+
+.exchange .exchange-time {
+    color: #a2a2a2;
+    font-size: .2667rem;
+    line-height: 1;
+}
+
+.exchange .user, .exchange .user-address {
+    padding: .22rem .32rem;
+    color: #a2a2a2;
+    font-size: .24rem;
+    line-height: 1;
+}
+
+.exchange .user {
+    border-top: 1px solid #f1f1f1;
+}
+
+.exchange .user-address {
+    margin-top: -.12rem;
+    padding: 0 .32rem .22rem;
+}
+
+.bill-list {
+    display: none;
+}
+
+.bill {
+    padding: .25rem .31rem;
+    line-height: 1;
+    background-color: #fff;
+    border-top: 1px solid #e8e8e8;
+}
+
+.bill:first-child {
+    margin-top: .18rem;
+    border-top: none;
+}
+
+.bill .prod-price {
+    float: right;
+    color: #008bd2;
+    font-size: .3067rem;
+}
+
+.bill .prod-price.add {
+    color: #fd4f50;
+}
+
+.bill .operation {
+    padding-bottom: .2rem;
+    color: #353535;
+    font-size: .2934rem;
+    line-height: .3067rem;
+}
+
+.bill .balance {
+    float: right;
+    color: #a0a0a0;
+    font-size: .2667rem;
+}
+
+.bill .operation-time {
+    color: #a0a0a0;
+    font-size: .2534rem;
+    line-height: .2667rem;
+}
+
+.exchange-default {
+    padding: .76rem 0 .65rem;
+    text-align: center;
+    background-color: #fff;
+}
+
+.exchange-default img {
+    vertical-align: top;
+    width: 2.05rem;
+    height: 1.8rem;
+}
+
+.exchange-default p {
+    padding-top: .05rem;
+    color: #b2b2b2;
+    font-size: .2667rem;
+}
+
+.bill-default {
+    padding: .85rem 0 .68rem;
+    text-align: center;
+    background-color: #fff;
+}
+
+.bill-default img {
+    vertical-align: top;
+    width: 1.74rem;
+    height: 1.51rem;
+}
+
+.bill-default p {
+    padding-top: .2rem;
+    color: #b2b2b2;
+    font-size: .2667rem;
+}
+
+.bigpic-mask {
+    display: none;
+    position: fixed;
+    z-index: 20;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #000;
+}
+
+.bigpic-mask.place {
+    display: block;
+    visibility: hidden;
+}
+
+.bigpicNumber {
+    position: absolute;
+    z-index: 9;
+    top: .5rem;
+    left: 50%;
+    margin: 0;
+    color: #707070;
+    font-size: .3rem;
+    line-height: .38rem;
+    transform: translateX(-50%);
+}
+
+.bigpicNumber span {
+    color: #fff;
+    font-size: .38rem;
+}
+
+.bigpic-mask.crosswise .bigpicNumber {
+    top: .25rem;
+    font-size: .2rem;
+    line-height: .26rem;
+}
+
+.bigpic-mask.crosswise .bigpicNumber span {
+    font-size: .26rem;
+}
+
+.bigpic-swipe,
+.bigpic-swipe .swipe-wrapper,
+.bigpic-swipe .swipe-item,
+.bigpic-swipe .pinch-zoom-container,
+.bigpicWrapper {
+    height: 100% !important;
+}
+
+.bigpicWrapper {
+    width: 100%;
+    font-size: 0;
+    text-align: center;
+}
+
+.bigpicWrapper img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}

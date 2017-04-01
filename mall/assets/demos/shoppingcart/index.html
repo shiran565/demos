@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn">
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no,address=no,email=no"/>
+    <meta name="mobileOptimized" content="width"/>
+    <meta name="handheldFriendly" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <script src="../../js/project/common/global.js"></script>
+    <link rel="stylesheet" href="../../css/base/normalize.css">
+    <link rel="stylesheet" href="../../css/base/layout.css">
+    <link rel="stylesheet" href="../../js/plugins/dialog/dialog.css">
+    <link rel="stylesheet" href="../../css/base/pages-normal.css">
+</head>
+<body class="no-footer">
+<header id="header">
+    <div class="wrapper">
+        <a href="javascript:;" class="hd-link-back"><img src="../../images/common/icon-header-back.png"></a>
+
+        <h1>购物车</h1>
+        <ul class="hd-links-right">
+            <li class="hd-link home"><a href="../home/index.html"><img
+                    src="../../images/common/icon-header-home.png"></a></li>
+        </ul>
+    </div>
+</header>
+
+<main id="content">
+
+    <form action="../orders/index.html">
+
+        <ul class="sp-list cf">
+            <li class="list-item">
+                <div class="wrapper">
+                    <div class="table">
+                        <div class="select-box item-cell"><label class="icon-checkbox checked"></label></div>
+                        <div class="image-box item-cell"><img src="../../images/temp/list-prod-1.jpg"><label
+                                class="tip">仅剩2件</label></div>
+                        <div class="info-box item-cell">
+                            <h2>X5ProD（3G运存版）</h2>
+
+                            <p>颜色：极昼白 单价：<span class="blue"><dfn>&yen;</dfn>9999.99</span></p>
+                            <div></div>
+                            <div class="number">
+                                <label class="left">-</label><input type="number"/><label class="right">+</label>
+                                <div class="operator-box">
+                                    <a href="javascript:;"><img src="../../images/common/icon-delete.png"/></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+
+            <li class="list-item disabled">
+                <div class="wrapper">
+                    <p class="error-info">对不起，该商品已下架</p>
+
+                    <div class="table">
+                        <div class="select-box item-cell"><label class="icon-checkbox"></label></div>
+                        <div class="image-box item-cell"><img src="../../images/temp/list-prod-1.jpg"><label
+                                class="tip">商品无库存</label></div>
+                        <div class="info-box item-cell">
+                            <h2>X5ProD（3G运存版）</h2>
+
+                            <p>颜色：极昼白 单价：<span class="blue"><dfn>&yen;</dfn>9999.99</span></p>
+
+                            <div class="number"><label class="left">-</label><input type="number"/><label class="right">+</label>
+                                <div class="operator-box">
+                                    <a href="javascript:;"><img src="../../images/common/icon-delete.png"/></a>
+                                </div>
+                            </div>
+                            <div class="attachment gift">
+                                <div class="title"><label>赠品</label>：</div>
+                                <div class="content">
+                                    <ul>
+                                        <li>Xshot 贴膜</li>
+                                        <li>蓝牙耳机</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="attachment service">
+                                <div class="title"><label>服务</label>：</div>
+                                <div class="content">
+                                    <ul>
+                                        <li>碎屏险 <dfn>&yen;</dfn>288</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+
+        <section class="sp-total">
+            <div class="table">
+                <div style="width: 1.5rem;">
+                    <i class="icon-checkbox blue all-select"></i><label class="label-check-all">全选</label>
+                </div>
+                <div style="width:3.4rem">
+                    <p class="label-price">订单总金额：<span class="red"><dfn>¥</dfn><span id="total-amount">0.00</span></span></p>
+                </div>
+                <div style="width: 2.11rem">
+                    <button id="go-balance">去结算</button>
+                </div>
+            </div>
+        </section>
+
+    </form>
+
+</main>
+
+
+
+</body>
+</html>

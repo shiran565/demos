@@ -1,0 +1,221 @@
+html {
+  background-color: #f4f4f4;
+}
+body {
+  padding-bottom: 0;
+}
+
+#content{
+  position: relative;
+  padding-bottom: 1.24rem;
+  min-height: 10rem;
+}
+#content > ul {
+  background-color: #f4f4f4;
+}
+#content .container {
+  padding: 0 .3rem .42rem .3rem;
+  margin-top: .18rem;
+  background-color: white;
+}
+#content .container.first {
+  margin-top: 0;
+}
+#content h1,
+#content p {
+  margin: 0;
+}
+#content .product {
+  padding-top: .3rem;
+  font-size: 0;
+}
+#content .product .left {
+  display: inline-block;
+  margin-right: .36rem;
+  vertical-align: top;
+}
+#content .product img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+#content .product .right {
+  display: inline-block;
+  vertical-align: top;
+}
+#content .product h1 {
+  margin-bottom: .12rem;
+  max-width: 4.65rem;
+  font-size: .33rem;
+  font-weight: normal;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+#content .product strong {
+  display: inline-block;
+  width: .73rem;
+  line-height: .37rem;
+  color: white;
+  font-weight: normal;
+  text-align: center;
+  border-radius: .047rem;
+  background-color: #ffa200;
+}
+#content .product p {
+  display: inline-block;
+  vertical-align: top;
+  color: #666;
+  font-size: .3rem;
+  line-height: 150%;
+}
+#content .product ul {
+  display: inline-block;
+  vertical-align: top;
+  color: #888;
+  font-size: .3rem;
+  line-height: 150%;
+}
+#content .product .service ul {
+  margin-left: .1rem;
+}
+#content .product li {
+  margin-bottom: .08rem;
+  max-width: 3.65rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+#content .grade {
+  padding: .12rem .5rem .12rem 0;
+  border-bottom: 1px solid #dcdcdc;
+}
+#content .grade dl {
+  overflow: hidden;
+}
+#content .grade dt {
+  float: left;
+  margin: .22rem 0 .14rem 0;
+  color: #333;
+  font-size: .3rem;
+  line-height: .43rem;
+}
+#content .grade dd {
+  float: right;
+  width: .45rem;
+  height: .45rem;
+  margin: .18rem 0 .18rem .28rem;
+  cursor: pointer;
+  background: left top no-repeat url("../../images/membercenter/evaluation/star-grey.png");
+  background-size: 100% 100%;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+}
+#content .grade dd.active {
+  background: left top no-repeat url("../../images/membercenter/evaluation/star-yellow.png");
+  background-size: 100% 100%;
+}
+#content .title {
+  color: #333;
+  font-size: .33rem;
+  font-weight: normal;
+  line-height: 250%;
+}
+#content textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: .7rem;
+  padding: .16rem .2rem;
+  border: 1px solid #dadada;
+  outline: none;
+  resize: none;
+  font-size: .28rem;
+  line-height: 1.25;
+  text-align: justify;
+  background-color: transparent;
+}
+#content textarea::-webkit-input-placeholder {
+  color: #aaa;
+}
+#content textarea::-moz-placeholder {
+  color: #aaa;
+}
+#content textarea:-moz-placeholder {
+  color: #aaa;
+}
+#content textarea:-ms-input-placeholder {
+  color: #aaa;
+}
+#content textarea:focus {
+  height: 2.1rem;
+}
+#content .count {
+  color: #bcbcbc;
+  font-size: .25rem;
+  text-align: right;
+}
+#content .count em {
+  color: #9e9e9e;
+  font-style: normal;
+}
+#content .submit {
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  width: 100%;
+  max-width: 7.2rem;
+  font-size: 0;
+  text-align: center;
+  background-color: #f4f4f4;
+}
+#content .submit.static{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: none;
+}
+#content .submit button {
+  width: 100%;
+  height: .98rem;
+  color: #fff;
+  font-size: .37rem;
+  line-height: 200%;
+  outline: none;
+  border: none;
+  background-color: #35abe2;
+}
+#default img {
+  width: 1.64rem;
+  height: 1.68rem;
+  margin-bottom: .25rem;
+}
+
+/*全屏遮罩层*/
+.mask-layer {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 7.2rem;
+  background-color: #000;
+}
+
+.mask-layer .table {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.mask-layer .table-cell {
+  display: table-cell;
+  font-size: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.mask-layer img.max-width {
+  max-width: 100%;
+}

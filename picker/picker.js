@@ -92,6 +92,7 @@
 			$(document).on("click", function(e) {
 				//点击结果区域显示选择框	
 				if (e.target == that.$target[0]) {
+					that.$el.find(".picker-item-wrapper").css("display","");
 					that.$el.addClass("move-in");
 					if(!that.isInited){
 						that.initItems();
@@ -103,10 +104,12 @@
 					if (e.target === that.$el.find(".picker-action")[0]) {
 						//确认按钮
 						that.$el.removeClass("move-in");
+						that.$el.find(".picker-item-wrapper").css("display","none");
 					}
 
 				} else { //其它空白区域收起选择框					
 					that.$el.removeClass("move-in");
+					that.$el.find(".picker-item-wrapper").css("display","none");
 				}
 			});
 
@@ -162,7 +165,6 @@
 			currentValue: '',
 			mutatingValues: [],
 			dragging: false,
-			animationFrameId: null,
 			visibleItemCount: 7
 		}, option);
 
@@ -197,7 +199,7 @@
 			$container.append($wrapper)
 			this.$parent.find(".picker-items").append($container);
 			ITEM_HEIGHT = $container.find(".item").offset().height;
-			$wrapper.css("height", ITEM_HEIGHT * this.visibleItemCount);
+			$container.css("height", ITEM_HEIGHT * this.visibleItemCount);
 			return $container;
 		},
 		refreshItems: function() {
@@ -231,10 +233,8 @@
 
 			var velocityTranslate, prevTranslate, pickerItems;
 
-			Draggable(el, {
+			Draggable(el.parentNode, {
 				start: function start(event) {
-					cancelAnimationFrame(that.animationFrameId);
-					that.animationFrameId = null;
 					dragState = {
 						range: that.dragRange,
 						start: new Date(),
@@ -276,7 +276,7 @@
 
 					var dragRange = dragState.range;
 
-
+					
 					var translate;
 					if (momentumTranslate) {
 						translate = Math.round(momentumTranslate / ITEM_HEIGHT) * ITEM_HEIGHT;

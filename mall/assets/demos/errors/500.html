@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn">
+    <meta charset="UTF-8">
+    <title>未找到此页内容</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no,address=no,email=no"/>
+    <meta name="mobileOptimized" content="width"/>
+    <meta name="handheldFriendly" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <script>
+        //根据设备宽度调整html元素的font-size属性（即1rem的值）
+        function initRem() {
+            var deviceWidth = document.documentElement.clientWidth;
+
+            if (deviceWidth > 540) deviceWidth = 540;
+            if (deviceWidth < 320) deviceWidth = 320;
+
+            document.documentElement.style.fontSize = deviceWidth / 7.2 + 'px';
+
+            //兼容UC浏览器
+            if (navigator.userAgent.indexOf("UCBrowser") >= 0) {
+                if (document.body) {
+                    location.reload();
+                }
+            }
+        }
+        initRem();
+
+
+    </script>
+    <link rel="stylesheet" href="../../css/base/normalize.css">
+    <style>
+        .red{
+            color:#fe5152 !important;
+        }
+
+        .error-box{
+            background-color: #ffffff;
+            color:#4a4a4a;
+            text-align: center;
+        }
+
+        .error-box img{
+            height: 5rem;
+            margin-top: 1rem;
+        }
+
+        .error-box h1{
+            font-size: .35rem;
+            font-weight: normal;
+            margin:.5rem 0 .2rem;
+        }
+
+        .error-box .comment{
+            font-size: .28rem;
+            font-weight: normal;
+            margin: .2rem 0 .3rem;
+        }
+
+        .error-box a{
+            display: inline-block;
+            width: 3.8rem;
+            height:.72rem;
+            line-height: .72rem;
+            font-size: .35rem;
+            text-decoration: none;
+            border: 2px solid #008bd1;
+            border-radius:.07rem;
+            color:#008bd1;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="error-box">
+        <img src="../../images/common/500.jpg" />
+        <h1>未找到此页内容</h1>
+        <p class="comment">请稍等，<span id="j_CountDownNum" class="red">5</span>秒后自行跳转首页</p>
+        <a href="../home/index.html">返回首页</a>
+    </div>
+
+<script src="../../js/plugins/zepto/zepto.js"></script>
+<script>
+    var time = 5;
+    function cutdown() {
+        setTimeout(function () {
+            if (time === 0) {
+                window.location.href =  "../home/index.html";
+                return;
+            }
+
+            $("#j_CountDownNum").text(time--);
+            cutdown();
+        }, 1000);
+    }
+
+    cutdown();
+
+</script>
+
+
+</body>
+</html>
