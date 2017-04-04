@@ -476,6 +476,77 @@
 	text-align: center;
 }
 
+
+/* 选择弹出层 */
+.prod__cover{
+    position: fixed;
+    z-index: 999;
+    top: 20%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: #fff;
+    -webkit-transform: translate3d(100%,0,0);
+    transform: translate3d(100%,0,0);
+    -webkit-transition: -webkit-transform .2s cubic-bezier(0,0,.25,1);
+    transition: transform .2s cubic-bezier(0,0,.25,1);
+    display: none;
+}
+
+.prod__cover.show{
+	display: block;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+.cover__summary{
+	position: absolute;
+	height: .6rem;
+	left: 0;
+	top: 0;
+	width: 100%;
+	padding: .1rem;
+	box-sizing: border-box;
+}
+
+.cover__img{
+	float: left;
+	position: relative;
+	top: -.64rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	border: 1px solid #ccc;
+	font-size: 0;
+}
+
+.cover__img img{
+	width: 100%;
+	height: 100%;
+}
+
+.cover__main{
+	overflow: hidden;
+}
+
+.cover__summary__price{
+	font-size: .3rem;
+}
+
+.cover__summary__stock{
+	font-size: .28rem;
+}
+
+.cover__body{
+	position: absolute;
+    top: .6rem;
+    left: 0;
+    right: 0;
+    bottom: .58rem;
+    overflow: hidden;
+}
+
+/* 底部悬浮工具条 */
 .bottom-fixed{
 	position: fixed;
 	left: 0;
