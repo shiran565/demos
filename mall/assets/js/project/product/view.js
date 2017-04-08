@@ -444,7 +444,7 @@ $(function () {
         } catch (e) {
             num = 1;
         }
-        if (isNaN(num) || num < 1 || num > 3) {
+        if (isNaN(num) || num < 1 || num > maxNumberPerUser) {
             num = 1;
         }
         if (isSecondBuy) {
@@ -609,7 +609,7 @@ $(function () {
         if (isNaN(optionNum)) {
             optionNum = 1;
         }
-        optionNum = optionNum > 3 ? 3 : optionNum;
+        optionNum = optionNum > maxNumberPerUser ? maxNumberPerUser : optionNum;
         optionNum = optionNum < 1 ? 1 : optionNum;
         $.ajax({
             type: "POST",
@@ -657,6 +657,7 @@ $(function () {
         if (imageSwipe) {
             imageSwipe.kill();
         }
+        
         // 列表轮播
         imageSwipe = new Swipe($('#j_prodImageSlider .swipe')[0], {
             startSlide: 0,

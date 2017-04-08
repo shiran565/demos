@@ -59,7 +59,7 @@ $(function () {
             // 免邮券
             if (couponType == "4001") {
                 postAmount = 0;
-            } else if(couponType) {
+            } else if (couponType) {
                 privilegeAmount += subAmount;
                 // 基于金额的免邮
                 if (isBaseOnAmount) {
@@ -82,9 +82,9 @@ $(function () {
                 // 没有优惠券
             } else {
                 // 基于金额的免邮
-                if(isBaseOnAmount){
+                if (isBaseOnAmount) {
                     // 大于基准金额，免邮
-                    if(totalAmount - privilegeAmount >= baseAmount){
+                    if (totalAmount - privilegeAmount >= baseAmount) {
                         postAmount = 0;
                     } else {
                         postAmount = basePostFee;
@@ -99,7 +99,7 @@ $(function () {
             payAmount = totalAmount - privilegeAmount + postAmount;
 
             // 实际支付金额最低为0
-            if(payAmount < 0){
+            if (payAmount < 0) {
                 payAmount = 0;
             }
 
@@ -135,10 +135,10 @@ $(function () {
                     $(this).removeClass("on");
                 });
                 $(this).addClass("on");
-                if(2==$(this).val()){
-                    $(".invoice-title").attr("placeholder","");
-                }else{
-                    $(".invoice-title").attr("placeholder","如不填写，默认以个人名称开票");
+                if (2 == $(this).val()) {
+                    $(".invoice-title").attr("placeholder", "");
+                } else {
+                    $(".invoice-title").attr("placeholder", "如不填写，默认以个人名称开票");
                 }
             });
         },
@@ -179,12 +179,12 @@ $(function () {
                                 var option = $(element);
                                 $(".sel-select-coupon:first").prepend(option);
                                 var optimalCouponNum;
-                                var optimalCouponAmount=-1;
+                                var optimalCouponAmount = -1;
                                 $(".sel-select-coupon option").each(function () {
                                     var couponAmount = parseInt($(this).attr("data-amount"));
-                                    if(couponAmount>optimalCouponAmount){
-                                        optimalCouponAmount=couponAmount;
-                                        optimalCouponNum=$(this).attr("data-num");
+                                    if (couponAmount > optimalCouponAmount) {
+                                        optimalCouponAmount = couponAmount;
+                                        optimalCouponNum = $(this).attr("data-num");
                                     }
                                 });
                                 $(".sel-select-coupon option[data-num=" + optimalCouponNum + "]").attr("selected", true);
@@ -194,10 +194,10 @@ $(function () {
                                 (new Toast({text: "温馨提示:绑定成功" + outNum + ",此券不可用于此订单!", time: 3000})).show();
                                 return;
                             }
-                        } else if(data.retCode == 600){
+                        } else if (data.retCode == 600) {
                             LoginConfirm.redirect();
                             return;
-                        }else{
+                        } else {
                             (new Toast({text: "温馨提示:" + data.retMsg, time: 3000})).show();
                             return;
                         }
@@ -274,13 +274,13 @@ $(function () {
                 var requestUuid = $("#requestUuid").val();
                 var skuId;
                 var spuId;
-                var sSkuIds=[];
+                var sSkuIds = [];
                 var num;
                 //立即购买流程获取商品skuId 服务sSkuIds
-                if(buyMode==2 || buyMode==3){
+                if (buyMode == 2 || buyMode == 3) {
                     skuId = $(".order-commodity-main").attr("skuId");
                     spuId = $(".order-commodity-main").attr("spuId");
-                    $(".order-commodity-service").each(function(){
+                    $(".order-commodity-service").each(function () {
                         sSkuIds.push($(this).val());
                     })
                     num = $(".order-commodity-main").attr("num");
@@ -288,9 +288,9 @@ $(function () {
                 var taxType = $(".tax-type.on").val();
                 var taxCompany = $(".invoice-title").val();
                 if (!taxCompany) {
-                    if(taxType==1){
+                    if (taxType == 1) {
                         taxCompany = $(".receiverName").attr("receiverName");
-                    }else{
+                    } else {
                         (new Toast({text: "请填写公司发票信息再提交!", time: 3000})).show();
                         return;
                     }
@@ -301,25 +301,33 @@ $(function () {
                 var addressId = $(".addr-detail").attr("address-id");
                 var couponNum = $(".sel-select-coupon option:selected").attr("data-num");
                 var data = {
-                    skuId:skuId,sSkuIds:sSkuIds,num:num,taxType: taxType, taxCompany: taxCompany, orderMemo: orderMemo,
-                    payMethod: payMethod, addressId: addressId, couponNum: couponNum, requestUuid:requestUuid
+                    skuId: skuId,
+                    sSkuIds: sSkuIds,
+                    num: num,
+                    taxType: taxType,
+                    taxCompany: taxCompany,
+                    orderMemo: orderMemo,
+                    payMethod: payMethod,
+                    addressId: addressId,
+                    couponNum: couponNum,
+                    requestUuid: requestUuid
                 };
                 $(self).attr("disabled", "disabled");
                 $.ajax({
                     url: "submit",
                     type: "POST",
-                    data: $.param(data,true),
+                    data: $.param(data, true),
                     dataType: "JSON",
                     success: function (data) {
                         /*若用户设置为黑名单,data为html格式,在json to object 抛出异常*/
-                        try{
-                            var dataObject=JSON.parse(data);
+                        try {
+                            var dataObject = JSON.parse(data);
                             if (dataObject && dataObject.retCode == 503) {
                                 $(self).attr("disabled", false);
                                 (new Toast({text: "温馨提示:当前服务器太忙，请稍后重试!"})).show();
                                 return false;
                             }
-                        }catch(_error){
+                        } catch (_error) {
                             window.location.href = webCtx + "/error/forbidden";
                         }
                         if (dataObject.retCode == 200) {
@@ -336,32 +344,50 @@ $(function () {
                             }
                         } else if (dataObject.retCode == 223 || dataObject.retCode == 224 || data.retCode == 226) {
                             (new Toast({text: dataObject.retMsg, time: 3000})).show();
-                            setTimeout(function(){
+                            setTimeout(function () {
                                 window.location = webCtx + "/product/" + spuId;
                             }, 3000);
                         } else if (dataObject.retCode == 225) {
                             (new Toast({text: dataObject.retMsg, time: 3000})).show();
-                            setTimeout(function(){
+                            setTimeout(function () {
                                 window.location = webCtx + "/my/order/";
                             }, 3000);
+                            // 订单重复提交
+                        } else if (dataObject.retCode == 230) {
+                            (new Dialog({
+                                title: dataObject.retMsg,
+                                confirmBtn: true,
+                                cancelBtn: true,
+                                confirmText: "查看订单",
+                                cancelText: "返回首页",
+                                confirmCallback: function () {
+                                    window.location = webCtx + "/my/order/";
+                                },
+                                cancelCallback: function () {
+                                    window.location = webCtx + "/index.html";
+                                }
+                            })).show();
+
                         } else {
                             //出现异常时，根据购物流程进行跳转,购物车流程跳转到购物车
-                            if(buyMode==1){
+                            if (buyMode == 1) {
                                 (new Toast({text: dataObject.retMsg, time: 3000})).show();
-                                setTimeout(function(){window.location.href=webCtx+'/shoppingcart';}, 3000);
+                                setTimeout(function () {
+                                    window.location.href = webCtx + '/shoppingcart';
+                                }, 3000);
 
-                            }else{
+                            } else {
                                 //立即购买流程跳转到商品详情页
                                 (new Toast({text: dataObject.retMsg, time: 3000})).show();
-                                setTimeout(function(){
+                                setTimeout(function () {
                                     window.location = webCtx + "/product/" + spuId;
                                 }, 3000);
                             }
                         }
                     },
                     /*另一终端修改密码，重定向url*/
-                    error:function(){
-                        window.location.href=window.location;
+                    error: function () {
+                        window.location.href = window.location;
                     }
                 })
             })
@@ -369,11 +395,12 @@ $(function () {
 
     };
     balance.init();
-    ;(function(){
+    ;
+    (function () {
         var ua = navigator.userAgent.toLowerCase();
         //osx 设备 ,双击页面下半部分会向上滑动，这里屏蔽该功能。。。。
-        if(ua.indexOf("iphone")>=0||ua.indexOf("ipad")>=0){
-            $(".cf-pay .total").on("touchstart",function(e){
+        if (ua.indexOf("iphone") >= 0 || ua.indexOf("ipad") >= 0) {
+            $(".cf-pay .total").on("touchstart", function (e) {
                 e.preventDefault();
             });
         }

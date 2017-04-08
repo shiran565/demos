@@ -1,5 +1,4 @@
 $(function () {
-
     // 视图map，key为uniqueCode
     var viewList = {};
 
@@ -88,8 +87,8 @@ $(function () {
                 var $view = $(this).closest(".J_viewTBody");
                 var $num = $view.find(".J_viewNum");
                 var num = parseInt($num.val());
-                if (num >= 3) {
-                    new Toast({text: "温馨提示:商品数量不可以超过3件！", time: 2000}).show();
+                if (num >= normalCommodityNumLimit) {
+                    new Toast({text: "温馨提示:商品数量不可以超过"+normalCommodityNumLimit+"件！", time: 2000}).show();
                     return;
                 }
                 self.changeViewNum($view, +1);
@@ -110,9 +109,9 @@ $(function () {
                     $(this).val(1);
                     new Toast({text: "温馨提示:请填写正整数！", time: 2000}).show();
                 }
-                if (num > 3) {
+                if (num > normalCommodityNumLimit) {
                     $(this).val(1);
-                    new Toast({text: "温馨提示:商品数量不可以超过3件！", time: 2000}).show();
+                    new Toast({text: "温馨提示:商品数量不可以超过"+normalCommodityNumLimit+"件！", time: 2000}).show();
                 }
                 self.changeViewNum($view, null);
             });
@@ -375,7 +374,7 @@ $(function () {
             var num = parseInt($num.val());
             if (null != changeNum) {
                 var nowNum = num + changeNum;
-                nowNum = nowNum > 3 ? 3 : nowNum;
+                nowNum = nowNum > normalCommodityNumLimit ? normalCommodityNumLimit : nowNum;
                 nowNum = nowNum < 1 ? 1 : nowNum;
                 needSubmit = nowNum != num;
                 num = nowNum;

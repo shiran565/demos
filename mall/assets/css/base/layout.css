@@ -182,7 +182,7 @@ a{
     color:#636363;
 }
 
-#header {
+#header .header__normal{
     position: relative;
     height: 1.08rem;
 
