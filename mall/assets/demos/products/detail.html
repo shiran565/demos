@@ -31,7 +31,7 @@
         <a class="header__link header__link_menu" href="javascript:;"><i class="icon icon-menu"></i></a></li>        
     </div>
     <!--商品详情tab导航-->
-    <div class="header__detail__nav">        
+    <div id="j_headerProdDetailNav" class="header__detail__nav">        
         <ul id="j_tabBox" class="detail__nav__list">
             <li class="detail__nav__item on">图文详情</li>
             <li class="detail__nav__item">参数</li>
@@ -41,376 +41,281 @@
 </header>
 
 <main id="content" class="prod-detail">
-    <section class="page-slider">
-        <div class="page-slider__item product" style="display: block;">
-            <!--轮播图片-->
-            <div id="j_prodImageSlider" class="product__image-slider">
-                <div class="swipe-wrapper swipe">
-                    <div class="swipe-wrap J_product_image_box">
-                        <div v-for="imageItem in imageList"><img :src="imageHost+imageItem.bigPic" :hdImage="imageHost+imageItem.hdPic" alt="商品图片" /></div>
+    <div id="j_pageSwipe" class="page-slider page-swipe">
+        <section class=" swipe-wrapper">
+            <div class="page-slider__item product" style="display: block;">
+                <!--轮播图片-->
+                <div id="j_prodImageSlider" class="product__image-slider">
+                    <div class="swipe-wrapper swipe">
+                        <div class="swipe-wrap J_product_image_box">
+                            <div v-for="imageItem in imageList"><img :src="imageHost+imageItem.bigPic" :hdImage="imageHost+imageItem.hdPic" alt="商品图片" /></div>
+                        </div>
                     </div>
+                    <div class="indicator"><span v-for="n in imageList.length" :class="{on:n==currentIndex}"></span></div>
                 </div>
-                <div class="indicator"><span v-for="n in imageList.length" :class="{on:n==currentIndex}"></span></div>
-            </div>
-            
-            <!--商品信息-->
-            <div id="j_prodInfo" class="product__info">
-                <div class="wrapper">
-                    <h2 class="product__info__title">{{commoditySpu.name}}</h2>
-                    <div class="product__info__sale-point">{{commoditySpu.brief}}</div>                    
-                </div>
-            </div>
-            
-            <!--价格/优惠-->
-            <div id="j_prodSummary" class="product__summary">
-                <div class="wrapper">
-                    <div class="product__summary__left">
-                        <div class="product__summary__current-price"><dfn>&yen;</dfn>{{commoditySpu.salePrice}}</div>
-                        <div v-if="commoditySpu.marketPrice > commoditySpu.salePrice" class="product__summary__original-price"><dfn>&yen;</dfn>{{commoditySpu.marketPrice}}</div>
-                    </div>
-                    <div class="product__summary__right">
-                        <ul>
-                            <li v-if="commoditySpu.vcoin && commoditySpu.vcoin >0" class="product__summary__promotion"><span class="label-promotion">V币</span>购买即赠送{{commoditySpu.vcoin}}}V币</li>
-                            <li v-if="commodityGiftList && commodityGiftList.length" class="product__summary__promotion"><span class="label-promotion">赠品</span>价值{{298.00}}元<i class="icon-more"></i></li>
-                            <li v-if="userFreepost && commoditySpu.salePrice > 68" class="product__summary__promotion"><span class="label-promotion">免邮</span>满68元免邮</li>
-                        </ul>                    
-                    </div>                                    
-                </div>
-            </div>
-
-            <div class="product__guarantees">
-                <div class="wrapper"></div>
-            </div>
-            
-            <!--选择结果-->
-            <div id="j_prodSelection" class="product__selection">
-                <div class="wrapper">
-                    <div class="product__selection__summary" @click="showPop">
-                        已选：<span class="item">全网通</span><span class="item">64G</span><span class="item">皓月白</span><span class="item">官方标配</span><span class="item">1件</span><i class="icon-more"></i>
-                    </div>
-                    <div class="product__selection__huabei">支持花呗分期</div>                    
-                </div>
-            </div>
-
-            <!--评价-->
-            <div class="product__evaluation">
-                <h2 class="product__evaluation__title">
+                
+                <!--商品信息-->
+                <div id="j_prodInfo" class="product__info">
                     <div class="wrapper">
-                    <a id="j_viewAllEvaluations" class="link-all-evaluations" href="javascript:;">更多评价<i class="icon-more"></i></a> 商品评价<span id="remarkCountSpan"> ( 1477 ) </span></div>
-                </h2>                
-                <ul class="evaluation__list">
-                    <li class="evaluation__item">
-                        <div class="wrapper">
-                            <div class="evaluation__item__info">
-                                <div class="date-time">2017-03-23</div>
-                                <div class="user-name">智**联</div>
-                                <span class="star-box"><i style="width: 100%"></i></span>
-                            </div>
-                            <div class="evaluation__item__content">
-                                <div class="text">什么叫神机，vivo  xply就是我心中的顶级手机。从用上vivo第一款xplay直到现在，品牌一直不变，以后也会一直支持vivo！手机就不拍了，因为等不及的用上了。</div>
-                                <div class="evaluate-pic">
-                                    <a data-img="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/23/1703237580306477_16278665_1080x1080.jpg" href="javascript:void(0);"><img class="J_remarkpic" src="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/23/1703237580306477_16278665_100x100.jpg" alt=""><b></b></a>
-                                    <a data-img="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/35/1703237581566088_16278665_1080x1080.jpg" href="javascript:void(0);"><img class="J_remarkpic" src="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/35/1703237581566088_16278665_100x100.jpg" alt=""><b></b></a>
-                                    <a data-img="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/55/1703237583533695_16278665_1080x1080.jpg" href="javascript:void(0);"><img class="J_remarkpic" src="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/55/1703237583533695_16278665_100x100.jpg" alt=""><b></b></a>
-                                </div>
-
-                                <div class="reply">官方回复：vivo致力于为您打造好品质高质量的产品，爱您就要给您最好的(*^__^*)！感谢您的惠顾支持。祝您生活愉快【vivo官方商城】</div>
-                                <div class="append"><em>[追评]</em>vivo致力于为您打造好品质高质量的产品，爱您就要给您最好的(*^__^*)！感谢您的惠顾支持。祝您生活愉快【vivo官方商城】</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="evaluation__item">
-                        <div class="wrapper">
-                            <div class="evaluation__item__info">
-                                <div class="date-time">2017-03-23</div>
-                                <div class="user-name">智**联</div>
-                                <span class="star-box"><i style="width: 100%"></i></span>
-                            </div>
-                            <div class="evaluation__item__content">
-                                <div class="text">什么叫神机，vivo  xply就是我心中的顶级手机。从用上vivo第一款xplay直到现在，品牌一直不变，以后也会一直支持vivo！手机就不拍了，因为等不及的用上了。</div>
-                                <div class="evaluate-pic">
-                                    <a data-img="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/23/1703237580306477_16278665_1080x1080.jpg" href="javascript:void(0);"><img class="J_remarkpic" src="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/23/1703237580306477_16278665_100x100.jpg" alt=""><b></b></a>
-                                    <a data-img="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/35/1703237581566088_16278665_1080x1080.jpg" href="javascript:void(0);"><img class="J_remarkpic" src="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/35/1703237581566088_16278665_100x100.jpg" alt=""><b></b></a>
-                                    <a data-img="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/55/1703237583533695_16278665_1080x1080.jpg" href="javascript:void(0);"><img class="J_remarkpic" src="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/55/1703237583533695_16278665_100x100.jpg" alt=""><b></b></a>
-                                </div>
-
-                                <div class="reply">官方回复：vivo致力于为您打造好品质高质量的产品，爱您就要给您最好的(*^__^*)！感谢您的惠顾支持。祝您生活愉快【vivo官方商城】</div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <div class="product__evaluation__bottom">查看更多评价<i class="icon-more"></i></div>
-
-            </div>
-            
-            <!--属性选择弹窗-->
-            <div id="j_selectionPop">
-                <div class="page-mask" v-if="isShow" @click="isShow = !isShow"></div>
-                <div class="prod__cover" :class="{'move-in':isShow}">
-                    <div class="cover__summary">
-                        <div class="cover__img"><img src="https://img.alicdn.com/bao/uploaded/i3/2928765399/TB27isZlilnpuFjSZFgXXbi7FXa_!!2928765399.jpg_200x200Q50s50.jpg_.webp"></div>
-                        <div class="cover__main">
-                            <div class="cover__summary__price"><dfn>&yen;</dfn>2998.00</div>
-                            <div class="cover__summary__stock">已选：<span class="item">全网通64G</span><span class="item">皓月白</span><span class="item">官方标配</span><span class="item">1件</span></div>
-                        </div>
-                    </div>
-                    <div class="cover__body">
-                        <div class="sku-control">
-                            <ul class="list">
-                                <li class="item">
-                                    <h2>机身颜色</h2>
-                                    <div class="list__item__options">
-                                        <label class="on">金色</label>
-                                        <label>玫瑰金</label>
-                                        <label>星空灰</label>
-                                    </div>
-                                </li>
-                                <li class="item">
-                                    <h2>存储容量</h2>
-                                    <div class="list__item__options">
-                                        <label>64G</label>
-                                        <label class="on">128G</label>
-                                        <label>32G</label>
-                                    </div>
-                                </li>
-                                <li class="item">
-                                    <h2>套餐类型</h2>
-                                    <div class="list__item__options">
-                                        <label class="on">官方标配</label>
-                                        <label>套餐一</label>
-                                        <label>套餐二</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="service-control">
-                            <ul class="list">
-                                <li class="item">
-                                    <h2>手机服务（可选）</h2>
-                                    <div class="list__item__options">
-                                        <a class="service-control__link-detail" href="#">详情<i class="icon-more"></i></a>
-                                        <label class="break">半年碎屏保—曲面屏曲面屏  <dfn>&yen;</dfn>99</label>
-                                        <label class="delay">一年碎屏宝—曲面屏 <dfn>&yen;</dfn>199</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="number-control">
-                            <ul class="list">
-                                <li class="item">
-                                    <h2>数量</h2>
-                                    <div class="number-container">
-                                        <button class="decrease disabled">-</button><input type="number" min="1" max="3" readonly /><button class="increase">+</button>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="progressive-control">
-                            <ul class="list">
-                                <li class="item">
-                                    <h2>花呗分期</h2>
-                                    <div class="list__item__options">
-                                        <label>
-                                            <span class="message">
-                                                <dfn>&yen;</dfn>688起<span>x3</span>期
-                                            </span>
-                                            <br>
-                                            <span class="fee">（0手续费）</span>
-                                        </label>
-                                        <label>
-                                            <span class="message">
-                                                <dfn>&yen;</dfn>348起<span>x6</span>期
-                                            </span>
-                                            <br>
-                                            <span class="fee">（0手续费）</span>
-                                        </label>
-                                        <label>
-                                            <span class="message">
-                                                <dfn>&yen;</dfn>288起<span>x9</span>期
-                                            </span>
-                                            <br>
-                                            <span class="fee">（0手续费）</span>
-                                        </label>
-                                        <label>
-                                            <span class="message">
-                                                <dfn>&yen;</dfn>168起<span>x12</span>期
-                                            </span>
-                                            <br>
-                                            <span class="fee">（0手续费）</span>
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="bottom-fixed">
-                        <a class="bottom-fixed__button add">加入购物车</a>
-                        <a class="bottom-fixed__button buy">立即购买</a>
+                        <h2 class="product__info__title">{{commoditySpu.name}}</h2>
+                        <div class="product__info__sale-point">{{commoditySpu.brief}}</div>                    
                     </div>
                 </div>
+                
+                <!--价格/优惠-->
+                <div id="j_prodSummary" class="product__summary">
+                    <div class="wrapper">
+                        <div class="product__summary__left">
+                            <div class="product__summary__current-price"><dfn>&yen;</dfn>{{commoditySpu.salePrice}}</div>
+                            <div v-if="commoditySpu.marketPrice > commoditySpu.salePrice" class="product__summary__original-price"><dfn>&yen;</dfn>{{commoditySpu.marketPrice}}</div>
+                        </div>
+                        <div class="product__summary__right">
+                            <ul>
+                                <li v-if="commoditySpu.vcoin && commoditySpu.vcoin >0" class="product__summary__promotion"><span class="label-promotion">V币</span>购买即赠送{{commoditySpu.vcoin}}}V币</li>
+                                <li v-if="commodityGiftList && commodityGiftList.length" class="product__summary__promotion" @click="showGiftList()"><span class="label-promotion">赠品</span>价值{{giftTotalPrice}}元<i class="icon-more"></i></li>
+                                <li v-if="userFreepost && commoditySpu.salePrice > 68" class="product__summary__promotion"><span class="label-promotion">免邮</span>满68元免邮</li>
+                            </ul>                    
+                        </div>                                    
+                    </div>
+                </div>
+                <!--四大金刚-->
+                <div class="product__guarantees">
+                    <div class="wrapper"></div>
+                </div>
+                
+                <!--选择结果-->
+                <div id="j_prodSelection" class="product__selection">
+                    <div class="wrapper">
+                        <div class="product__selection__summary" @click="showPop">
+                            已选：<span class="item">全网通</span><span class="item">64G</span><span class="item">皓月白</span><span class="item">官方标配</span><span class="item">1件</span><i class="icon-more"></i>
+                        </div>
+                        <div class="product__selection__huabei">支持花呗分期</div>                    
+                    </div>
+                </div>
+
+                <!--评价-->
+                <div class="product__evaluation" id="j_latestProdEvaluation">
+                    <h2 class="product__evaluation__title">
+                        <div class="wrapper">
+                        <a class="link-all-evaluations" @click="viewAll()" href="javascript:;">更多评价<i class="icon-more"></i></a> 商品评价<span id="remarkCountSpan"> ({{remarkCount}}) </span></div>
+                    </h2>                
+                    <ul class="evaluation__list">
+                        <li class="evaluation__item" v-for="remarkItem in remarkList">
+                            <div class="wrapper">
+                                <div class="evaluation__item__info">
+                                    <div class="date-time">{{remarkItem.remark.createdAt}}</div>
+                                    <div class="user-name">{{remarkItem.remark.nickName}}</div>
+                                    <span class="star-box"><i :style="{width:(remarkItem.remark.summaryScore/5*100)+'%'}"></i></span>
+                                </div>
+                                <div class="evaluation__item__content">
+                                    <div class="text">{{remarkItem.remark.content}}</div>
+                                    <div class="evaluate-pic" v-if="remarkItem.remark.hasPicture == 1">
+                                        <a v-for="n in 3" v-if="remarkItem.remark['picture'+n]" :data-img="imageHost+remarkItem.remark['picture'+n]" href="javascript:void(0);"><img class="J_remarkpic" :src="imageHost+remarkItem.remark['picture'+n+'Thumbnail']" alt=""><b></b></a>
+                                    </div>
+                                    <div v-if="remarkItem.remarkReplyList.length" class="reply">官方回复：{{remark.remarkReplyList[0].replyContent}}</div>
+                                    <div v-if="remarkItem.remarkReplyList.length == 2" class="append"><em>[追评]</em>{{remark.remarkReplyList[1].replyContent}}</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="product__evaluation__bottom">查看更多评价<i class="icon-more"></i></div>
+                </div> 
+                <div class="product__tip__end">已经到底了~</div>
             </div>
-            
-            <!--赠品弹窗-->
-            <div class="gift-cover show">
-                <h2 class="gift-cover__title">赠品详情<i class="icon-close"></i></h2>
-                <div class="gift-cover__content content-wrap">
-                    <ul>
-                        <li class="gift-cover__item">
-                            <img src="../../images/temp/prod/gift-1.png" alt="">
-                            <div class="name">X9Plus专用原装闪充数据线</div>
-                            <div class="price"><dfn>&yen;</dfn>199</div>
+
+            <!--商品详情图片及参数-->
+            <div id="j_detailTabList" class="page-slider__item detail">
+                <div class="detail__tab detail__tab_images" style="display: block;">                
+                    <div class="images__pre-box">
+                        <p><img src="https://swsdl.vivo.com.cn/vivoshop/commodity/20170323/20170323155055663148_original.jpg"></p>
+                        <p>我是普通文字</p>
+                        <p><img src="https://swsdl.vivo.com.cn/vivoshop/commodity/20170323/20170323155103829614_original.jpg"></p>
+                        <p><img src="https://swsdl.vivo.com.cn/vivoshop/commodity/20170323/20170323155114886378_original.jpg"></p>
+                        <p><img src="https://swsdl.vivo.com.cn/vivoshop/commodity/20170323/20170323155120205409_original.jpg"></p>
+                    </div>
+                </div>
+                <div id="j_commoditySpuSpecinfoList" class="detail__tab detail__tab_param">
+                    <dl class="detail__param__list">
+                    <template v-if="specInfo.specValue" v-for="specInfo in spuSpecinfoList">                    
+                        <dt>{{specInfo.specName}}</dt>
+                        <dd>{{specInfo.specValue}}</dd>                        
+                    </template>
+                    </dl>                
+                </div>
+            </div>
+
+            <div id="j_prodEvaluation" class="page-slider__item evaluation">
+                <div class="evaluation__comprehensive">
+                    <div class="wrapper">
+                        <div class="total-points">
+                            <div class="points-box">{{remarkInfo.remarkScore.summaryScore}}</div>
+                            <div class="text">综合评价</div>
+                        </div>
+                        <div class="each-points">
+                            <ul>
+                                <li>商品的综合评价 <span class="star-box"><i :style="{width:(remarkInfo.remarkScore.summaryScore/5)*100+'%'}"></i></span></li>
+                                <li>宝贝与描述相符 <span class="star-box"><i :style="{width:(remarkInfo.remarkScore.matchScore/5)*100+'%'}"></i></span></li>
+                                <li>卖家的服务态度 <span class="star-box"><i :style="{width:(remarkInfo.remarkScore.serviceScore/5)*100+'%'}"></i></span></li>
+                                <li>卖家的发货速度 <span class="star-box"><i :style="{width:(remarkInfo.remarkScore.deliveryScore/5)*100+'%'}"></i></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="evaluation__list">
+                    <li class="evaluation__item" v-for="remarkItem in remarkInfo.remarkList">
+                        <div class="wrapper">
+                            <div class="evaluation__item__info">
+                                <div class="date-time">{{remarkItem.remark.createdAt}}</div>
+                                <div class="user-name">{{remarkItem.remark.nickName}}</div>
+                                <span class="star-box"><i :style="{width:(remarkItem.remark.summaryScore/5*100)+'%'}"></i></span>
+                            </div>
+                            <div class="evaluation__item__content">
+                                <div class="text">{{remarkItem.remark.content}}</div>
+                                <div class="evaluate-pic" v-if="remarkItem.remark.hasPicture == 1">
+                                    <a v-for="n in 3" v-if="remarkItem.remark['picture'+n]" :data-img="imageHost+remarkItem.remark['picture'+n]" href="javascript:void(0);"><img class="J_remarkpic" :src="imageHost+remarkItem.remark['picture'+n+'Thumbnail']" alt=""><b></b></a>
+                                </div>
+                                <div v-if="remarkItem.remarkReplyList.length" class="reply">官方回复：{{remark.remarkReplyList[0].replyContent}}</div>
+                                <div v-if="remarkItem.remarkReplyList.length == 2" class="append"><em>[追评]</em>{{remark.remarkReplyList[1].replyContent}}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>           
+            </div>
+        </section>
+        
+    </div>
+    
+
+    <!--属性选择弹窗-->
+    <div id="j_selectionPop">
+        <div class="page-mask" v-if="isShow" @click="isShow = !isShow"></div>
+        <div class="prod__cover" :class="{'move-in':isShow}">
+            <div class="cover__summary">
+                <div class="cover__img"><img src="https://img.alicdn.com/bao/uploaded/i3/2928765399/TB27isZlilnpuFjSZFgXXbi7FXa_!!2928765399.jpg_200x200Q50s50.jpg_.webp"></div>
+                <div class="cover__main">
+                    <div class="cover__summary__price"><dfn>&yen;</dfn>2998.00</div>
+                    <div class="cover__summary__stock">已选：<span class="item">全网通64G</span><span class="item">皓月白</span><span class="item">官方标配</span><span class="item">1件</span></div>
+                </div>
+            </div>
+            <div class="cover__body">
+                <div class="sku-control">
+                    <ul class="list">
+                        <li class="item" v-if="phoneCapacities&&phoneCapacities.length">
+                            <h2>选择版本容量</h2>
+                            <div class="list__item__options">
+                                <template v-for="capacity in phoneCapacities">
+                                    <label v-for="storage in capacity.storages" 
+                                        :class="{on:(normalCommodity.commoditySpu.netType == capacity.netType.netTypeCode && normalCommodity.commoditySpu.storage == storage.storageCode)}">{{capacity.netType.netTypeName+storage.storageName}}</label>                                    
+                                </template>
+                            </div>
                         </li>
-                        <li class="gift-cover__item">
-                            <img src="../../images/temp/prod/gift-2.png" alt="">
-                            <div class="name">X9Plus原装低压闪充充电器（5V-2A）</div>
-                            <div class="price"><dfn>&yen;</dfn>199</div>
+                        <li class="item" v-if="normalCommodity.commoditySpu.containColor == 1">
+                            <h2>选择颜色</h2>
+                            <div class="list__item__options">
+                                <label v-for="sku in normalCommodity.commoditySkuList" :class="{on:sku.defaultChecked}">{{sku.commodityAttrItem.name}}</label>
+                            </div>
                         </li>
-                        <li class="gift-cover__item">
-                            <img src="../../images/temp/prod/gift-3.png" alt="">
-                            <div class="name">X9Plus专用原装闪充数据线</div>
-                            <div class="price"><dfn>&yen;</dfn>199</div>
-                        </li>
-                        <li class="gift-cover__item">
-                            <img src="../../images/temp/prod/gift-2.png" alt="">
-                            <div class="name">X9Plus专用原装闪充数据线</div>
-                            <div class="price"><dfn>&yen;</dfn>199</div>
-                        </li>
-                        <li class="gift-cover__item">
-                            <img src="../../images/temp/prod/gift-1.png" alt="">
-                            <div class="name">X9Plus专用原装闪充数据线</div>
-                            <div class="price"><dfn>&yen;</dfn>199</div>
+                        <li class="item" v-if="productSuiteInfos && productSuiteInfos.length">
+                            <h2>选择套餐</h2>
+                            <div class="list__item__options">
+                                <label class="on">官方标配</label>
+                                <label>套餐一</label>
+                                <label>套餐二</label>
+                            </div>
                         </li>
                     </ul>
                 </div>
-                <div class="gift-cover__bottom">
-                    <a href="" class="btn-close">关闭</a>
-                </div>
-            </div>
 
-            <div class="product__tip__end">已经到底了~</div>
-
-
-        </div>
-
-        <!--商品详情图片及参数-->
-        <div class="page-slider__item detail">
-
-            <div class="detail__tab_images">                
-                <div class="images__pre-box">
-                    <p><img src="https://swsdl.vivo.com.cn/vivoshop/commodity/20170323/20170323155055663148_original.jpg"></p>
-                    <p>我是普通文字</p>
-                    <p><img src="https://swsdl.vivo.com.cn/vivoshop/commodity/20170323/20170323155103829614_original.jpg"></p>
-                    <p><img src="https://swsdl.vivo.com.cn/vivoshop/commodity/20170323/20170323155114886378_original.jpg"></p>
-                    <p><img src="https://swsdl.vivo.com.cn/vivoshop/commodity/20170323/20170323155120205409_original.jpg"></p>
-                </div>
-            </div>
-
-            <div class="detail__tab_param">
-                <dl class="detail__param__list">
-                    <dt>CPU</dt>
-                    <dd>高通骁龙MSM8996/骁龙820</dd>
-                    <dt>内存（运行内存）</dt>
-                    <dd>6GB RAM（因为安装操作系统占据了部分运存空间，实际可用运存小于6G）</dd>
-                    <dt>ROM</dt>
-                    <dd>128GB ROM，（不支持T卡扩展）注：由于手机系统和预装的程序占据了部分存储空间，实际可用存储空间小于128G</dd>
-                    <dt>系统</dt>
-                    <dd>Funtouch OS 3.0(基于Android 6.0.1)</dd>
-                    <dt>屏幕尺寸</dt>
-                    <dd>5.46英寸</dd>
-                    <dt>屏幕分辨率</dt>
-                    <dd>2560*1440</dd>
-                    <dt>PPI</dt>
-                    <dd>537</dd>
-                    <dt>机身厚度</dt>
-                    <dd>8.25mm</dd>
-                    <dt>电池</dt>
-                    <dd>一体式内置电池</dd>
-                    <dt>容量</dt>
-                    <dd>4080mAh</dd>
-                    <dt>支持频段</dt>
-                    <dd>网络类型 双卡双待 全网通* <br>2G   GSM ：GSM850/900/1800/1900MHz <br>2G CDMA： 800MHz <br>3G   WCDMA：850/900/1900/2100MHz；<br>3G  TD-SCDMA：1880/2010MHz；<br> 3G  CDMA2000：800MHz   <br>4G   TDD-LTE：B38/B39/B40/B41；<br> 4G  FDD-LTE：B1/3<br> 4G  FDD-LTE：B2/4/5/7/8/12（仅支持国际漫游） <br>支持移动、联通、电信SIM卡，两张卡不能同时享受4G网络，如卡1使用4G卡，卡2就不能使用4G网络，如果卡2使用4G网络，卡1就不能使用4G网络，数据网络切换手动选择完成置换；不支持两张电信卡同时使用</dd>
-                    <dt>连接支持</dt>
-                    <dd>wifi、蓝牙4.2、USB2.0、GPS定位、OTG</dd>
-                    <dt>功能特色</dt>
-                    <dd>全曲面设计，后置双摄，专业虚化，4080mAh大电池+双引擎闪充，分屏多任务，应用分身</dd>
-                    <dt>摄像头类型</dt>
-                    <dd>后置双摄+前置</dd>
-                    <dt>摄像头</dt>
-                    <dd>前置1600W/后置（1200W+500W）</dd>
-                    <dt>视频拍摄</dt>
-                    <dd>支持</dd>
-                    <dt>标配</dt>
-                    <dd>主机 *1 <br>取卡针 *1 <br>有线耳机 *1<br>9V2.0A闪充充电头 *1<br>micro USB数据线<br>保护壳 *2<br>快速入门指南 *1<br>重要信息和保修卡</dd>
-                </dl>                
-            </div>
-        </div>
-
-        <div class="page-slider__item evaluation">
-            <div class="evaluation__comprehensive">
-                <div class="wrapper">
-                    <div class="total-points">
-                        <div class="points-box">4.8</div>
-                        <div class="text">综合评价</div>
-                    </div>
-                    <div class="each-points">
-                        <ul>
-                            <li>商品的综合评价 <span class="star-box"><i style="width: 100%"></i></span></li>
-                            <li>宝贝与描述相符 <span class="star-box"><i style="width: 96%"></i></span></li>
-                            <li>卖家的服务态度 <span class="star-box"><i style="width: 85%"></i></span></li>
-                            <li>卖家的发货速度 <span class="star-box"><i style="width: 96%"></i></span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <ul class="evaluation__list">
-                <li class="evaluation__item">
-                    <div class="wrapper">
-                        <div class="evaluation__item__info">
-                            <div class="date-time">2017-03-23</div>
-                            <div class="user-name">智**联</div>
-                            <span class="star-box"><i style="width: 100%"></i></span>
-                        </div>
-                        <div class="evaluation__item__content">
-                            <div class="text">什么叫神机，vivo  xply就是我心中的顶级手机。从用上vivo第一款xplay直到现在，品牌一直不变，以后也会一直支持vivo！手机就不拍了，因为等不及的用上了。</div>
-                            <div class="evaluate-pic">
-                                <a data-img="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/23/1703237580306477_16278665_1080x1080.jpg" href="javascript:void(0);"><img class="J_remarkpic" src="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/23/1703237580306477_16278665_100x100.jpg" alt=""><b></b></a>
-                                <a data-img="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/35/1703237581566088_16278665_1080x1080.jpg" href="javascript:void(0);"><img class="J_remarkpic" src="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/35/1703237581566088_16278665_100x100.jpg" alt=""><b></b></a>
-                                <a data-img="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/55/1703237583533695_16278665_1080x1080.jpg" href="javascript:void(0);"><img class="J_remarkpic" src="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/55/1703237583533695_16278665_100x100.jpg" alt=""><b></b></a>
+                <div class="service-control" v-if="normalCommodity.brokenScreenSvcList.length || normalCommodity.extendedWarrantySvcList.length">
+                    <ul class="list">
+                        <li class="item">
+                            <h2>手机服务（可选）</h2>
+                            <div class="list__item__options">
+                                <a class="service-control__link-detail" href="#">详情<i class="icon-more"></i></a>
+                                <label class="break" v-for="broken in normalCommodity.brokenScreenSvcList">{{broken.name}} <dfn>&yen;</dfn>{{broken.salePrice.toFixed(2)}}</label>
+                                    
+                                <label class="delay" v-for="extend in normalCommodity.extendedWarrantySvcList">{{extend.name}} <dfn>&yen;</dfn>{{extend.salePrice.toFixed(2)}}</label>
                             </div>
+                        </li>
+                    </ul>
+                </div>
 
-                            <div class="reply">官方回复：vivo致力于为您打造好品质高质量的产品，爱您就要给您最好的(*^__^*)！感谢您的惠顾支持。祝您生活愉快【vivo官方商城】</div>
-                            <div class="append"><em>[追评]</em>vivo致力于为您打造好品质高质量的产品，爱您就要给您最好的(*^__^*)！感谢您的惠顾支持。祝您生活愉快【vivo官方商城】</div>
-                        </div>
-                    </div>
-                </li>
-                <li class="evaluation__item">
-                    <div class="wrapper">
-                        <div class="evaluation__item__info">
-                            <div class="date-time">2017-03-23</div>
-                            <div class="user-name">智**联</div>
-                            <span class="star-box"><i style="width: 100%"></i></span>
-                        </div>
-                        <div class="evaluation__item__content">
-                            <div class="text">什么叫神机，vivo  xply就是我心中的顶级手机。从用上vivo第一款xplay直到现在，品牌一直不变，以后也会一直支持vivo！手机就不拍了，因为等不及的用上了。</div>
-                            <div class="evaluate-pic">
-                                <a data-img="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/23/1703237580306477_16278665_1080x1080.jpg" href="javascript:void(0);"><img class="J_remarkpic" src="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/23/1703237580306477_16278665_100x100.jpg" alt=""><b></b></a>
-                                <a data-img="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/35/1703237581566088_16278665_1080x1080.jpg" href="javascript:void(0);"><img class="J_remarkpic" src="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/35/1703237581566088_16278665_100x100.jpg" alt=""><b></b></a>
-                                <a data-img="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/55/1703237583533695_16278665_1080x1080.jpg" href="javascript:void(0);"><img class="J_remarkpic" src="https://swsdl.vivo.com.cn/vivoshop/remark/20170323/21/03/55/1703237583533695_16278665_100x100.jpg" alt=""><b></b></a>
+                <div class="number-control">
+                    <ul class="list">
+                        <li class="item">
+                            <h2>数量</h2>
+                            <div class="number-container">
+                                <button class="decrease disabled">-</button><input type="number" min="1" max="3" readonly /><button class="increase">+</button>
                             </div>
+                        </li>
+                    </ul>
+                </div>
 
-                            <div class="reply"><em>[官方回复]</em>：vivo致力于为您打造好品质高质量的产品，爱您就要给您最好的(*^__^*)！感谢您的惠顾支持。祝您生活愉快【vivo官方商城】</div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-
-            
+                <div id="j_huabeiInstallment" class="progressive-control">
+                    <ul class="list">
+                        <li class="item">
+                            <h2>花呗分期</h2>
+                            <div class="list__item__options">
+                                <label>
+                                    <span class="message">
+                                        <dfn>&yen;</dfn>688起<span>x3</span>期
+                                    </span>
+                                    <br>
+                                    <span class="fee">（0手续费）</span>
+                                </label>
+                                <label>
+                                    <span class="message">
+                                        <dfn>&yen;</dfn>348起<span>x6</span>期
+                                    </span>
+                                    <br>
+                                    <span class="fee">（0手续费）</span>
+                                </label>
+                                <label>
+                                    <span class="message">
+                                        <dfn>&yen;</dfn>288起<span>x9</span>期
+                                    </span>
+                                    <br>
+                                    <span class="fee">（0手续费）</span>
+                                </label>
+                                <label>
+                                    <span class="message">
+                                        <dfn>&yen;</dfn>168起<span>x12</span>期
+                                    </span>
+                                    <br>
+                                    <span class="fee">（0手续费）</span>
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom-fixed">
+                <a class="bottom-fixed__button add">加入购物车</a>
+                <a class="bottom-fixed__button buy">立即购买</a>
+            </div>
         </div>
-    </section>
+    </div>
+    
+    <!--赠品弹窗-->
+    <div id="j_giftListPop">
+        <div class="page-mask" v-if="isShow" @click="hide()"></div>
+        <div class="gift-cover" :class="{'move-in':isShow}">
+            <h2 class="gift-cover__title">赠品详情<i class="icon-close" @click="hide()"></i></h2>
+            <div class="gift-cover__content content-wrap">
+                <ul>
+                    <li v-for="gift in commodityGiftList" class="gift-cover__item">
+                        <img :src="imageHost+gift.smallPic" alt="">
+                        <div class="name">{{gift.name}}</div>
+                        <div class="price"><dfn>&yen;</dfn>{{gift.salePrice}}</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="gift-cover__bottom">
+                <a href="javascript:;" class="btn-close" @click="hide()">关闭</a>
+            </div>            
+        </div>
+        
+    </div>
 
     <section id="j_bottomBar" class="bottom-fixed">
         <div class="bottom-fixed__left">
@@ -427,11 +332,13 @@
 
 <script>
     var imageHost = "https://swsdl.vivo.com.cn/vivoshop/";
-    var data = {"data":{"normalCommodity":{"commoditySpu":{"id":10126,"name":"套餐商品Bb","code":null,"keywords":"","cmdyCategoryId":204,"brandId":1,"brief":"套餐商品B","intro":null,"marketable":1,"notifyNum":null,"uptime":1483148259000,"downtime":2145887999000,"pOrder":45,"dOrder":null,"vcoin":100,"costPrice":null,"marketPrice":100.000,"salePrice":100.000,"weight":null,"unit":null,"goodsType":null,"imageDefaultId":null,"udfimg":null,"thumbnailPic":"commodity/94/4894_1482913424687hd_100x100.png","smallPic":"commodity/94/4894_1482913424687hd_250x250.png","bigPic":"commodity/94/4894_1482913424687hd_530x530.png","storePlace":null,"minBuy":null,"storePrompt":null,"nostoreSell":null,"disabled":1,"createTime":1482913551000,"updateTime":1490349396000,"creator":"admin","modifier":"admin","color":null,"storage":"2","netType":"1","productType":null,"cmdyCategoryName":"套餐商品","trial":null,"panicBuy":0,"preOrder":null,"screenInsurance":null,"contractGoods":null,"contractDiscount":null,"specDesc":null,"params":"1,3","commodityType":1,"validTime":null,"svcType":null,"containColor":1,"exchangeStartTime":null,"exchangeEndTime":null,"needVcoin":null},"commoditySkuList":[{"id":4893,"name":"套餐商品Bb","code":"5543123412","commoditySpuId":10126,"barcode":null,"title":"套餐商品B","costPrice":null,"marketPrice":100.000,"salePrice":100.000,"weight":null,"unit":null,"storeLock":0,"store":8,"storePlace":null,"color":"68","storage":"2","freez":null,"goodsType":null,"qrcodeImageId":null,"createTime":1482913551000,"updateTime":1486470901000,"creator":"admin","modifier":"admin","disabled":1,"marketable":1,"netType":"1","productType":null,"cmdyCategoryName":"套餐商品","specInfo":null,"specDesc":null,"defaultChecked":0,"skuCode":"4893BN5543123412","imageNumbers":",1482913416533hd,1482913417748hd,1482913418495hd,1482913419272hd","defaultImage":"1482913416533hd","imageType":"","commodityAttrItem":{"id":68,"name":"金色","code":"68","commodityAttrId":1,"createTime":1449972523000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#ddd9c3"},"commodityAttrItemList":[{"id":68,"name":"金色","code":"68","commodityAttrId":1,"createTime":1449972523000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#ddd9c3"},{"id":11,"name":"32G版本","code":"2","commodityAttrId":2,"createTime":1437365738000,"updateTime":1483350184000,"creator":"admin","modifier":"admin","attrItemValue":"32G ROM"},{"id":12,"name":"移动4G","code":"1","commodityAttrId":3,"createTime":1437369346000,"updateTime":1469757738000,"creator":"admin","modifier":"admin","attrItemValue":"移动4G/3G/2G&联通2G"}],"panicBuy":0,"uptime":1482913551000,"downtime":1483010021000,"colorName":null,"thumbnaiPic":"commodity/93/4893_1482913416533hd_100x100.png","imageDataInfos":[{"skuId":"4893","fileName":null,"imageNo":"1482913416533hd","imageType":"","hdPic":"commodity/93/4893_1482913416533hd_1080x1080.png","thumbnailPic":"commodity/93/4893_1482913416533hd_100x100.png","smallPic":"commodity/93/4893_1482913416533hd_250x250.png","bigPic":"commodity/93/4893_1482913416533hd_530x530.png"},{"skuId":"4893","fileName":null,"imageNo":"1482913417748hd","imageType":"","hdPic":"commodity/93/4893_1482913417748hd_1080x1080.png","thumbnailPic":"commodity/93/4893_1482913417748hd_100x100.png","smallPic":"commodity/93/4893_1482913417748hd_250x250.png","bigPic":"commodity/93/4893_1482913417748hd_530x530.png"},{"skuId":"4893","fileName":null,"imageNo":"1482913418495hd","imageType":"","hdPic":"commodity/93/4893_1482913418495hd_1080x1080.png","thumbnailPic":"commodity/93/4893_1482913418495hd_100x100.png","smallPic":"commodity/93/4893_1482913418495hd_250x250.png","bigPic":"commodity/93/4893_1482913418495hd_530x530.png"},{"skuId":"4893","fileName":null,"imageNo":"1482913419272hd","imageType":"","hdPic":"commodity/93/4893_1482913419272hd_1080x1080.png","thumbnailPic":"commodity/93/4893_1482913419272hd_100x100.png","smallPic":"commodity/93/4893_1482913419272hd_250x250.png","bigPic":"commodity/93/4893_1482913419272hd_530x530.png"}],"bigPic":"commodity/93/4893_1482913416533hd_530x530.png","smallPic":"commodity/93/4893_1482913416533hd_250x250.png"},{"id":4894,"name":"套餐商品Bb","code":"62123123","commoditySpuId":10126,"barcode":null,"title":"套餐商品B","costPrice":null,"marketPrice":100.000,"salePrice":100.000,"weight":null,"unit":null,"storeLock":0,"store":10,"storePlace":null,"color":"69","storage":"2","freez":null,"goodsType":null,"qrcodeImageId":null,"createTime":1482913551000,"updateTime":1486470901000,"creator":"admin","modifier":"admin","disabled":1,"marketable":1,"netType":"1","productType":null,"cmdyCategoryName":"套餐商品","specInfo":null,"specDesc":null,"defaultChecked":1,"skuCode":"4894BN62123123","imageNumbers":",1482913424687hd,1482913432185hd,1482913432686hd","defaultImage":"1482913424687hd","imageType":"","commodityAttrItem":{"id":69,"name":"玫瑰金","code":"69","commodityAttrId":1,"createTime":1449972523000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#e5b9b7"},"commodityAttrItemList":[{"id":69,"name":"玫瑰金","code":"69","commodityAttrId":1,"createTime":1449972523000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#e5b9b7"},{"id":11,"name":"32G版本","code":"2","commodityAttrId":2,"createTime":1437365738000,"updateTime":1483350184000,"creator":"admin","modifier":"admin","attrItemValue":"32G ROM"},{"id":12,"name":"移动4G","code":"1","commodityAttrId":3,"createTime":1437369346000,"updateTime":1469757738000,"creator":"admin","modifier":"admin","attrItemValue":"移动4G/3G/2G&联通2G"}],"panicBuy":0,"uptime":1482913551000,"downtime":1483010021000,"colorName":null,"thumbnaiPic":"commodity/94/4894_1482913424687hd_100x100.png","imageDataInfos":[{"skuId":"4894","fileName":null,"imageNo":"1482913424687hd","imageType":"","hdPic":"commodity/94/4894_1482913424687hd_1080x1080.png","thumbnailPic":"commodity/94/4894_1482913424687hd_100x100.png","smallPic":"commodity/94/4894_1482913424687hd_250x250.png","bigPic":"commodity/94/4894_1482913424687hd_530x530.png"},{"skuId":"4894","fileName":null,"imageNo":"1482913432185hd","imageType":"","hdPic":"commodity/94/4894_1482913432185hd_1080x1080.png","thumbnailPic":"commodity/94/4894_1482913432185hd_100x100.png","smallPic":"commodity/94/4894_1482913432185hd_250x250.png","bigPic":"commodity/94/4894_1482913432185hd_530x530.png"},{"skuId":"4894","fileName":null,"imageNo":"1482913432686hd","imageType":"","hdPic":"commodity/94/4894_1482913432686hd_1080x1080.png","thumbnailPic":"commodity/94/4894_1482913432686hd_100x100.png","smallPic":"commodity/94/4894_1482913432686hd_250x250.png","bigPic":"commodity/94/4894_1482913432686hd_530x530.png"}],"bigPic":"commodity/94/4894_1482913424687hd_530x530.png","smallPic":"commodity/94/4894_1482913424687hd_250x250.png"},{"id":4911,"name":"套餐商品Bb","code":"4514314","commoditySpuId":10126,"barcode":null,"title":"套餐商品B","costPrice":null,"marketPrice":100.000,"salePrice":100.000,"weight":null,"unit":null,"storeLock":0,"store":100,"storePlace":null,"color":"92","storage":"2","freez":null,"goodsType":null,"qrcodeImageId":null,"createTime":null,"updateTime":1486470901000,"creator":null,"modifier":"admin","disabled":1,"marketable":1,"netType":"1","productType":null,"cmdyCategoryName":"套餐商品","specInfo":null,"specDesc":null,"defaultChecked":0,"skuCode":"4911BN4514314","imageNumbers":",1482979572545hd","defaultImage":"1482979572545hd","imageType":"","commodityAttrItem":{"id":92,"name":"是范","code":"92","commodityAttrId":1,"createTime":1469062463000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#00b0f0"},"commodityAttrItemList":[{"id":92,"name":"是范","code":"92","commodityAttrId":1,"createTime":1469062463000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#00b0f0"},{"id":11,"name":"32G版本","code":"2","commodityAttrId":2,"createTime":1437365738000,"updateTime":1483350184000,"creator":"admin","modifier":"admin","attrItemValue":"32G ROM"},{"id":12,"name":"移动4G","code":"1","commodityAttrId":3,"createTime":1437369346000,"updateTime":1469757738000,"creator":"admin","modifier":"admin","attrItemValue":"移动4G/3G/2G&联通2G"}],"panicBuy":0,"uptime":null,"downtime":1483010021000,"colorName":null,"thumbnaiPic":"commodity/11/4911_1482979572545hd_100x100.png","imageDataInfos":[{"skuId":"4911","fileName":null,"imageNo":"1482979572545hd","imageType":"","hdPic":"commodity/11/4911_1482979572545hd_1080x1080.png","thumbnailPic":"commodity/11/4911_1482979572545hd_100x100.png","smallPic":"commodity/11/4911_1482979572545hd_250x250.png","bigPic":"commodity/11/4911_1482979572545hd_530x530.png"}],"bigPic":"commodity/11/4911_1482979572545hd_530x530.png","smallPic":"commodity/11/4911_1482979572545hd_250x250.png"},{"id":4960,"name":"套餐商品Bb","code":"5465","commoditySpuId":10126,"barcode":null,"title":"套餐商品B","costPrice":null,"marketPrice":100.000,"salePrice":100.000,"weight":null,"unit":null,"storeLock":0,"store":6,"storePlace":null,"color":"73","storage":"2","freez":null,"goodsType":null,"qrcodeImageId":null,"createTime":null,"updateTime":1486470901000,"creator":null,"modifier":"admin","disabled":1,"marketable":1,"netType":"1","productType":null,"cmdyCategoryName":"套餐商品","specInfo":null,"specDesc":null,"defaultChecked":0,"skuCode":"4960BN5465","imageNumbers":",1483091308125hd","defaultImage":"1483091308125hd","imageType":"","commodityAttrItem":{"id":73,"name":"蔷薇粉","code":"73","commodityAttrId":1,"createTime":1449972523000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#e5b9b7"},"commodityAttrItemList":[{"id":73,"name":"蔷薇粉","code":"73","commodityAttrId":1,"createTime":1449972523000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#e5b9b7"},{"id":11,"name":"32G版本","code":"2","commodityAttrId":2,"createTime":1437365738000,"updateTime":1483350184000,"creator":"admin","modifier":"admin","attrItemValue":"32G ROM"},{"id":12,"name":"移动4G","code":"1","commodityAttrId":3,"createTime":1437369346000,"updateTime":1469757738000,"creator":"admin","modifier":"admin","attrItemValue":"移动4G/3G/2G&联通2G"}],"panicBuy":0,"uptime":null,"downtime":null,"colorName":null,"thumbnaiPic":"commodity/60/4960_1483091308125hd_100x100.png","imageDataInfos":[{"skuId":"4960","fileName":null,"imageNo":"1483091308125hd","imageType":"","hdPic":"commodity/60/4960_1483091308125hd_1080x1080.png","thumbnailPic":"commodity/60/4960_1483091308125hd_100x100.png","smallPic":"commodity/60/4960_1483091308125hd_250x250.png","bigPic":"commodity/60/4960_1483091308125hd_530x530.png"}],"bigPic":"commodity/60/4960_1483091308125hd_530x530.png","smallPic":"commodity/60/4960_1483091308125hd_250x250.png"}],"skuImageJsonStr":"[{\"bigPic\":\"commodity/93/4893_1482913416533hd_530x530.png\",\"hdPic\":\"commodity/93/4893_1482913416533hd_1080x1080.png\",\"imageNo\":\"1482913416533hd\",\"imageType\":\"\",\"skuId\":\"4893\",\"smallPic\":\"commodity/93/4893_1482913416533hd_250x250.png\",\"thumbnailPic\":\"commodity/93/4893_1482913416533hd_100x100.png\"},{\"bigPic\":\"commodity/93/4893_1482913417748hd_530x530.png\",\"hdPic\":\"commodity/93/4893_1482913417748hd_1080x1080.png\",\"imageNo\":\"1482913417748hd\",\"imageType\":\"\",\"skuId\":\"4893\",\"smallPic\":\"commodity/93/4893_1482913417748hd_250x250.png\",\"thumbnailPic\":\"commodity/93/4893_1482913417748hd_100x100.png\"},{\"bigPic\":\"commodity/93/4893_1482913418495hd_530x530.png\",\"hdPic\":\"commodity/93/4893_1482913418495hd_1080x1080.png\",\"imageNo\":\"1482913418495hd\",\"imageType\":\"\",\"skuId\":\"4893\",\"smallPic\":\"commodity/93/4893_1482913418495hd_250x250.png\",\"thumbnailPic\":\"commodity/93/4893_1482913418495hd_100x100.png\"},{\"bigPic\":\"commodity/93/4893_1482913419272hd_530x530.png\",\"hdPic\":\"commodity/93/4893_1482913419272hd_1080x1080.png\",\"imageNo\":\"1482913419272hd\",\"imageType\":\"\",\"skuId\":\"4893\",\"smallPic\":\"commodity/93/4893_1482913419272hd_250x250.png\",\"thumbnailPic\":\"commodity/93/4893_1482913419272hd_100x100.png\"},{\"bigPic\":\"commodity/94/4894_1482913424687hd_530x530.png\",\"hdPic\":\"commodity/94/4894_1482913424687hd_1080x1080.png\",\"imageNo\":\"1482913424687hd\",\"imageType\":\"\",\"skuId\":\"4894\",\"smallPic\":\"commodity/94/4894_1482913424687hd_250x250.png\",\"thumbnailPic\":\"commodity/94/4894_1482913424687hd_100x100.png\"},{\"bigPic\":\"commodity/94/4894_1482913432185hd_530x530.png\",\"hdPic\":\"commodity/94/4894_1482913432185hd_1080x1080.png\",\"imageNo\":\"1482913432185hd\",\"imageType\":\"\",\"skuId\":\"4894\",\"smallPic\":\"commodity/94/4894_1482913432185hd_250x250.png\",\"thumbnailPic\":\"commodity/94/4894_1482913432185hd_100x100.png\"},{\"bigPic\":\"commodity/94/4894_1482913432686hd_530x530.png\",\"hdPic\":\"commodity/94/4894_1482913432686hd_1080x1080.png\",\"imageNo\":\"1482913432686hd\",\"imageType\":\"\",\"skuId\":\"4894\",\"smallPic\":\"commodity/94/4894_1482913432686hd_250x250.png\",\"thumbnailPic\":\"commodity/94/4894_1482913432686hd_100x100.png\"},{\"bigPic\":\"commodity/11/4911_1482979572545hd_530x530.png\",\"hdPic\":\"commodity/11/4911_1482979572545hd_1080x1080.png\",\"imageNo\":\"1482979572545hd\",\"imageType\":\"\",\"skuId\":\"4911\",\"smallPic\":\"commodity/11/4911_1482979572545hd_250x250.png\",\"thumbnailPic\":\"commodity/11/4911_1482979572545hd_100x100.png\"},{\"bigPic\":\"commodity/60/4960_1483091308125hd_530x530.png\",\"hdPic\":\"commodity/60/4960_1483091308125hd_1080x1080.png\",\"imageNo\":\"1483091308125hd\",\"imageType\":\"\",\"skuId\":\"4960\",\"smallPic\":\"commodity/60/4960_1483091308125hd_250x250.png\",\"thumbnailPic\":\"commodity/60/4960_1483091308125hd_100x100.png\"}]","commoditySpuSpecinfoList":[{"id":4468,"commoditySpuId":10126,"commoditySpecId":3,"specValue":"MTK8848","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"CPU"},{"id":4469,"commoditySpuId":10126,"commoditySpecId":4,"specValue":"8G","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"内存（运行内存）"},{"id":4470,"commoditySpuId":10126,"commoditySpecId":5,"specValue":"256G","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"ROM"},{"id":4471,"commoditySpuId":10126,"commoditySpecId":6,"specValue":"abc","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"系统"},{"id":4472,"commoditySpuId":10126,"commoditySpecId":7,"specValue":"6.0","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"屏幕尺寸"},{"id":4473,"commoditySpuId":10126,"commoditySpecId":8,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"屏幕分辨率"},{"id":4474,"commoditySpuId":10126,"commoditySpecId":9,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"PPI"},{"id":4475,"commoditySpuId":10126,"commoditySpecId":10,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"机身厚度"},{"id":4476,"commoditySpuId":10126,"commoditySpecId":11,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"电池"},{"id":4477,"commoditySpuId":10126,"commoditySpecId":12,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"容量"},{"id":4478,"commoditySpuId":10126,"commoditySpecId":13,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"支持频段"},{"id":4479,"commoditySpuId":10126,"commoditySpecId":14,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"连接支持"},{"id":4480,"commoditySpuId":10126,"commoditySpecId":15,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"功能特色"},{"id":4481,"commoditySpuId":10126,"commoditySpecId":16,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"摄像头类型"},{"id":4482,"commoditySpuId":10126,"commoditySpecId":17,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"摄像头"},{"id":4483,"commoditySpuId":10126,"commoditySpecId":18,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"视频拍摄"},{"id":4484,"commoditySpuId":10126,"commoditySpecId":19,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"标配"}],"commoditySpuExt":{"id":503,"name":null,"commoditySpuId":10126,"pcLocation":null,"wapLocation":null,"createTime":null,"updateTime":1486470901000,"creator":"admin","modifier":"admin","pcDetail":"<p style=\"text-align: center;\"><iframe width=\"960\" height=\"540\" frameborder=\"no\" src=\"https://shop.vivo.com.cn/wap/video?videourl=http://play.g3proxy.lecloud.com/vod/v2/MjQyLzE3LzIyL2JjbG91ZC8xMDAwMDEvdmVyXzAwXzIyLTEwNjc0MzE3MjItYXZjLTE5OTUzNC1hYWMtMzIwMDAtMjY0OTYwLTc5NTkwNTgtNDE4N2UxNzAyMTcxMjU0ZWE1OWZjZmU5ODUzMGJjNzUtMTQ3NjA4NzM2NjM3Mi5tcDQ=?b=240&mmsid=208969750&tm=1476328015306&pip=6a28d7029c25b73870ee5de2efb8f991&key=451a60cbef81b778e360e3534c80fdac&platid=2&splatid=206&payff=0&cuid=100001&vtype=21&dur=264&p1=3&p2=31&p3=310&cf=h5-android&p=101&playid=0&tss=no&tag=mobile&sign=bcloud_100001&termid=2&pay=0&ostype=android&hwtype=un&uuid=2415D92729ACA878427832EBAC295613_0&vid=36231426&ajax=1&poster=https://i3.letvimg.com/lc12_yunzhuanma/201610/10/16/16/29f791394dd34503e581fe20908fc4db_v2_NDE3OTQwNTAw/thumb/2_640_360.jpg\"></iframe></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/20161228162507426917_original.png\" style=\"\"/><br/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/2016122816250746622_original.png\" style=\"\"/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/20161228162507688942_original.png\" style=\"\"/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/20161228162507729111_original.png\" style=\"\"/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/2016122816250850747_original.png\" style=\"\"/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/20161228162508294807_original.png\" style=\"\"/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/20161228162508314983_original.png\" style=\"\"/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/20161228162508439619_original.png\" style=\"\"/></p><p><br/></p>","wapDetail":"<p style=\"text-align: center;\"><iframe width=\"100%\" style=\"height:4rem;\" frameborder=\"no\" src=\"https://shop.vivo.com.cn/wap/video?videourl=http://play.g3proxy.lecloud.com/vod/v2/MjQyLzE3LzIyL2JjbG91ZC8xMDAwMDEvdmVyXzAwXzIyLTEwNjc0MzE3MjItYXZjLTE5OTUzNC1hYWMtMzIwMDAtMjY0OTYwLTc5NTkwNTgtNDE4N2UxNzAyMTcxMjU0ZWE1OWZjZmU5ODUzMGJjNzUtMTQ3NjA4NzM2NjM3Mi5tcDQ=?b=240&mmsid=208969750&tm=1476328015306&pip=6a28d7029c25b73870ee5de2efb8f991&key=451a60cbef81b778e360e3534c80fdac&platid=2&splatid=206&payff=0&cuid=100001&vtype=21&dur=264&p1=3&p2=31&p3=310&cf=h5-android&p=101&playid=0&tss=no&tag=mobile&sign=bcloud_100001&termid=2&pay=0&ostype=android&hwtype=un&uuid=2415D92729ACA878427832EBAC295613_0&vid=36231426&ajax=1&poster=https://i3.letvimg.com/lc12_yunzhuanma/201610/10/16/16/29f791394dd34503e581fe20908fc4db_v2_NDE3OTQwNTAw/thumb/2_640_360.jpg\"></iframe></p><p style=\"text-align: center;\"><iframe width=\"100%\" style=\"height:4rem;\" frameborder=\"no\" src=\"https://shop.vivo.com.cn/wap/video?videourl=http://play.g3proxy.lecloud.com/vod/v2/MjQyLzE3LzIyL2JjbG91ZC8xMDAwMDEvdmVyXzAwXzIyLTEwNjc0MzE3MjItYXZjLTE5OTUzNC1hYWMtMzIwMDAtMjY0OTYwLTc5NTkwNTgtNDE4N2UxNzAyMTcxMjU0ZWE1OWZjZmU5ODUzMGJjNzUtMTQ3NjA4NzM2NjM3Mi5tcDQ=?b=240&mmsid=208969750&tm=1476328015306&pip=6a28d7029c25b73870ee5de2efb8f991&key=451a60cbef81b778e360e3534c80fdac&platid=2&splatid=206&payff=0&cuid=100001&vtype=21&dur=264&p1=3&p2=31&p3=310&cf=h5-android&p=101&playid=0&tss=no&tag=mobile&sign=bcloud_100001&termid=2&pay=0&ostype=android&hwtype=un&uuid=2415D92729ACA878427832EBAC295613_0&vid=36231426&ajax=1&poster=https://i3.letvimg.com/lc12_yunzhuanma/201610/10/16/16/29f791394dd34503e581fe20908fc4db_v2_NDE3OTQwNTAw/thumb/2_640_360.jpg\"></iframe></p><p style=\"text-align: center;\"><iframe width=\"100%\" style=\"height:4rem;\" frameborder=\"no\" src=\"https://shop.vivo.com.cn/wap/video?videourl=http://play.g3proxy.lecloud.com/vod/v2/MjQyLzE3LzIyL2JjbG91ZC8xMDAwMDEvdmVyXzAwXzIyLTEwNjc0MzE3MjItYXZjLTE5OTUzNC1hYWMtMzIwMDAtMjY0OTYwLTc5NTkwNTgtNDE4N2UxNzAyMTcxMjU0ZWE1OWZjZmU5ODUzMGJjNzUtMTQ3NjA4NzM2NjM3Mi5tcDQ=?b=240&mmsid=208969750&tm=1476328015306&pip=6a28d7029c25b73870ee5de2efb8f991&key=451a60cbef81b778e360e3534c80fdac&platid=2&splatid=206&payff=0&cuid=100001&vtype=21&dur=264&p1=3&p2=31&p3=310&cf=h5-android&p=101&playid=0&tss=no&tag=mobile&sign=bcloud_100001&termid=2&pay=0&ostype=android&hwtype=un&uuid=2415D92729ACA878427832EBAC295613_0&vid=36231426&ajax=1&poster=https://i3.letvimg.com/lc12_yunzhuanma/201610/10/16/16/29f791394dd34503e581fe20908fc4db_v2_NDE3OTQwNTAw/thumb/2_640_360.jpg\"></iframe></p>"},"commodityGiftList":null,"brokenScreenSvcList":[{"id":288,"name":"测试服务001测试服务001","startTime":null,"endTime":null,"description":"测试服务001","salePrice":100.000,"validTime":null,"createTime":null,"updateTime":1486470901000,"creator":null,"modifier":"admin","commoditySpuId":10126,"relaSkuId":4042,"relaSkuCode":"100000011","checked":0,"svcType":1}],"extendedWarrantySvcList":[{"id":292,"name":"䦹234534","startTime":null,"endTime":null,"description":"45地方环保法","salePrice":100.000,"validTime":null,"createTime":null,"updateTime":1486470901000,"creator":null,"modifier":"admin","commoditySpuId":10126,"relaSkuId":4156,"relaSkuCode":"2568","checked":0,"svcType":2}]},"phoneCapacities":[{"netType":{"netTypeCode":"1","netTypeName":"移动4G"},"storages":[{"storageCode":"1","storageName":"16G版本"},{"storageCode":"101","storageName":"128G版本"},{"storageCode":"2","storageName":"32G版本"},{"storageCode":"3","storageName":"64G版本"},{"storageCode":"57","storageName":"8G版本"}]},{"netType":{"netTypeCode":"48","netTypeName":"移动联通双4G"},"storages":[{"storageCode":"1","storageName":"16G版本"},{"storageCode":"3","storageName":"64G版本"}]},{"netType":{"netTypeCode":"50","netTypeName":"联通4G"},"storages":[{"storageCode":"1","storageName":"16G版本"}]},{"netType":{"netTypeCode":"58","netTypeName":"全网通"},"storages":[{"storageCode":"2","storageName":"32G版本"},{"storageCode":"57","storageName":"8G版本"}]},{"netType":{"netTypeCode":"80","netTypeName":"移动3G"},"storages":[{"storageCode":"1","storageName":"16G版本"},{"storageCode":"101","storageName":"128G版本"}]}],"productSuiteInfos":null,"fullpaySkuIdSet":[],"storeValidSkuIdSet":[4960,4894,4911,4893],"userFreepost":null,"panicCountdown":0},"retCode":200}
+    var data = {"data":{"normalCommodity":{"commoditySpu":{"id":10126,"name":"套餐商品Bb","code":null,"keywords":"","cmdyCategoryId":204,"brandId":1,"brief":"套餐商品B","intro":null,"marketable":1,"notifyNum":null,"uptime":1483148259000,"downtime":2145887999000,"pOrder":45,"dOrder":null,"vcoin":100,"costPrice":null,"marketPrice":100.000,"salePrice":100.000,"weight":null,"unit":null,"goodsType":null,"imageDefaultId":null,"udfimg":null,"thumbnailPic":"commodity/94/4894_1482913424687hd_100x100.png","smallPic":"commodity/94/4894_1482913424687hd_250x250.png","bigPic":"commodity/94/4894_1482913424687hd_530x530.png","storePlace":null,"minBuy":null,"storePrompt":null,"nostoreSell":null,"disabled":1,"createTime":1482913551000,"updateTime":1490349396000,"creator":"admin","modifier":"admin","color":null,"storage":"2","netType":"1","productType":null,"cmdyCategoryName":"套餐商品","trial":null,"panicBuy":0,"preOrder":null,"screenInsurance":null,"contractGoods":null,"contractDiscount":null,"specDesc":null,"params":"1,3","commodityType":1,"validTime":null,"svcType":null,"containColor":1,"exchangeStartTime":null,"exchangeEndTime":null,"needVcoin":null},"commoditySkuList":[{"id":4893,"name":"套餐商品Bb","code":"5543123412","commoditySpuId":10126,"barcode":null,"title":"套餐商品B","costPrice":null,"marketPrice":100.000,"salePrice":100.000,"weight":null,"unit":null,"storeLock":0,"store":8,"storePlace":null,"color":"68","storage":"2","freez":null,"goodsType":null,"qrcodeImageId":null,"createTime":1482913551000,"updateTime":1486470901000,"creator":"admin","modifier":"admin","disabled":1,"marketable":1,"netType":"1","productType":null,"cmdyCategoryName":"套餐商品","specInfo":null,"specDesc":null,"defaultChecked":0,"skuCode":"4893BN5543123412","imageNumbers":",1482913416533hd,1482913417748hd,1482913418495hd,1482913419272hd","defaultImage":"1482913416533hd","imageType":"","commodityAttrItem":{"id":68,"name":"金色","code":"68","commodityAttrId":1,"createTime":1449972523000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#ddd9c3"},"commodityAttrItemList":[{"id":68,"name":"金色","code":"68","commodityAttrId":1,"createTime":1449972523000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#ddd9c3"},{"id":11,"name":"32G版本","code":"2","commodityAttrId":2,"createTime":1437365738000,"updateTime":1483350184000,"creator":"admin","modifier":"admin","attrItemValue":"32G ROM"},{"id":12,"name":"移动4G","code":"1","commodityAttrId":3,"createTime":1437369346000,"updateTime":1469757738000,"creator":"admin","modifier":"admin","attrItemValue":"移动4G/3G/2G&联通2G"}],"panicBuy":0,"uptime":1482913551000,"downtime":1483010021000,"colorName":null,"thumbnaiPic":"commodity/93/4893_1482913416533hd_100x100.png","bigPic":"commodity/93/4893_1482913416533hd_530x530.png","smallPic":"commodity/93/4893_1482913416533hd_250x250.png","imageDataInfos":[{"skuId":"4893","fileName":null,"imageNo":"1482913416533hd","imageType":"","hdPic":"commodity/93/4893_1482913416533hd_1080x1080.png","thumbnailPic":"commodity/93/4893_1482913416533hd_100x100.png","smallPic":"commodity/93/4893_1482913416533hd_250x250.png","bigPic":"commodity/93/4893_1482913416533hd_530x530.png"},{"skuId":"4893","fileName":null,"imageNo":"1482913417748hd","imageType":"","hdPic":"commodity/93/4893_1482913417748hd_1080x1080.png","thumbnailPic":"commodity/93/4893_1482913417748hd_100x100.png","smallPic":"commodity/93/4893_1482913417748hd_250x250.png","bigPic":"commodity/93/4893_1482913417748hd_530x530.png"},{"skuId":"4893","fileName":null,"imageNo":"1482913418495hd","imageType":"","hdPic":"commodity/93/4893_1482913418495hd_1080x1080.png","thumbnailPic":"commodity/93/4893_1482913418495hd_100x100.png","smallPic":"commodity/93/4893_1482913418495hd_250x250.png","bigPic":"commodity/93/4893_1482913418495hd_530x530.png"},{"skuId":"4893","fileName":null,"imageNo":"1482913419272hd","imageType":"","hdPic":"commodity/93/4893_1482913419272hd_1080x1080.png","thumbnailPic":"commodity/93/4893_1482913419272hd_100x100.png","smallPic":"commodity/93/4893_1482913419272hd_250x250.png","bigPic":"commodity/93/4893_1482913419272hd_530x530.png"}]},{"id":4894,"name":"套餐商品Bb","code":"62123123","commoditySpuId":10126,"barcode":null,"title":"套餐商品B","costPrice":null,"marketPrice":100.000,"salePrice":100.000,"weight":null,"unit":null,"storeLock":0,"store":10,"storePlace":null,"color":"69","storage":"2","freez":null,"goodsType":null,"qrcodeImageId":null,"createTime":1482913551000,"updateTime":1486470901000,"creator":"admin","modifier":"admin","disabled":1,"marketable":1,"netType":"1","productType":null,"cmdyCategoryName":"套餐商品","specInfo":null,"specDesc":null,"defaultChecked":1,"skuCode":"4894BN62123123","imageNumbers":",1482913424687hd,1482913432185hd,1482913432686hd","defaultImage":"1482913424687hd","imageType":"","commodityAttrItem":{"id":69,"name":"玫瑰金","code":"69","commodityAttrId":1,"createTime":1449972523000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#e5b9b7"},"commodityAttrItemList":[{"id":69,"name":"玫瑰金","code":"69","commodityAttrId":1,"createTime":1449972523000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#e5b9b7"},{"id":11,"name":"32G版本","code":"2","commodityAttrId":2,"createTime":1437365738000,"updateTime":1483350184000,"creator":"admin","modifier":"admin","attrItemValue":"32G ROM"},{"id":12,"name":"移动4G","code":"1","commodityAttrId":3,"createTime":1437369346000,"updateTime":1469757738000,"creator":"admin","modifier":"admin","attrItemValue":"移动4G/3G/2G&联通2G"}],"panicBuy":0,"uptime":1482913551000,"downtime":1483010021000,"colorName":null,"thumbnaiPic":"commodity/94/4894_1482913424687hd_100x100.png","bigPic":"commodity/94/4894_1482913424687hd_530x530.png","smallPic":"commodity/94/4894_1482913424687hd_250x250.png","imageDataInfos":[{"skuId":"4894","fileName":null,"imageNo":"1482913424687hd","imageType":"","hdPic":"commodity/94/4894_1482913424687hd_1080x1080.png","thumbnailPic":"commodity/94/4894_1482913424687hd_100x100.png","smallPic":"commodity/94/4894_1482913424687hd_250x250.png","bigPic":"commodity/94/4894_1482913424687hd_530x530.png"},{"skuId":"4894","fileName":null,"imageNo":"1482913432185hd","imageType":"","hdPic":"commodity/94/4894_1482913432185hd_1080x1080.png","thumbnailPic":"commodity/94/4894_1482913432185hd_100x100.png","smallPic":"commodity/94/4894_1482913432185hd_250x250.png","bigPic":"commodity/94/4894_1482913432185hd_530x530.png"},{"skuId":"4894","fileName":null,"imageNo":"1482913432686hd","imageType":"","hdPic":"commodity/94/4894_1482913432686hd_1080x1080.png","thumbnailPic":"commodity/94/4894_1482913432686hd_100x100.png","smallPic":"commodity/94/4894_1482913432686hd_250x250.png","bigPic":"commodity/94/4894_1482913432686hd_530x530.png"}]},{"id":4911,"name":"套餐商品Bb","code":"4514314","commoditySpuId":10126,"barcode":null,"title":"套餐商品B","costPrice":null,"marketPrice":100.000,"salePrice":100.000,"weight":null,"unit":null,"storeLock":0,"store":100,"storePlace":null,"color":"92","storage":"2","freez":null,"goodsType":null,"qrcodeImageId":null,"createTime":null,"updateTime":1486470901000,"creator":null,"modifier":"admin","disabled":1,"marketable":1,"netType":"1","productType":null,"cmdyCategoryName":"套餐商品","specInfo":null,"specDesc":null,"defaultChecked":0,"skuCode":"4911BN4514314","imageNumbers":",1482979572545hd","defaultImage":"1482979572545hd","imageType":"","commodityAttrItem":{"id":92,"name":"是范","code":"92","commodityAttrId":1,"createTime":1469062463000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#00b0f0"},"commodityAttrItemList":[{"id":92,"name":"是范","code":"92","commodityAttrId":1,"createTime":1469062463000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#00b0f0"},{"id":11,"name":"32G版本","code":"2","commodityAttrId":2,"createTime":1437365738000,"updateTime":1483350184000,"creator":"admin","modifier":"admin","attrItemValue":"32G ROM"},{"id":12,"name":"移动4G","code":"1","commodityAttrId":3,"createTime":1437369346000,"updateTime":1469757738000,"creator":"admin","modifier":"admin","attrItemValue":"移动4G/3G/2G&联通2G"}],"panicBuy":0,"uptime":null,"downtime":1483010021000,"colorName":null,"thumbnaiPic":"commodity/11/4911_1482979572545hd_100x100.png","bigPic":"commodity/11/4911_1482979572545hd_530x530.png","smallPic":"commodity/11/4911_1482979572545hd_250x250.png","imageDataInfos":[{"skuId":"4911","fileName":null,"imageNo":"1482979572545hd","imageType":"","hdPic":"commodity/11/4911_1482979572545hd_1080x1080.png","thumbnailPic":"commodity/11/4911_1482979572545hd_100x100.png","smallPic":"commodity/11/4911_1482979572545hd_250x250.png","bigPic":"commodity/11/4911_1482979572545hd_530x530.png"}]},{"id":4960,"name":"套餐商品Bb","code":"5465","commoditySpuId":10126,"barcode":null,"title":"套餐商品B","costPrice":null,"marketPrice":100.000,"salePrice":100.000,"weight":null,"unit":null,"storeLock":0,"store":6,"storePlace":null,"color":"73","storage":"2","freez":null,"goodsType":null,"qrcodeImageId":null,"createTime":null,"updateTime":1486470901000,"creator":null,"modifier":"admin","disabled":1,"marketable":1,"netType":"1","productType":null,"cmdyCategoryName":"套餐商品","specInfo":null,"specDesc":null,"defaultChecked":0,"skuCode":"4960BN5465","imageNumbers":",1483091308125hd","defaultImage":"1483091308125hd","imageType":"","commodityAttrItem":{"id":73,"name":"蔷薇粉","code":"73","commodityAttrId":1,"createTime":1449972523000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#e5b9b7"},"commodityAttrItemList":[{"id":73,"name":"蔷薇粉","code":"73","commodityAttrId":1,"createTime":1449972523000,"updateTime":1472548515000,"creator":"admin","modifier":"admin","attrItemValue":"#e5b9b7"},{"id":11,"name":"32G版本","code":"2","commodityAttrId":2,"createTime":1437365738000,"updateTime":1483350184000,"creator":"admin","modifier":"admin","attrItemValue":"32G ROM"},{"id":12,"name":"移动4G","code":"1","commodityAttrId":3,"createTime":1437369346000,"updateTime":1469757738000,"creator":"admin","modifier":"admin","attrItemValue":"移动4G/3G/2G&联通2G"}],"panicBuy":0,"uptime":null,"downtime":null,"colorName":null,"thumbnaiPic":"commodity/60/4960_1483091308125hd_100x100.png","bigPic":"commodity/60/4960_1483091308125hd_530x530.png","smallPic":"commodity/60/4960_1483091308125hd_250x250.png","imageDataInfos":[{"skuId":"4960","fileName":null,"imageNo":"1483091308125hd","imageType":"","hdPic":"commodity/60/4960_1483091308125hd_1080x1080.png","thumbnailPic":"commodity/60/4960_1483091308125hd_100x100.png","smallPic":"commodity/60/4960_1483091308125hd_250x250.png","bigPic":"commodity/60/4960_1483091308125hd_530x530.png"}]}],"giftTotalPrice":0,"commoditySpuSpecinfoList":[{"id":4468,"commoditySpuId":10126,"commoditySpecId":3,"specValue":"MTK8848","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"CPU"},{"id":4469,"commoditySpuId":10126,"commoditySpecId":4,"specValue":"8G","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"内存（运行内存）"},{"id":4470,"commoditySpuId":10126,"commoditySpecId":5,"specValue":"256G","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"ROM"},{"id":4471,"commoditySpuId":10126,"commoditySpecId":6,"specValue":"abc","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"系统"},{"id":4472,"commoditySpuId":10126,"commoditySpecId":7,"specValue":"6.0","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"屏幕尺寸"},{"id":4473,"commoditySpuId":10126,"commoditySpecId":8,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"屏幕分辨率"},{"id":4474,"commoditySpuId":10126,"commoditySpecId":9,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"PPI"},{"id":4475,"commoditySpuId":10126,"commoditySpecId":10,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"机身厚度"},{"id":4476,"commoditySpuId":10126,"commoditySpecId":11,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"电池"},{"id":4477,"commoditySpuId":10126,"commoditySpecId":12,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"容量"},{"id":4478,"commoditySpuId":10126,"commoditySpecId":13,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"支持频段"},{"id":4479,"commoditySpuId":10126,"commoditySpecId":14,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"连接支持"},{"id":4480,"commoditySpuId":10126,"commoditySpecId":15,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"功能特色"},{"id":4481,"commoditySpuId":10126,"commoditySpecId":16,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"摄像头类型"},{"id":4482,"commoditySpuId":10126,"commoditySpecId":17,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"摄像头"},{"id":4483,"commoditySpuId":10126,"commoditySpecId":18,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"视频拍摄"},{"id":4484,"commoditySpuId":10126,"commoditySpecId":19,"specValue":"","createTime":null,"updateTime":null,"creator":null,"modifier":null,"specName":"标配"}],"commoditySpuExt":{"id":503,"name":null,"commoditySpuId":10126,"pcLocation":null,"wapLocation":null,"createTime":null,"updateTime":1486470901000,"creator":"admin","modifier":"admin","pcDetail":"<p style=\"text-align: center;\"><iframe width=\"960\" height=\"540\" frameborder=\"no\" src=\"https://shop.vivo.com.cn/wap/video?videourl=http://play.g3proxy.lecloud.com/vod/v2/MjQyLzE3LzIyL2JjbG91ZC8xMDAwMDEvdmVyXzAwXzIyLTEwNjc0MzE3MjItYXZjLTE5OTUzNC1hYWMtMzIwMDAtMjY0OTYwLTc5NTkwNTgtNDE4N2UxNzAyMTcxMjU0ZWE1OWZjZmU5ODUzMGJjNzUtMTQ3NjA4NzM2NjM3Mi5tcDQ=?b=240&mmsid=208969750&tm=1476328015306&pip=6a28d7029c25b73870ee5de2efb8f991&key=451a60cbef81b778e360e3534c80fdac&platid=2&splatid=206&payff=0&cuid=100001&vtype=21&dur=264&p1=3&p2=31&p3=310&cf=h5-android&p=101&playid=0&tss=no&tag=mobile&sign=bcloud_100001&termid=2&pay=0&ostype=android&hwtype=un&uuid=2415D92729ACA878427832EBAC295613_0&vid=36231426&ajax=1&poster=https://i3.letvimg.com/lc12_yunzhuanma/201610/10/16/16/29f791394dd34503e581fe20908fc4db_v2_NDE3OTQwNTAw/thumb/2_640_360.jpg\"></iframe></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/20161228162507426917_original.png\" style=\"\"/><br/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/2016122816250746622_original.png\" style=\"\"/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/20161228162507688942_original.png\" style=\"\"/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/20161228162507729111_original.png\" style=\"\"/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/2016122816250850747_original.png\" style=\"\"/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/20161228162508294807_original.png\" style=\"\"/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/20161228162508314983_original.png\" style=\"\"/></p><p><img src=\"https://swsdl.vivo.com.cn/vivoshop/commodity/20161228/20161228162508439619_original.png\" style=\"\"/></p><p><br/></p>","wapDetail":"<p style=\"text-align: center;\"><iframe width=\"100%\" style=\"height:4rem;\" frameborder=\"no\" src=\"https://shop.vivo.com.cn/wap/video?videourl=http://play.g3proxy.lecloud.com/vod/v2/MjQyLzE3LzIyL2JjbG91ZC8xMDAwMDEvdmVyXzAwXzIyLTEwNjc0MzE3MjItYXZjLTE5OTUzNC1hYWMtMzIwMDAtMjY0OTYwLTc5NTkwNTgtNDE4N2UxNzAyMTcxMjU0ZWE1OWZjZmU5ODUzMGJjNzUtMTQ3NjA4NzM2NjM3Mi5tcDQ=?b=240&mmsid=208969750&tm=1476328015306&pip=6a28d7029c25b73870ee5de2efb8f991&key=451a60cbef81b778e360e3534c80fdac&platid=2&splatid=206&payff=0&cuid=100001&vtype=21&dur=264&p1=3&p2=31&p3=310&cf=h5-android&p=101&playid=0&tss=no&tag=mobile&sign=bcloud_100001&termid=2&pay=0&ostype=android&hwtype=un&uuid=2415D92729ACA878427832EBAC295613_0&vid=36231426&ajax=1&poster=https://i3.letvimg.com/lc12_yunzhuanma/201610/10/16/16/29f791394dd34503e581fe20908fc4db_v2_NDE3OTQwNTAw/thumb/2_640_360.jpg\"></iframe></p><p style=\"text-align: center;\"><iframe width=\"100%\" style=\"height:4rem;\" frameborder=\"no\" src=\"https://shop.vivo.com.cn/wap/video?videourl=http://play.g3proxy.lecloud.com/vod/v2/MjQyLzE3LzIyL2JjbG91ZC8xMDAwMDEvdmVyXzAwXzIyLTEwNjc0MzE3MjItYXZjLTE5OTUzNC1hYWMtMzIwMDAtMjY0OTYwLTc5NTkwNTgtNDE4N2UxNzAyMTcxMjU0ZWE1OWZjZmU5ODUzMGJjNzUtMTQ3NjA4NzM2NjM3Mi5tcDQ=?b=240&mmsid=208969750&tm=1476328015306&pip=6a28d7029c25b73870ee5de2efb8f991&key=451a60cbef81b778e360e3534c80fdac&platid=2&splatid=206&payff=0&cuid=100001&vtype=21&dur=264&p1=3&p2=31&p3=310&cf=h5-android&p=101&playid=0&tss=no&tag=mobile&sign=bcloud_100001&termid=2&pay=0&ostype=android&hwtype=un&uuid=2415D92729ACA878427832EBAC295613_0&vid=36231426&ajax=1&poster=https://i3.letvimg.com/lc12_yunzhuanma/201610/10/16/16/29f791394dd34503e581fe20908fc4db_v2_NDE3OTQwNTAw/thumb/2_640_360.jpg\"></iframe></p><p style=\"text-align: center;\"><iframe width=\"100%\" style=\"height:4rem;\" frameborder=\"no\" src=\"https://shop.vivo.com.cn/wap/video?videourl=http://play.g3proxy.lecloud.com/vod/v2/MjQyLzE3LzIyL2JjbG91ZC8xMDAwMDEvdmVyXzAwXzIyLTEwNjc0MzE3MjItYXZjLTE5OTUzNC1hYWMtMzIwMDAtMjY0OTYwLTc5NTkwNTgtNDE4N2UxNzAyMTcxMjU0ZWE1OWZjZmU5ODUzMGJjNzUtMTQ3NjA4NzM2NjM3Mi5tcDQ=?b=240&mmsid=208969750&tm=1476328015306&pip=6a28d7029c25b73870ee5de2efb8f991&key=451a60cbef81b778e360e3534c80fdac&platid=2&splatid=206&payff=0&cuid=100001&vtype=21&dur=264&p1=3&p2=31&p3=310&cf=h5-android&p=101&playid=0&tss=no&tag=mobile&sign=bcloud_100001&termid=2&pay=0&ostype=android&hwtype=un&uuid=2415D92729ACA878427832EBAC295613_0&vid=36231426&ajax=1&poster=https://i3.letvimg.com/lc12_yunzhuanma/201610/10/16/16/29f791394dd34503e581fe20908fc4db_v2_NDE3OTQwNTAw/thumb/2_640_360.jpg\"></iframe></p>"},"commodityGiftList":[{"id":365,"name":"X6Plus","store":1,"vValue":null,"giftType":null,"isconvert":null,"startTime":null,"endTime":null,"memberLevel":null,"limitAmount":null,"createTime":null,"updateTime":1482913551000,"creator":null,"modifier":"admin","commoditySpuId":null,"relaSkuId":1936,"relaSpuId":127,"relaSkuCode":"5650873","salePrice":2998.000,"defaultImage":"1449978093732","marketable":1,"bigPic":"commodity/36/1936_1449978093732_530x530.png","smallPic":"commodity/36/1936_1449978093732_250x250.png","thumbnailPic":"commodity/36/1936_1449978093732_100x100.png"},{"id":367,"name":"QCY 蓝牙耳机 Q8S","store":1,"vValue":null,"giftType":null,"isconvert":null,"startTime":null,"endTime":null,"memberLevel":null,"limitAmount":null,"createTime":null,"updateTime":1482913551000,"creator":null,"modifier":"admin","commoditySpuId":null,"relaSkuId":1896,"relaSpuId":96,"relaSkuCode":"1150311人","salePrice":19.000,"defaultImage":"1447982513986","marketable":1,"bigPic":"commodity/96/1896_1447982513986_530x530.png","smallPic":"commodity/96/1896_1447982513986_250x250.png","thumbnailPic":"commodity/96/1896_1447982513986_100x100.png"},{"id":368,"name":"名字很长的商品名字很长的商品名字很长的商品","store":1,"vValue":null,"giftType":null,"isconvert":null,"startTime":null,"endTime":null,"memberLevel":null,"limitAmount":null,"createTime":null,"updateTime":1482982754000,"creator":null,"modifier":"admin","commoditySpuId":null,"relaSkuId":4915,"relaSpuId":10131,"relaSkuCode":"52214342","salePrice":15.000,"defaultImage":"1482982708785hd","marketable":1,"bigPic":"commodity/15/4915_1482982708785hd_530x530.png","smallPic":"commodity/15/4915_1482982708785hd_250x250.png","thumbnailPic":"commodity/15/4915_1482982708785hd_100x100.png"}],"brokenScreenSvcList":[{"id":288,"name":"测试服务001测试服务001","startTime":null,"endTime":null,"description":"测试服务001","salePrice":100.000,"validTime":null,"createTime":null,"updateTime":1486470901000,"creator":null,"modifier":"admin","commoditySpuId":10126,"relaSkuId":4042,"relaSkuCode":"100000011","checked":0,"svcType":1}],"extendedWarrantySvcList":[{"id":292,"name":"䦹234534","startTime":null,"endTime":null,"description":"45地方环保法","salePrice":100.000,"validTime":null,"createTime":null,"updateTime":1486470901000,"creator":null,"modifier":"admin","commoditySpuId":10126,"relaSkuId":4156,"relaSkuCode":"2568","checked":0,"svcType":2}]},"phoneCapacities":[{"netType":{"netTypeCode":"1","netTypeName":"移动4G"},"storages":[{"storageCode":"1","storageName":"16G版本"},{"storageCode":"101","storageName":"128G版本"},{"storageCode":"2","storageName":"32G版本"},{"storageCode":"3","storageName":"64G版本"},{"storageCode":"57","storageName":"8G版本"}]},{"netType":{"netTypeCode":"48","netTypeName":"移动联通双4G"},"storages":[{"storageCode":"1","storageName":"16G版本"},{"storageCode":"3","storageName":"64G版本"}]},{"netType":{"netTypeCode":"50","netTypeName":"联通4G"},"storages":[{"storageCode":"1","storageName":"16G版本"}]},{"netType":{"netTypeCode":"58","netTypeName":"全网通"},"storages":[{"storageCode":"2","storageName":"32G版本"},{"storageCode":"57","storageName":"8G版本"}]},{"netType":{"netTypeCode":"80","netTypeName":"移动3G"},"storages":[{"storageCode":"1","storageName":"16G版本"},{"storageCode":"101","storageName":"128G版本"}]}],"productSuiteInfos":null,"fullpaySkuIdSet":[],"storeValidSkuIdSet":[4960,4894,4911,4893],"userFreepost":null,"panicCountdown":0},"retCode":200}
 
     data = data.data;
 
     var remarkJson = {"data":[{"id":723,"commodityInfo":null,"remark":{"id":723,"memberId":42,"nickName":"点绛","userName":null,"mobileNo":"18824220364","email":null,"memberUid":56117502,"openId":"a666c1f98063d138","spuId":10126,"skuId":4893,"orderNo":"17011741813506091447","spuTitle":"套餐商品B","isAnonymous":0,"displayStatus":1,"content":"mlsdlk南方大厦你过分的可能","hasPicture":1,"picture1":"remark/20170222/15/28/53/1702225573336729_42_1080x1080.jpg","picture2":"remark/20170222/15/28/57/1702225573742492_42_1080x1080.bmp","picture3":"remark/20170222/15/29/39/1702225577956391_42_1080x1080.bmp","picture1Thumbnail":"remark/20170222/15/28/53/1702225573336729_42_100x100.jpg","picture2Thumbnail":"remark/20170222/15/28/57/1702225573742492_42_100x100.bmp","picture3Thumbnail":"remark/20170222/15/29/39/1702225577956391_42_100x100.bmp","serviceScore":5.0,"deliveryScore":5.0,"matchScore":5.0,"summaryScore":5.0,"isValid":1,"createdAt":1487748581000,"createdBy":"点绛","updatedAt":1487748581000,"updatedBy":"点绛","remarkEssence":0,"outOfDate":true},"remarkReplyList":[],"outOfDate":true},{"id":617,"commodityInfo":null,"remark":{"id":617,"memberId":284,"nickName":"dasdsdasdas22和","userName":null,"mobileNo":"18820750733","email":null,"memberUid":56117074,"openId":"e038cce12e20c85c","spuId":10126,"skuId":4894,"orderNo":"17010643175454672635","spuTitle":"套餐商品Bb","isAnonymous":0,"displayStatus":1,"content":"V5可口可乐了","hasPicture":1,"picture1":"remark/20170106/14/31/57/1701065231702659_284_1080x1080.jpg","picture2":"remark/20170106/14/32/37/1701065235711630_284_1080x1080.jpg","picture3":null,"picture1Thumbnail":"remark/20170106/14/31/57/1701065231702659_284_100x100.jpg","picture2Thumbnail":"remark/20170106/14/32/37/1701065235711630_284_100x100.jpg","picture3Thumbnail":null,"serviceScore":5.0,"deliveryScore":3.0,"matchScore":4.0,"summaryScore":5.0,"isValid":1,"createdAt":1483684374000,"createdBy":"dasdsdasdas22和","updatedAt":1483684374000,"updatedBy":"dasdsdasdas22和","remarkEssence":0,"outOfDate":false},"remarkReplyList":[],"outOfDate":false},{"id":602,"commodityInfo":null,"remark":{"id":602,"memberId":42,"nickName":"点绛","userName":null,"mobileNo":"18824220364","email":null,"memberUid":56117502,"openId":"a666c1f98063d138","spuId":10126,"skuId":4960,"orderNo":"17010436799378491447","spuTitle":"套餐商品B","isAnonymous":0,"displayStatus":1,"content":"sgdfdsjndsk交水电费打瞌睡给","hasPicture":1,"picture1":"remark/20170105/09/34/23/1701053446361465_42_1080x1080.jpg","picture2":"remark/20170105/09/34/26/1701053446658354_42_1080x1080.jpg","picture3":"remark/20170105/09/34/29/1701053446993547_42_1080x1080.jpg","picture1Thumbnail":"remark/20170105/09/34/23/1701053446361465_42_100x100.jpg","picture2Thumbnail":"remark/20170105/09/34/26/1701053446658354_42_100x100.jpg","picture3Thumbnail":"remark/20170105/09/34/29/1701053446993547_42_100x100.jpg","serviceScore":5.0,"deliveryScore":5.0,"matchScore":4.0,"summaryScore":5.0,"isValid":1,"createdAt":1483580073000,"createdBy":"点绛","updatedAt":1483580073000,"updatedBy":"点绛","remarkEssence":0,"outOfDate":false},"remarkReplyList":[],"outOfDate":false}],"retCode":200}
+
+    var prodEvaluations = {"data":{"remarkList":[{"id":723,"commodityInfo":null,"remark":{"id":723,"memberId":42,"nickName":"点绛","userName":null,"mobileNo":"18824220364","email":null,"memberUid":56117502,"openId":"a666c1f98063d138","spuId":10126,"skuId":4893,"orderNo":"17011741813506091447","spuTitle":"套餐商品B","isAnonymous":0,"displayStatus":1,"content":"mlsdlk南方大厦你过分的可能","hasPicture":1,"picture1":"remark/20170222/15/28/53/1702225573336729_42_1080x1080.jpg","picture2":"remark/20170222/15/28/57/1702225573742492_42_1080x1080.bmp","picture3":"remark/20170222/15/29/39/1702225577956391_42_1080x1080.bmp","picture1Thumbnail":"remark/20170222/15/28/53/1702225573336729_42_100x100.jpg","picture2Thumbnail":"remark/20170222/15/28/57/1702225573742492_42_100x100.bmp","picture3Thumbnail":"remark/20170222/15/29/39/1702225577956391_42_100x100.bmp","serviceScore":5.0,"deliveryScore":5.0,"matchScore":5.0,"summaryScore":5.0,"isValid":1,"createdAt":1487748581000,"createdBy":"点绛","updatedAt":1487748581000,"updatedBy":"点绛","remarkEssence":0,"outOfDate":true},"remarkReplyList":[],"outOfDate":true},{"id":617,"commodityInfo":null,"remark":{"id":617,"memberId":284,"nickName":"dasdsdasdas22和","userName":null,"mobileNo":"18820750733","email":null,"memberUid":56117074,"openId":"e038cce12e20c85c","spuId":10126,"skuId":4894,"orderNo":"17010643175454672635","spuTitle":"套餐商品Bb","isAnonymous":0,"displayStatus":1,"content":"V5可口可乐了","hasPicture":1,"picture1":"remark/20170106/14/31/57/1701065231702659_284_1080x1080.jpg","picture2":"remark/20170106/14/32/37/1701065235711630_284_1080x1080.jpg","picture3":null,"picture1Thumbnail":"remark/20170106/14/31/57/1701065231702659_284_100x100.jpg","picture2Thumbnail":"remark/20170106/14/32/37/1701065235711630_284_100x100.jpg","picture3Thumbnail":null,"serviceScore":5.0,"deliveryScore":3.0,"matchScore":4.0,"summaryScore":5.0,"isValid":1,"createdAt":1483684374000,"createdBy":"dasdsdasdas22和","updatedAt":1483684374000,"updatedBy":"dasdsdasdas22和","remarkEssence":0,"outOfDate":false},"remarkReplyList":[],"outOfDate":false},{"id":602,"commodityInfo":null,"remark":{"id":602,"memberId":42,"nickName":"点绛","userName":null,"mobileNo":"18824220364","email":null,"memberUid":56117502,"openId":"a666c1f98063d138","spuId":10126,"skuId":4960,"orderNo":"17010436799378491447","spuTitle":"套餐商品B","isAnonymous":0,"displayStatus":1,"content":"sgdfdsjndsk交水电费打瞌睡给","hasPicture":1,"picture1":"remark/20170105/09/34/23/1701053446361465_42_1080x1080.jpg","picture2":"remark/20170105/09/34/26/1701053446658354_42_1080x1080.jpg","picture3":"remark/20170105/09/34/29/1701053446993547_42_1080x1080.jpg","picture1Thumbnail":"remark/20170105/09/34/23/1701053446361465_42_100x100.jpg","picture2Thumbnail":"remark/20170105/09/34/26/1701053446658354_42_100x100.jpg","picture3Thumbnail":"remark/20170105/09/34/29/1701053446993547_42_100x100.jpg","serviceScore":5.0,"deliveryScore":5.0,"matchScore":4.0,"summaryScore":5.0,"isValid":1,"createdAt":1483580073000,"createdBy":"点绛","updatedAt":1483580073000,"updatedBy":"点绛","remarkEssence":0,"outOfDate":false},"remarkReplyList":[],"outOfDate":false},{"id":600,"commodityInfo":null,"remark":{"id":600,"memberId":121,"nickName":"丰息2","userName":null,"mobileNo":"15371020415","email":null,"memberUid":56119066,"openId":"0aa20fdc0b055dd1","spuId":10126,"skuId":4893,"orderNo":"16122873022037141910","spuTitle":"套餐商品B_改名2","isAnonymous":0,"displayStatus":1,"content":"313123","hasPicture":1,"picture1":"remark/20170104/17/42/39/1701046375946091_121_1080x1080.jpg","picture2":"remark/20170104/17/42/42/1701046376209170_121_1080x1080.jpg","picture3":"remark/20170104/17/42/43/1701046376399791_121_1080x1080.jpg","picture1Thumbnail":"remark/20170104/17/42/39/1701046375946091_121_100x100.jpg","picture2Thumbnail":"remark/20170104/17/42/42/1701046376209170_121_100x100.jpg","picture3Thumbnail":"remark/20170104/17/42/43/1701046376399791_121_100x100.jpg","serviceScore":4.0,"deliveryScore":4.0,"matchScore":4.0,"summaryScore":3.0,"isValid":1,"createdAt":1483522973000,"createdBy":"丰息2","updatedAt":1483522973000,"updatedBy":"丰息2","remarkEssence":0,"outOfDate":false},"remarkReplyList":[],"outOfDate":false},{"id":553,"commodityInfo":null,"remark":{"id":553,"memberId":121,"nickName":"丰息2","userName":null,"mobileNo":"15371020415","email":null,"memberUid":56119066,"openId":"0aa20fdc0b055dd1","spuId":10126,"skuId":4894,"orderNo":"16122871857313941910","spuTitle":"套餐商品B_改名","isAnonymous":0,"displayStatus":1,"content":"2000字","hasPicture":1,"picture1":"remark/20161228/20/03/55/1612287223502733_121_1080x1080.jpg","picture2":"remark/20161228/20/04/06/1612287224695308_121_1080x1080.jpg","picture3":"remark/20161228/20/04/15/1612287225512593_121_1080x1080.jpg","picture1Thumbnail":"remark/20161228/20/03/55/1612287223502733_121_100x100.jpg","picture2Thumbnail":"remark/20161228/20/04/06/1612287224695308_121_100x100.jpg","picture3Thumbnail":"remark/20161228/20/04/15/1612287225512593_121_100x100.jpg","serviceScore":2.0,"deliveryScore":2.0,"matchScore":3.0,"summaryScore":5.0,"isValid":1,"createdAt":1482926656000,"createdBy":"丰息2","updatedAt":1482926656000,"updatedBy":"丰息2","remarkEssence":0,"outOfDate":false},"remarkReplyList":[],"outOfDate":false}],"remarkScore":{"summaryScore":"4.6","matchScore":"4.0","serviceScore":"4.2","deliveryScore":"3.8"},"pageVO":{"pageNum":1,"pageSize":10,"startRow":0,"endRow":10,"total":5,"pages":1,"reasonable":false,"pageSizeZero":true}},"retCode":200}
 </script>
 
 <script src="../../js/plugins/zepto/zepto.js"></script>

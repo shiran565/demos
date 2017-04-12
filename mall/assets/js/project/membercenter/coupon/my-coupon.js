@@ -33,16 +33,16 @@ $(function () {
                         couponListData = data.couponList;
                         var len = $(couponListData).length;
                         $(couponListData).each(function (i) {
-                            if (4 == this.status) {
+                            if (4 == data.con.couponStatus) {
                                 couponClass = "container dated-used ";
                                 status = "已禁用";
                                 imgSrc = __uri("/assets/images/membercenter/coupon/coupon-forbidden.png");
-                            } else if (3 == this.status) {
+                            } else if (3 == data.con.couponStatus) {
                                 couponClass = "container dated-used ";
                                 status = "已过期";
                                 imgSrc = __uri("/assets/images/membercenter/coupon/coupon-dated.png");
                             }
-                            else if (2 == this.status || 1 == this.status) {
+                            else if (2 == data.con.couponStatus || 1 == data.con.couponStatus) {
                                 couponClass = "container dated-used ";
                                 status = "已使用";
                                 imgSrc = __uri("/assets/images/membercenter/coupon/coupon-used.png");

@@ -17,6 +17,25 @@
 	z-index: 99;
 }
 
+.page-swipe {
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+}
+
+.swipe-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.swipe-wrapper .page-slider__item{
+    float: left;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+}
+
 /* 页面顶部导航 */
 .header__title__tab-container{
 	position: relative;
@@ -96,15 +115,6 @@
 #content{
 	margin-top: 1.08rem;
 }
-
-.page-slider__item{
-	display: none;
-}
-
-.page-slider__item.detail{
-	padding-top: 1.14rem;
-}
-
 
 /* 商品信息 */
 .product__image-slider{
@@ -545,8 +555,13 @@
 }
 
 
-
 /* 详情选项卡 */
+.detail__tab{
+	display: none;
+	padding-top: 1.14rem;
+	background-color: #fff;
+}
+
 .images__pre-box{
 	width: 100%;
 	overflow: hidden;
@@ -676,6 +691,8 @@
     max-height: 7.56rem;
     padding: 0 .3rem;
     overflow: auto;
+
+    -webkit-overflow-scrolling: touch;
 }
 
 .cover__body .item{
@@ -698,6 +715,7 @@
 .cover__body .list__item__options label{
 	display: inline-block;
 	height: .72rem;
+	padding: 0 .46rem;
 	min-width: 2.01rem;
 	margin-right: .2rem;
 	margin-bottom: .2rem;
@@ -722,6 +740,7 @@
 	width: 5.16rem;
 	text-align: left;
 	padding-left: .9rem;
+	overflow: hidden;
 }	
 
 .service-control .list__item__options label::after{
@@ -840,13 +859,24 @@
 
 /* 赠品弹窗 */
 .gift-cover{
-	display: none;
 	position: fixed;
 	left: 0;
 	bottom: 0;
 	width: 100%;
 	z-index: 100;
 	background-color: #fff; 
+
+    -webkit-transform: translateY(110%);
+    transform: translate3d(110%);
+
+    -webkit-transition: -webkit-transform .2s cubic-bezier(0,0,.25,1);
+    transition: transform .2s cubic-bezier(0,0,.25,1);
+}
+
+.gift-cover.move-in{
+	display: block;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
 }
 
 .gift-cover__title{
