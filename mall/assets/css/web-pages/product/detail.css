@@ -851,9 +851,9 @@
     box-sizing: border-box;
     -webkit-border-radius: 0;
     border-radius: 0;
+
     font-size: .32rem;
-    font-weight: 700;
-    color: #333;
+    color: #333;text-align: center;
 }
 
 
