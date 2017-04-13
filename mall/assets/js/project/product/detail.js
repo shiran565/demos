@@ -1,25 +1,87 @@
-var pageSwipe, data_pageSwipe,
-	prodImage, data_pageImage,
-	prodInfo, data_prodInfo, //基本商品信息
-	prodSummary, data_prodSummary, //价格和优惠信息
-	latestEvaluation, data_latestEvaluation, //最新评价
-	prodSelection, data_prodSelection, //已选中
-	selectionPop, data_selectionPop, //属性选择弹窗
-	giftListPop, data_giftListPop, //赠品弹窗
-	detailTab, data_spuSpecinfoList, //商品详情
-	prodEvaluation, data_prodEvaluation, //全部评价
-	bus = new Vue(); //global event bus，用于处理组件间的事件代理
-
 $(function(){
+
+	var prodInfo,//商品详情数据大对象
+	latestEvaluations,//最近评论
+	prodEvaluations,//全部评论
+	pageSwipe,//页面级tab页
+	v_prodImage, data_pageImage,
+	v_prodInfo, data_prodInfo, //基本商品信息
+	v_prodSummary, data_prodSummary, //价格和优惠信息
+	v_latestEvaluation, data_latestEvaluation, //最新评价
+	v_prodSelection, data_prodSelection, //已选中
+	v_selectionPop, data_selectionPop, //属性选择弹窗
+	v_giftListPop, data_giftListPop, //赠品弹窗
+	v_detailTab, data_spuSpecinfoList, //商品详情
+	v_prodEvaluation, data_prodEvaluation, //全部评价
+	bus = new Vue(); //global event bus，用于处理组件间的事件代理
 	var ProdDetail = {
 		start:function(){
 			this.initPageSwipe();
-			this.initSpu();
+			this.getProdData($("#j_spuId").val());
+			this.getLatestEvaluation($("#j_spuId").val());
+			this.getEvaluation($("#j_spuId").val());
 			this.handleGlobalBus();
+		},
+		getProdData:function(spuId){
+			var that = this;
+
+			$.ajax({
+				type:'get',
+				dataType:'json',
+				data:{
+					spuId:spuId
+				},
+				url:webCtx+"/product/detail.json",
+				success:function(data){
+					if(data.retCode == 200){
+						prodInfo = data.data
+						that.initSpu();
+					}
+				}
+			});
+		},
+
+		getLatestEvaluation:function(spuId){
+			var that = this
+
+			$.ajax({
+				type:'get',
+				dataType:'json',
+				data:{
+					spuId:spuId
+				},
+				url:webCtx+"/product/latest/remark.json",
+				success:function(data){
+					if(data.retCode == 200){
+						latestEvaluations = data.data
+						that.initLatestEvaluation();
+					}
+				}
+			});
+
+		},
+
+		getEvaluation:function(spuId){
+			var that = this
+
+			$.ajax({
+				type:'get',
+				dataType:'json',
+				data:{
+					spuId:spuId
+				},
+				url:webCtx+"/product/remark.json",
+				success:function(data){
+					if(data.retCode == 200){
+						prodEvaluations = data.data
+						that.initEvaluation();
+					}
+				}
+			});
 		},
 		initPageSwipe:function(){
 			// 整体tab切换效果
-			var pageSwipe = new Swipe(document.querySelector("#j_pageSwipe"), {
+			pageSwipe = new Swipe(document.querySelector("#j_pageSwipe"), {
 				startSlide: 0,
 				speed: 400,
 				auto: false,
@@ -56,10 +118,10 @@ $(function(){
 				skuId:'',
 				currentIndex: 1,
 				imageHost: imageHost,
-				commoditySkuList:data.normalCommodity.commoditySkuList
+				commoditySkuList:prodInfo.normalCommodity.commoditySkuList
 			}
 
-			prodImage = new Vue({
+			v_prodImage = new Vue({
 				el:"#j_prodImageSlider",
 				data: data_prodImage,
 				computed:{
@@ -117,23 +179,23 @@ $(function(){
 
 			//基本商品信息
 			data_prodInfo = {
-				commoditySpu: data.normalCommodity.commoditySpu
+				commoditySpu: prodInfo.normalCommodity.commoditySpu
 			}
 
-			prodInfo = new Vue({
+			v_prodInfo = new Vue({
 				el:"#j_prodInfo",
 				data: data_prodInfo
 			});
 
 			//价格和优惠信息
 			data_prodSummary = {
-				giftTotalPrice: data.normalCommodity.giftTotalPrice,
-				commoditySpu: data.normalCommodity.commoditySpu,
-				commodityGiftList: data.normalCommodity.commodityGiftList,
-				userFreepost: data.normalCommodity.userFreepost
+				giftTotalPrice: prodInfo.normalCommodity.giftTotalPrice,
+				commoditySpu: prodInfo.normalCommodity.commoditySpu,
+				commodityGiftList: prodInfo.normalCommodity.commodityGiftList,
+				userFreepost: prodInfo.normalCommodity.userFreepost
 			}
 
-			prodSummary = new Vue({
+			v_prodSummary = new Vue({
 				el:'#j_prodSummary',
 				data: data_prodSummary,
 				methods: {
@@ -151,10 +213,10 @@ $(function(){
 			data_giftListPop = {
 				isShow: false,
 				imageHost: imageHost,
-				commodityGiftList: data.normalCommodity.commodityGiftList
+				commodityGiftList: prodInfo.normalCommodity.commodityGiftList
 			}
 
-			giftListPop = new Vue({
+			v_giftListPop = new Vue({
 				el: "#j_giftListPop",
 				data: data_giftListPop,
 				methods: {
@@ -176,7 +238,7 @@ $(function(){
 				textList:[]//选中项文本，仅用于界面展示
 			}
 
-			prodSelection = new Vue({
+			v_prodSelection = new Vue({
 				el:"#j_prodSelection",
 				data: data_prodSelection,
 				beforeCreated:function(){
@@ -202,17 +264,18 @@ $(function(){
 			data_selectionPop = {
 				isShow: false,
 				imageHost:imageHost,
+				spuId:'',
 				skuId:'', //颜色
 				brokenId:'', //碎屏保
 				extendId:'', //延保
 				huabeiId:'',
 				number:1,
-				normalCommodity: data.normalCommodity,
-				phoneCapacities:data.phoneCapacities, //容量制式
-				productSuiteInfos:data.productSuiteInfos, //套餐
+				normalCommodity: prodInfo.normalCommodity,
+				phoneCapacities:prodInfo.phoneCapacities, //容量制式
+				productSuiteInfos:prodInfo.productSuiteInfos, //套餐
 			}
 
-			selectionPop = new Vue({
+			v_selectionPop = new Vue({
 				el:"#j_selectionPop",
 				data: data_selectionPop,
 				computed:{
@@ -279,7 +342,7 @@ $(function(){
 
 					},
 					spuId:function(val,oldVal){
-						
+
 					}
 				},
 				methods:{
@@ -298,14 +361,39 @@ $(function(){
 				}
 			});
 
+			//详情tab页
+			v_detailTab = new Vue({
+				el: "#j_detailTabList",
+				data: {
+					commoditySpuExt:prodInfo.normalCommodity.commoditySpuExt,
+					spuSpecinfoList: prodInfo.normalCommodity.commoditySpuSpecinfoList
+				}
+			});
+		},
+		initEvaluation:function(){
+
+			//全部评论
+			data_prodEvaluation = {
+				imageHost:imageHost,
+				remarkInfo:prodEvaluations
+			}
+
+			v_prodEvaluation = new Vue({
+				el:"#j_prodEvaluation",
+				data:data_prodEvaluation
+			});
+
+		},
+		initLatestEvaluation:function(){
+
 			//最新评论评论
 			data_latestEvaluation = {
 				imageHost:imageHost,
 				remarkCount: 599,
-				remarkList: remarkJson.data
+				remarkList: latestEvaluations
 			}
 
-			latestEvaluation = new Vue({
+			v_latestEvaluation = new Vue({
 				el:"#j_latestProdEvaluation",
 				data: data_latestEvaluation,
 				methods:{
@@ -319,25 +407,6 @@ $(function(){
 				}
 			});
 
-			//详情tab页
-			detailTab = new Vue({
-				el: "#j_detailTabList",
-				data: {
-					commoditySpuExt:data.normalCommodity.commoditySpuExt,
-					spuSpecinfoList: data.normalCommodity.commoditySpuSpecinfoList
-				}
-			});
-
-			//全部评论
-			data_prodEvaluation = {
-				imageHost:imageHost,
-				remarkInfo:prodEvaluations.data
-			}
-
-			prodEvaluation = new Vue({
-				el:"#j_prodEvaluation",
-				data:data_prodEvaluation
-			})
 		},
 		//获取已选择参数
 		getSelectionOption:function(){
@@ -351,12 +420,12 @@ $(function(){
 
 			//显示属性选择弹窗
 			bus.$on("showProdSelectionPopup", function() {
-				selectionPop.$data.isShow = !selectionPop.$data.isShow;
+				v_selectionPop.$data.isShow = !v_selectionPop.$data.isShow;
 			});
 
 			//显示赠品列表
 			bus.$on("showGiftListPopup", function() {
-				giftListPop.$data.isShow = !selectionPop.$data.isShow;
+				v_giftListPop.$data.isShow = !v_selectionPop.$data.isShow;
 			});
 
 			//查看更多评价
@@ -364,8 +433,6 @@ $(function(){
 				pageSwipe.slide(2);
 			});
 		}
-	} 
-
-
+	}
 	ProdDetail.start();
 });
