@@ -654,6 +654,8 @@
 	font-size: 0;
 	border-radius: .03rem;
 	-webkit-border-radius: .03rem;
+
+	background-color: #fff; 
 }
 
 .cover__img img{
@@ -663,6 +665,17 @@
 
 .cover__main{
 	overflow: hidden;
+	position: relative;
+}
+
+.cover__main .icon-close{
+	position: absolute;
+	right: 0;
+	top: .4rem;
+	width: .3rem;
+	height: .3rem;
+	background: url(../../../images/prod/close.png) no-repeat;
+	background-size: contain;
 }
 
 .cover__summary__price{
@@ -856,6 +869,14 @@
     color: #333;text-align: center;
 }
 
+.prod__cover .bottom-fixed{	
+    display: box;
+    display: -webkit-box;
+    box-align: center;
+    -webkit-box-align: center;
+    box-pack: center;
+    -webkit-box-pack: center;
+}
 
 /* 赠品弹窗 */
 .gift-cover{
@@ -1022,13 +1043,22 @@
 }
 
 .bottom-fixed__right{
+	width: 4.74rem;
+    display: box;
+    display: -webkit-box;
+    box-align: center;
+    -webkit-box-align: center;
+    box-pack: center;
+    -webkit-box-pack: center;
 	margin-left: 2.46rem;
 	height: 100%;
 }
 
 .bottom-fixed__button{
-	float: left;
-	width: 50%;
+	min-width: 50%;
+	display: block;
+    -webkit-box-flex: 1;
+    box-flex: 1;
 	height: .95rem;
 
 	line-height: .95rem;

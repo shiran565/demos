@@ -69,12 +69,12 @@
                 <div id="j_prodSummary" class="product__summary">
                     <div class="wrapper">
                         <div class="product__summary__left">
-                            <div class="product__summary__current-price"><dfn>&yen;</dfn>{{commoditySpu.salePrice}}</div>
+                            <div class="product__summary__current-price"><dfn>&yen;</dfn>{{commoditySpu.salePrice.toFixed(2)}}</div>
                             <div v-if="commoditySpu.marketPrice > commoditySpu.salePrice" class="product__summary__original-price"><dfn>&yen;</dfn>{{commoditySpu.marketPrice}}</div>
                         </div>
                         <div class="product__summary__right">
                             <ul>
-                                <li v-if="commoditySpu.vcoin && commoditySpu.vcoin >0" class="product__summary__promotion"><span class="label-promotion">V币</span>购买即赠送{{commoditySpu.vcoin}}}V币</li>
+                                <li v-if="commoditySpu.vcoin && commoditySpu.vcoin >0" class="product__summary__promotion"><span class="label-promotion">V币</span>购买即赠送{{commoditySpu.vcoin}}V币</li>
                                 <li v-if="commodityGiftList && commodityGiftList.length" class="product__summary__promotion" @click="showGiftList()"><span class="label-promotion">赠品</span>价值{{giftTotalPrice}}元<i class="icon-more"></i></li>
                                 <li v-if="userFreepost && commoditySpu.salePrice > 68" class="product__summary__promotion"><span class="label-promotion">免邮</span>满68元免邮</li>
                             </ul>                    
@@ -90,8 +90,10 @@
                 <div id="j_prodSelection" class="product__selection">
                     <div class="wrapper">
                         <div class="product__selection__summary" @click="showPop">
-                            已选：<span class="item" v-for="text in textList">text</span>
-                            <span class="item">{{number}}件</span><i class="icon-more"></i>
+                            已选：<span class="item" v-if="netTypeName">{{netTypeName}}</span>
+                    <span class="item" v-if="storageName">{{storageName}}</span>
+                    <span class="item" v-if="skuName">{{skuName}}</span>
+                    <span class="item">{{number}}件</span><i class="icon-more"></i>
                         </div>
                         <div v-if="canUseHuabei" class="product__selection__huabei">支持花呗分期</div>                    
                     </div>
@@ -122,7 +124,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="product__evaluation__bottom">查看更多评价<i class="icon-more"></i></div>
+                    <div class="product__evaluation__bottom"  @click="viewAll()">查看更多评价<i class="icon-more"></i></div>
                 </div> 
                 <div class="product__tip__end">已经到底了~</div>
             </div>
@@ -184,11 +186,12 @@
 
     <!--属性选择弹窗-->
     <div id="j_selectionPop">
-        <div class="page-mask" v-if="isShow" @click="isShow = !isShow"></div>
+        <div class="page-mask" v-if="isShow" @click="isShow = false"></div>
         <div class="prod__cover" :class="{'move-in':isShow}">
             <div class="cover__summary">
-                <div class="cover__img"><img :src="imageHost+image.smallPic"></div>
+                <div class="cover__img"><img v-if="image" :src="imageHost+image.smallPic"></div>
                 <div class="cover__main">
+                    <i class="icon-close" @click="isShow = false"></i>
                     <div class="cover__summary__price"><dfn>&yen;</dfn>{{currentSku.salePrice.toFixed(2)}}</div>
                     <div class="cover__summary__stock">已选：
                     <span class="item" v-if="netTypeName">{{netTypeName}}</span>
@@ -204,15 +207,15 @@
                             <h2>选择版本容量</h2>
                             <div class="list__item__options">
                                 <template v-for="capacity in phoneCapacities">
-                                    <label v-for="storage in capacity.storages" 
-                                        :class="{on:(normalCommodity.commoditySpu.netType == capacity.netType.netTypeCode && normalCommodity.commoditySpu.storage == storage.storageCode)}">{{capacity.netType.netTypeName+storage.storageName}}</label>                                    
+                                    <label :netType="netType" :storage="storage" v-for="storageObj in capacity.storages" 
+                                        :class="{on:(netType == capacity.netType.netTypeCode && storage == storageObj.storageCode)}" @click="changeSpu(capacity.netType.netTypeCode,storageObj.storageCode)">{{capacity.netType.netTypeName+storageObj.storageName}}</label>                                    
                                 </template>
                             </div>
                         </li>
                         <li class="item" v-if="normalCommodity.commoditySpu.containColor == 1">
                             <h2>选择颜色</h2>
                             <div class="list__item__options">
-                                <label v-for="sku in normalCommodity.commoditySkuList" :class="{on:sku.id == currentSku.id}" @click="skuId = sku.id">{{sku.commodityAttrItem.name}}</label>
+                                <label :skuId="skuId" v-for="sku in normalCommodity.commoditySkuList" :class="{on:sku.id == currentSku.id}" @click="skuId = sku.id">{{sku.commodityAttrItem.name}}</label>
                             </div>
                         </li>
                         <li class="item" v-if="productSuiteInfos && productSuiteInfos.length">
@@ -226,7 +229,7 @@
                     </ul>
                 </div>
                 <!--服务选项-->
-                <div class="service-control" v-if="normalCommodity.brokenScreenSvcList.length || normalCommodity.extendedWarrantySvcList.length">
+                <div class="service-control" v-if="(normalCommodity.brokenScreenSvcList||[]).length || (normalCommodity.extendedWarrantySvcList||[]).length">
                     <ul class="list">
                         <li class="item">
                             <h2>手机服务（可选）</h2>
@@ -290,8 +293,9 @@
                 </div>
             </div>
             <div class="bottom-fixed">
-                <a class="bottom-fixed__button add">加入购物车</a>
-                <a class="bottom-fixed__button buy">立即购买</a>
+                <a v-if="showShoppingCart" class="bottom-fixed__button add" @click="submit('add')" href="javascript:;">加入购物车</a>
+                <a v-if="panicBuy == 1" class="bottom-fixed__button" @click="submit('second')" href="javascript:;">立即秒杀</a>
+                <a v-else class="bottom-fixed__button buy" :class="fullPay?'full':'buy'" @click="submit('buy')" href="javascript:;">{{fullPay?'全款预定':'立即购买'}}</a>
             </div>
         </div>
     </div>
@@ -317,18 +321,18 @@
         
     </div>
 
-    <section id="j_bottomBar" class="bottom-fixed">
+    <section id="j_bottomBar" class="bottom-fixed" style="display: none;">
         <div class="bottom-fixed__left">
             <a class="bottom-fixed__link collection" href="javascript:;"></a>
             <a class="bottom-fixed__link shoppingcart" href="/wap/shoppingcart"></a>
         </div>
-        <div class="bottom-fixed__right">        
-            <a class="bottom-fixed__button add" href=":;">加入购物车</a>
-            <a class="bottom-fixed__button buy" href=":;">立即购买</a>
+        <div class="bottom-fixed__right">          
+            <a v-if="showShoppingCart" class="bottom-fixed__button add" @click="submit('add')" href="javascript:;">加入购物车</a>
+            <a v-if="panicBuy == 1" class="bottom-fixed__button" @click="submit('second')" href="javascript:;">立即秒杀</a>
+            <a v-else class="bottom-fixed__button buy" :class="fullPay?'full':'buy'" @click="submit('buy')" href="javascript:;">{{fullPay?'全款预定':'立即购买'}}</a>
         </div>
     </section>
 </main>
-
 
 <script>
     var imageHost = "https://swsdl.vivo.com.cn/vivoshop/";
