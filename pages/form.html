@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>国家编辑页</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./common.css" />
+    <link rel="stylesheet" href="./bootstrap-select-1.13.7/css/bootstrap-select.min.css">
+
+    <style>
+        .error { color: #a94442; }
+    </style>
+
+
+</head>
+<body>
+    <header class="container-fluid">
+        <div class="row-fluid page-title">
+            <div class="span12">
+                <div class="page-header pull-left">
+                    <h1>国家列表编辑</h1>
+                </div>
+                <ul class="breadcrumb pull-right">
+                    <li>
+                        <a href="#"><i class="fa fa-home"></i>主页</a>
+                    </li>
+                    <li>
+                        <a href="#">类目</a>
+                    </li>
+                    <li class="active">
+                        主题
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="main-content container-fluid">
+        <div class="row-fluid">
+            <form class="form-horizontal">
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">国家名称：</label>
+                    <div class="col-sm-3">
+                        <select id="dev_countryPicker" class="form-control selectpicker"  data-live-search="true">
+                            <option value="1">广东省</option>
+                            <option value="2">广西省</option>
+                            <option value="3">福建省</option>
+                            <option value="4">湖南省</option>
+                            <option value="5">山东省</option>                            
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">语种：</label>
+                    <div class="col-sm-3">
+                        <select id="dev_languagePicker" class="form-control selectpicker" multiple  data-live-search="true" data-actions-box="true">
+                            <option value="1">英语 en-Us</option>
+                            <option value="2">俄语 ru-PS</option>
+                            <option value="3">缅甸语 mm-Ps</option>                        
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">时区：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="help-block">支持多选</p>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:-15px;">
+                    <label class="col-sm-4 control-label">&nbsp;</label>
+                    <div class="col-sm-3">
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions"  value="1"> 英语 en-US
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions"  value="0"> 俄语 ru-PS
+                        </label>
+                        <span id="helpBlock" class="help-block error">请选择默认语种</span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">时间格式：</label>
+                    <div class="col-sm-3">
+                        <select class="form-control">
+                            <option value="1">DD/MM/YYYY(日/月/年)</option>
+                            <option value="2">YYYY/MM/DD(年/月/日)</option>
+                            <option value="3">MM/DD/YYYY</option>                        
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">是否启用：</label>
+                    <div class="col-sm-3">
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions"  value="1"> 是
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions"  value="0"> 否
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="status" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-4">
+                        <button type="submmit" class="btn btn-info">保存</button>&nbsp;
+                        <button type="submmit" class="btn btn-default">取消</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <script src="./jquery-1.11.3.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        //手动指定bootstrap版本，bootstrap-select会根据版本号做相应适配
+        //$.fn.selectpicker.Constructor.BootstrapVersion = '3.3.5';
+    </script>
+    <script src="./bootstrap-select-1.13.7/js/bootstrap-select.min.js"></script>
+    <script src="./bootstrap-select-1.13.7/js/i18n/defaults-zh_CN.min.js"></script>
+    <script>
+        
+        $(function(){
+
+            function refreshDefaultLaanguageArea(){
+                
+            }
+
+
+        });
+
+
+
+
+
+    </script>
+</body>
+</html>
