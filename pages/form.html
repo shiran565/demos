@@ -9,11 +9,11 @@
 
     <style>
         .error { color: #a94442; }
+        .has-error .hidden{display: block!important;}
     </style>
 
 
 </head>
-<body>
     <header class="container-fluid">
         <div class="row-fluid page-title">
             <div class="span12">
@@ -43,13 +43,11 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label">国家名称：</label>
                     <div class="col-sm-3">
-                        <select id="dev_countryPicker" class="form-control selectpicker"  data-live-search="true">
-                            <option value="1">广东省</option>
-                            <option value="2">广西省</option>
-                            <option value="3">福建省</option>
-                            <option value="4">湖南省</option>
-                            <option value="5">山东省</option>                            
+                        <select id="dev_statePicker" class="form-control selectpicker"  data-live-search="true" name="state">
+                            <option value="1">中国</option>
+                            <option value="2">印度</option>                          
                         </select>
+                        <span class="help-block error hidden">请选择国家</span>
                     </div>
                 </div>
 
@@ -57,66 +55,60 @@
                     <label class="col-sm-4 control-label">语种：</label>
                     <div class="col-sm-3">
                         <select id="dev_languagePicker" class="form-control selectpicker" multiple  data-live-search="true" data-actions-box="true">
-                            <option value="1">英语 en-Us</option>
-                            <option value="2">俄语 ru-PS</option>
-                            <option value="3">缅甸语 mm-Ps</option>                        
+                            <option value="1">中文 zh_CN</option>
+                            <option value="2">印度 en-Us</option>                  
                         </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">时区：</label>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control">
+                        <span class="help-block error hidden">请选择语种</span>
                     </div>
                     <div class="col-sm-3">
                         <p class="help-block">支持多选</p>
                     </div>
                 </div>
 
-                <div class="form-group" style="margin-top:-15px;">
+                <div class="dev_defaultLanguage form-group hidden" style="margin-top:-15px;">
                     <label class="col-sm-4 control-label">&nbsp;</label>
-                    <div class="col-sm-3">
-                        <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions"  value="1"> 英语 en-US
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions"  value="0"> 俄语 ru-PS
-                        </label>
-                        <span id="helpBlock" class="help-block error">请选择默认语种</span>
+                    <div class="col-sm-3 dev_radioBox">
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">时区：</label>
+                    <div class="col-sm-3">
+                        <input type="text" name="timeZone" class="form-control">
+                        <span class="help-block error hidden">请填写时区</span>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label class="col-sm-4 control-label">时间格式：</label>
                     <div class="col-sm-3">
-                        <select class="form-control">
+                        <select class="form-control" name="timeFormat">
                             <option value="1">DD/MM/YYYY(日/月/年)</option>
                             <option value="2">YYYY/MM/DD(年/月/日)</option>
                             <option value="3">MM/DD/YYYY</option>                        
                         </select>
+                        <span class="help-block error hidden">请选择时间格式</span>
                     </div>
                 </div>
 
-
-                <div class="form-group">
+                <div class="dev_isUse form-group">
                     <label class="col-sm-4 control-label">是否启用：</label>
                     <div class="col-sm-3">
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions"  value="1"> 是
+                            <input type="radio" name="isUse"  value="1"> 是
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions"  value="0"> 否
+                            <input type="radio" name="isUse"  value="0"> 否
                         </label>
+                        <span class="help-block error hidden">请选择是否启用</span>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="status" class="col-sm-4 control-label"></label>
                     <div class="col-sm-4">
-                        <button type="submmit" class="btn btn-info">保存</button>&nbsp;
-                        <button type="submmit" class="btn btn-default">取消</button>
+                        <button type="button" class="dev_submit btn btn-info">保存</button>&nbsp;
+                        <button type="button" class="dev_cancel btn btn-default">取消</button>
                     </div>
                 </div>
 
@@ -132,20 +124,135 @@
     </script>
     <script src="./bootstrap-select-1.13.7/js/bootstrap-select.min.js"></script>
     <script src="./bootstrap-select-1.13.7/js/i18n/defaults-zh_CN.min.js"></script>
+    <script src="./lodash.min.js"></script>
     <script>
         
         $(function(){
+            //国家和语种初始化数据，可以再ftl中赋值
+            var data_states = [{"id":"1","stateCode":"001","state":"中国"},{"id":"2","stateCode":"002","state":"印度"}],   //国家列表
+                data_languages = [{"id":"1","languageCode":"001","language":"中文 zh_CN"},{"id":"2","languageCode":"002","language":"印度 en_US"}]; //语种列表
 
-            function refreshDefaultLaanguageArea(){
-                
+            var page = {
+                //交互事件处理
+                bindEvents:function(){
+                    var that = this;
+                    //国家选择
+                    $("#dev_statePicker").on("change",function(){
+                        that.validateElement($(this),!!$(this).val());
+                    });
+
+                    //语种选择
+                    $("#dev_languagePicker").on("change",function(e, isValidate){
+                        var values = $(this).val();
+                        that.validateElement($(this),!!values);
+                        
+                        //由点击保存按钮触发的change事件则不进行后续操作
+                        if(isValidate){
+                            return;
+                        }
+                        that.refreshDefaultLanguageArea(values || []);
+                    });
+                    
+                    //默认语种校验
+                    $(".dev_defaultLanguage").on("change","input",function(e){
+                        that.validateElement($(this),$(".dev_defaultLanguage :checked").length)
+                    });
+
+                    //是否启用字段校验
+                    $('.dev_isUse').on("change",function(){
+                        that.validateElement($(this),$(".dev_isUse :checked").length)
+                    });
+
+                    //时区字段校验
+                    $("input[name=timeZone]").on("change input",function(){
+                        that.validateElement($(this),$.trim($(this).val()))
+                    });
+
+                    //点击保存按钮
+                    $(".dev_submit").on("click",function(){
+                        //触发表单元素校验
+                        $("input,select").trigger("change",true);
+
+                        //校验通过则获取数据
+                        if(!$(".has-error").length){
+                            that.submitData();
+                        }
+                    });
+                },
+                /**
+                 * 刷新默认语种选中区域
+                 * @param languageIds 已选中的语种id
+                 */
+                refreshDefaultLanguageArea:function (languageIds){
+                    var $help_block,$radioBox = $(".dev_defaultLanguage .dev_radioBox");
+
+                    //根据语种的结果集重新渲染默认语种区域
+                    if(languageIds && languageIds.length){
+                        $help_block = $('<span class="help-block error hidden">请选择默认语种</span>')
+                        $radioBox.empty()
+                        _.forEach(languageIds,function(languageId){
+                            var data_language = _.find(data_languages,{"id":languageId});
+                            var $label = $('<label class="radio-inline">');
+                            var $input = $('<input type="radio" name="defaultLanguage"  value="'+data_language.id+'">');
+                            $label.append($input).append(data_language.language);
+                            $radioBox.append($label)
+                        });    
+                        $radioBox.append($help_block);
+                        $(".dev_defaultLanguage").removeClass("hidden");
+                        $(".dev_defaultLanguage input").trigger("change");
+                    }else{
+                        $(".dev_defaultLanguage").addClass("hidden");
+                        $(".dev_defaultLanguage input").remove();
+                    }
+                },
+                /**
+                 * 参数校验并提示
+                 * @param $el 校验的元素
+                 * @param validate_result 校验结果
+                 */
+                validateElement:function ($el,validate_result){
+                    var $el_fromGroup = $el.closest(".form-group");
+                    (validate_result?$el_fromGroup.removeClass("has-error"):$el_fromGroup.addClass("has-error"));
+                },
+                //组装国家数据
+                getResultOfState:function(){
+                    var that = this,
+                    result_state ={};
+                    result_state = _.find(data_states,{id:$("#dev_statePicker").val()});
+                    result_state.isUse = $("input[name=isUse]:checked").val();
+                    result_state.timeZone = $("[name=timeZone]").val();
+                    result_state.timeFormat = $("[name=timeFormart]").val();
+                    result_state.languageInfos = that.getResultsOfLanguages();
+                    return result_state;
+                },
+                //组装语种数据
+                getResultsOfLanguages:function(){
+                    var result_languages = [];
+                        languageIds = $("#dev_languagePicker").val(),
+                        isUse = $("input[name=isUse]:checked").val();
+                        defaultLanguageId = $(".dev_radioBox :checked").val();
+                    _.each(data_languages,function(value){
+                        if(_.includes(languageIds,value.id)){
+                            value.isUse = isUse;
+                            value.isDefault = (value.id == defaultLanguageId);
+                            result_languages.push(value);
+                        }
+                    });
+
+                    return result_languages;
+                },
+                //提交数据
+                submitData:function(){
+                    alert(JSON.stringify(this.getResultOfState()))
+                },
+                start:function(){
+                    this.bindEvents()
+                }
             }
 
+            page.start();
 
         });
-
-
-
-
 
     </script>
 </body>
