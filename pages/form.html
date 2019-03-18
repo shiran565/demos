@@ -18,7 +18,7 @@
         <div class="row-fluid page-title">
             <div class="span12">
                 <div class="page-header pull-left">
-                    <h1>国家列表编辑</h1>
+                    <h1>~</h1>
                 </div>
                 <ul class="breadcrumb pull-right">
                     <li>
@@ -38,71 +38,109 @@
 
     <section class="main-content container-fluid">
         <div class="row-fluid">
-            <form class="form-horizontal">
-
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">国家名称：</label>
-                    <div class="col-sm-3">
-                        <select id="dev_statePicker" class="form-control selectpicker"  data-live-search="true" name="state">
-                            <option value="1">中国</option>
-                            <option value="2">印度</option>                          
-                        </select>
-                        <span class="help-block error hidden">请选择国家</span>
+            <form class="form-horizontal" style="width:1200px;margin:0 auto">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">国家</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">国家名称：</label>
+                            <div class="col-sm-3">
+                                <select id="dev_statePicker" class="form-control selectpicker" data-live-search="true" name="state">
+                                    <option value="1">中国</option>
+                                    <option value="2">印度</option>
+                                </select>
+                                <span class="help-block error hidden">请选择国家</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">时区：</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="timeZone" class="form-control">
+                                <span class="help-block error hidden">请填写时区</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">时间格式：</label>
+                            <div class="col-sm-3">
+                                <select class="form-control" name="timeFormat">
+                                    <option value="1">DD/MM/YYYY(日/月/年)</option>
+                                    <option value="2">YYYY/MM/DD(年/月/日)</option>
+                                    <option value="3">MM/DD/YYYY</option>
+                                </select>
+                                <span class="help-block error hidden">请选择时间格式</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">语种：</label>
-                    <div class="col-sm-3">
-                        <select id="dev_languagePicker" class="form-control selectpicker" multiple  data-live-search="true" data-actions-box="true">
-                            <option value="1">中文 zh_CN</option>
-                            <option value="2">印度 en-Us</option>                  
-                        </select>
-                        <span class="help-block error hidden">请选择语种</span>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">语言</h2>
                     </div>
-                    <div class="col-sm-3">
-                        <p class="help-block">支持多选</p>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">语种：</label>
+                            <div class="col-sm-3">
+                                <select id="dev_languagePicker" class="form-control selectpicker" multiple data-live-search="true"
+                                    data-actions-box="true">
+                                    <option value="1">中文 zh_CN</option>
+                                    <option value="2">印度 en-Us</option>
+                                </select>
+                                <span class="help-block error hidden">请选择语种</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="help-block">支持多选</p>
+                            </div>
+                        </div>
+                        
+                        <div class="dev_defaultLanguage form-group" style="margin-top:-5px;">
+                            <label class="col-sm-3 control-label">&nbsp;</label>
+                            <div class="col-sm-3 dev_radioBox">
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>是否默认</th>
+                                            <th>语言名称</th>
+                                            <th>是否启用</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="isDefault" value="1">&nbsp;
+                                                </label>
+                                            </td>
+                                            <td>印地</td>
+                                            <td>
+                                                <label>    
+                                                    <input type="checkbox" name="isUse"> 启用
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="isDefault" value="1">&nbsp;
+                                                </label>
+                                            </td>
+                                            <td>英语</td>
+                                            <td>    
+                                                <label>                                            
+                                                    <input type="checkbox" name="isUse"> 启用
+                                                </label>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="dev_defaultLanguage form-group hidden" style="margin-top:-15px;">
-                    <label class="col-sm-4 control-label">&nbsp;</label>
-                    <div class="col-sm-3 dev_radioBox">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">时区：</label>
-                    <div class="col-sm-3">
-                        <input type="text" name="timeZone" class="form-control">
-                        <span class="help-block error hidden">请填写时区</span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">时间格式：</label>
-                    <div class="col-sm-3">
-                        <select class="form-control" name="timeFormat">
-                            <option value="1">DD/MM/YYYY(日/月/年)</option>
-                            <option value="2">YYYY/MM/DD(年/月/日)</option>
-                            <option value="3">MM/DD/YYYY</option>                        
-                        </select>
-                        <span class="help-block error hidden">请选择时间格式</span>
-                    </div>
-                </div>
-
-                <div class="dev_isUse form-group">
-                    <label class="col-sm-4 control-label">是否启用：</label>
-                    <div class="col-sm-3">
-                        <label class="radio-inline">
-                            <input type="radio" name="isUse"  value="1"> 是
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="isUse"  value="0"> 否
-                        </label>
-                        <span class="help-block error hidden">请选择是否启用</span>
-                    </div>
-                </div>
+                </div>            
 
                 <div class="form-group">
                     <label for="status" class="col-sm-4 control-label"></label>
@@ -130,7 +168,28 @@
         $(function(){
             //国家和语种初始化数据，可以再ftl中赋值
             var data_states = [{"id":"1","stateCode":"001","state":"中国"},{"id":"2","stateCode":"002","state":"印度"}],   //国家列表
-                data_languages = [{"id":"1","languageCode":"001","language":"中文 zh_CN"},{"id":"2","languageCode":"002","language":"印度 en_US"}]; //语种列表
+                data_languages = [{"id":"1","languageCode":"001","language":"中文 zh_CN"},{"id":"2","languageCode":"002","language":"印度 en_US"}], //语种列表
+                stateInfos = {
+                    stateCode:"IN",
+                    state:"印度",
+                    timeFormat:"dd/MM/yy",
+                    isUse:0,
+                    timeZone:"Asia/Kolkata",
+                    languageInfos:[{
+                        id:309,
+                        languageCode:"hi_IN",
+                        language:"印地",
+                        isUse:0,
+                        isDefaultLanguage:0
+                    },
+                    {
+                        id:323,
+                        languageCode:"en_US",
+                        language:"英语",
+                        isUse:1,
+                        isDefaultLanguage:1
+                    }]
+                };
 
             var page = {
                 //交互事件处理
@@ -150,7 +209,7 @@
                         if(isValidate){
                             return;
                         }
-                        that.refreshDefaultLanguageArea(values || []);
+                        //that.refreshDefaultLanguageArea(values || []);
                     });
                     
                     //默认语种校验
@@ -184,7 +243,7 @@
                  * @param languageIds 已选中的语种id
                  */
                 refreshDefaultLanguageArea:function (languageIds){
-                    var $help_block,$radioBox = $(".dev_defaultLanguage .dev_radioBox");
+                    var $help_block,$radioBox = $(".dev_defaultLanguage .dev_radioBox"); 
 
                     //根据语种的结果集重新渲染默认语种区域
                     if(languageIds && languageIds.length){
