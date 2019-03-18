@@ -12,7 +12,6 @@
         .has-error .hidden{display: block!important;}
     </style>
 
-
 </head>
     <header class="container-fluid">
         <div class="row-fluid page-title">
@@ -34,7 +33,6 @@
             </div>
         </div>
     </header>
-
 
     <section class="main-content container-fluid">
         <div class="row-fluid">
@@ -87,8 +85,8 @@
                             <div class="col-sm-3">
                                 <select id="dev_languagePicker" class="form-control selectpicker" multiple data-live-search="true"
                                     data-actions-box="true">
-                                    <option value="1">中文 zh_CN</option>
-                                    <option value="2">印度 en-Us</option>
+                                    <option value="hi_IN" selected>中文 zh_CN</option>
+                                    <option value="en_US" selected>印度 en-Us</option>
                                 </select>
                                 <span class="help-block error hidden">请选择语种</span>
                             </div>
@@ -97,7 +95,7 @@
                             </div>
                         </div>
                         
-                        <div class="dev_defaultLanguage form-group" style="margin-top:-5px;">
+                        <div class="dev_defaultLanguage form-group hidden" style="margin-top:-5px;">
                             <label class="col-sm-3 control-label">&nbsp;</label>
                             <div class="col-sm-3 dev_radioBox">
                                 <table class="table table-condensed">
@@ -108,33 +106,7 @@
                                             <th>是否启用</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <label class="radio-inline">
-                                                    <input type="radio" name="isDefault" value="1">&nbsp;
-                                                </label>
-                                            </td>
-                                            <td>印地</td>
-                                            <td>
-                                                <label>    
-                                                    <input type="checkbox" name="isUse"> 启用
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="radio-inline">
-                                                    <input type="radio" name="isDefault" value="1">&nbsp;
-                                                </label>
-                                            </td>
-                                            <td>英语</td>
-                                            <td>    
-                                                <label>                                            
-                                                    <input type="checkbox" name="isUse"> 启用
-                                                </label>
-                                            </td>
-                                        </tr>
+                                    <tbody class="dev_languageTbody">
                                     </tbody>
                                 </table>
                             </div>
@@ -168,7 +140,7 @@
         $(function(){
             //国家和语种初始化数据，可以再ftl中赋值
             var data_states = [{"id":"1","stateCode":"001","state":"中国"},{"id":"2","stateCode":"002","state":"印度"}],   //国家列表
-                data_languages = [{"id":"1","languageCode":"001","language":"中文 zh_CN"},{"id":"2","languageCode":"002","language":"印度 en_US"}], //语种列表
+                data_languages = [{"id":"1","languageCode":"hi_IN","language":"中文 zh_CN"},{"id":"2","languageCode":"en_US","language":"印度 en_US"}], //语种列表
                 stateInfos = {
                     stateCode:"IN",
                     state:"印度",
@@ -190,6 +162,9 @@
                         isDefaultLanguage:1
                     }]
                 };
+                
+                //去掉注释模拟新增
+                //stateInfos = undefined;
 
             var page = {
                 //交互事件处理
@@ -209,7 +184,7 @@
                         if(isValidate){
                             return;
                         }
-                        //that.refreshDefaultLanguageArea(values || []);
+                        that.refreshDefaultLanguageArea(values || []);
                     });
                     
                     //默认语种校验
@@ -240,29 +215,41 @@
                 },
                 /**
                  * 刷新默认语种选中区域
-                 * @param languageIds 已选中的语种id
+                 * @param languageCodes 已选中的语种Code
                  */
-                refreshDefaultLanguageArea:function (languageIds){
-                    var $help_block,$radioBox = $(".dev_defaultLanguage .dev_radioBox"); 
+                refreshDefaultLanguageArea:function (languageCodes){
+                    var that = this;
+                    var $help_block,$languageTbody = $(".dev_languageTbody"); 
 
                     //根据语种的结果集重新渲染默认语种区域
-                    if(languageIds && languageIds.length){
-                        $help_block = $('<span class="help-block error hidden">请选择默认语种</span>')
-                        $radioBox.empty()
-                        _.forEach(languageIds,function(languageId){
-                            var data_language = _.find(data_languages,{"id":languageId});
-                            var $label = $('<label class="radio-inline">');
-                            var $input = $('<input type="radio" name="defaultLanguage"  value="'+data_language.id+'">');
-                            $label.append($input).append(data_language.language);
-                            $radioBox.append($label)
-                        });    
-                        $radioBox.append($help_block);
+                    if(languageCodes && languageCodes.length){
                         $(".dev_defaultLanguage").removeClass("hidden");
-                        $(".dev_defaultLanguage input").trigger("change");
+                        $help_block = $('<span class="help-block error hidden">请选择默认语种</span>')
+                        $languageTbody.empty()
+                        _.forEach(languageCodes,function(languageCode){
+                            var data_language =  {};
+
+                            //这里要区分编辑和新增，编辑的情况要把原数据带过来
+                            if(that.isEdit()){
+                                data_language = _.find(stateInfos.languageInfos,{"languageCode":languageCode})
+                            }else{
+                                data_language = _.find(data_languages,{"languageCode":languageCode});
+                            }
+                            $languageTbody.append(that.createTableLine(data_language));
+                        });    
+                        
                     }else{
                         $(".dev_defaultLanguage").addClass("hidden");
-                        $(".dev_defaultLanguage input").remove();
+                        $languageTbody.empty();
                     }
+                },
+                //创建语种的表格行
+                createTableLine:function(languageInfo){
+                    var $tr = $('<tr data-id="'+ (languageInfo.id || "") +'" data-code="'+ languageInfo.languageCode +'">');
+                    $tr.append($('<td><label class="radio-inline"><input type="radio" name="isDefault" '+ (languageInfo.isDefaultLanguage?'':'checked') +' value="1">默认</label></td>'))
+                    $tr.append('<td>'+languageInfo.language+'</td>');
+                    $tr.append('<td><label class="checkbox-inline"><input type="checkbox" name="isUse" '+ (languageInfo.isUse?'':'checked') +' > 启用</label></td>')
+                    return $tr;
                 },
                 /**
                  * 参数校验并提示
@@ -286,16 +273,21 @@
                 },
                 //组装语种数据
                 getResultsOfLanguages:function(){
-                    var result_languages = [];
-                        languageIds = $("#dev_languagePicker").val(),
-                        isUse = $("input[name=isUse]:checked").val();
-                        defaultLanguageId = $(".dev_radioBox :checked").val();
-                    _.each(data_languages,function(value){
-                        if(_.includes(languageIds,value.id)){
-                            value.isUse = isUse;
-                            value.isDefault = (value.id == defaultLanguageId);
-                            result_languages.push(value);
-                        }
+                    var result_languages = [],
+                        that = this,
+                        languageIds = $("#dev_languagePicker").val();
+
+                    //数据从dom中获取
+                    $(".dev_languageTbody tr").each(function(index,tr){
+                            var languageInfo = {},
+                                $tr = $(tr);
+                            if(that.isEdit()){
+                                languageInfo.id = $tr.data("id");
+                            }
+                            languageInfo.languageCode = $tr.data("code");
+                            languageInfo.isUse = $tr.find("input[name=isUse]:checked").length?0:1;//选中是0，没选中是1。。。
+                            languageInfo.isDefaultLanguage = $tr.find("input[name=isDefault]:checked").length?0:1;//选中是0，没选中是1。。。
+                            result_languages.push(languageInfo);
                     });
 
                     return result_languages;
@@ -304,8 +296,16 @@
                 submitData:function(){
                     alert(JSON.stringify(this.getResultOfState()))
                 },
+                isEdit:function(){
+                    return stateInfos && stateInfos.languageInfos
+                },
                 start:function(){
-                    this.bindEvents()
+                    this.bindEvents();
+
+                    if(this.isEdit()){
+                        $("#dev_languagePicker").trigger("change");
+                    }
+
                 }
             }
 
